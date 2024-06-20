@@ -803,7 +803,7 @@ function updateSelection(links) {
         links[currentIndex].classList.add('selected');
         links[currentIndex].focus();
     }
-}</script><tw-tag name="forest" color="green"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
+}</script><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
 # [[Remedy acidic soils]]
 # [[Become a pile again|Stay as pile]]</tw-passagedata><tw-passagedata pid="2" name="Definitely remain ash" tags="" position="2875,1525" size="100,100">Ok, you&#39;re a pile of ash
 # [[Blow in wind]]
@@ -1586,6 +1586,7 @@ Fair enough…
 &lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="86" name="Emerge from the flames" tags="item" position="2500,1600" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Phoenix.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 You are reborn, not as an asset manager
 
 But as a magical phoenix asset manager
@@ -1593,7 +1594,8 @@ But as a magical phoenix asset manager
 You go flying and stuff &lt;&lt;set $phoenix to true&gt;&gt;
 
 !!PHOENIX MAGIC UNLOCKED!
-# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="87" name="Go to live in nature" tags="rework forest" position="2850,975" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="87" name="Go to live in nature" tags="rework forest" position="2850,975" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
 &lt;&lt;type 20ms none&gt;&gt;\
 It&#39;s another day out in the Scottish forest
 

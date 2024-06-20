@@ -2,6 +2,7 @@
 <<silently>>\
 <<set $image to "img/Phoenix.png">>
 <</silently>>\
+<<type 20ms none>>\
 You are reborn, not as an asset manager
 
 But as a magical phoenix asset manager
@@ -10,3 +11,4 @@ You go flying and stuff <<set $phoenix to true>>
 
 !!PHOENIX MAGIC UNLOCKED!
 # [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]
+<</type>>\

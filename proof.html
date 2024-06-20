@@ -2194,7 +2194,7 @@ function updateSelection(links) {
         links[currentIndex].classList.add('selected');
         links[currentIndex].focus();
     }
-}</script><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
+}</script><tw-tag name="title" color="green"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
 # [[Remedy acidic soils]]
 # [[Become a pile again|Stay as pile]]</tw-passagedata><tw-passagedata pid="2" name="Definitely remain ash" tags="" position="2875,1525" size="100,100">Ok, you&#39;re a pile of ash
 # [[Blow in wind]]
@@ -2328,17 +2328,23 @@ While Douglas is distracted you implement the fossil fuel exclusion policy
 # [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="17" name="Mention economic benefits" tags="success" position="450,150" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Coins.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 You demonstrate to Chairman Sir Douglas Flint how your assets will become stuck in fossil fuels
 
 ...as the world moves on to renewables
-# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="18" name="Mention severity of climate crisis" tags="success" position="475,0" size="100,100">&lt;&lt;set $image to &quot;img/Fire.png&quot;&gt;&gt;\
+# [[It works!|Good End]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="18" name="Mention severity of climate crisis" tags="success" position="475,0" size="100,100">&lt;&lt;set $image to &quot;img/Fire.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 You bring up findings from the IPCC and IEA that shows new fossil fuel projects are incompatible with limiting warming to 1.5c
 
 However, existing reserves could be used in the long transition to renewables...
-# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="19" name="Risk" tags="success" position="1000,25" size="100,100">You show Chairman Sir Douglas Flint the company&#39;s climate scenario modelling
+# [[It works!|Good End]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="19" name="Risk" tags="success" position="1000,25" size="100,100">&lt;&lt;type 20ms none&gt;&gt;\
+You show Chairman Sir Douglas Flint the company&#39;s climate scenario modelling
 
 Including how it&#39;s to be based on wildly optimistic estimates of how the economy would hold up in a warmer world
-# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="20" name="Summon League" tags="success" position="400,300" size="100,100">The League of Asset Managers kidnap the board and convince them to join
+# [[It works!|Good End]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="20" name="Summon League" tags="success" position="400,300" size="100,100">The League of Asset Managers kidnap the board and convince them to join
 
 Everyone gets a cloak
 # [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="21" name="Underworld" tags="ending" position="2400,1000" size="100,100">God sends you to the Asset Manager Underworld.
@@ -2697,6 +2703,7 @@ But besides rebranding the bakery Lannan as Lnnnn...
 You haven&#39;t done much&lt;&lt;set $pastry to true&gt;&gt;
 # [[Go get your job back|Get job back]]
 # [[Put your passion into pastry|Passion into pastry]]</tw-passagedata><tw-passagedata pid="59" name="Discuss pastry" tags="nope" position="3000,850" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 Was $pastry really the right choice?
 
 Perhaps it wasn&#39;t ambitious enough
@@ -2707,17 +2714,19 @@ The bird offers no answers or help
 # [[Discuss climate crisis]]
 &lt;&lt;else&gt;&gt;\
 # [[Discuss climate crisis]]
-&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="60" name="Discuss storm" tags="nope" position="3025,675" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="60" name="Discuss storm" tags="nope" position="3025,675" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 You blame your defeat on the gale-force winds, making no mention of the climate crisis that made them more likely
 
 The bird offers no answers or help
-
 &lt;&lt;if not hasVisited(&quot;Discuss pastry&quot;)&gt;&gt;\
 # [[Discuss choice of pastry|Discuss pastry]]
 # [[Discuss climate crisis]]
 &lt;&lt;else&gt;&gt;\
 # [[Discuss climate crisis]]
-&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="61" name="Get pastries" tags="secondlevel" position="1350,500" size="100,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="61" name="Get pastries" tags="secondlevel" position="1350,500" size="100,200">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Lannan.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
 &lt;&lt;type 20ms none&gt;&gt;\
@@ -2731,19 +2740,18 @@ One of your children just learned how bad the climate crisis is and is &#39;&#39
 # [[Go home to crying child]]
 # [[Go get more pastries|Go back for more pastries]]
 # [[Go check mysterious van|Get kidnapped]]
-&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Go back for more pastries" tags="nope" position="1625,575" size="100,100">&lt;&lt;type 20ms none&gt;&gt;\
-The hipster pastry shop lady raises her eyebrow inquisitively
+&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Go back for more pastries" tags="nope" position="1625,575" size="100,100">The hipster pastry shop lady raises her eyebrow inquisitively
 
 &quot;Another pastry? I&#39;m afraid we&#39;re sold out.&quot;
 
 &quot;The instability of gas prices has made us more conservative in how often we use the croissant oven&quot;
 # [[Stop investing in coal, oil and gas|Fossil Fuel Policy]]
 # [[Stop asking for pastries|Go back to the office]]
-# [[Become a pastry chef]]
-&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="63" name="Passion into pastry" tags="" position="2100,800" size="100,100">&lt;&lt;silently&gt;&gt;\
+# [[Become a pastry chef]]</tw-passagedata><tw-passagedata pid="63" name="Passion into pastry" tags="" position="2100,800" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Pastry-chef.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
 &lt;&lt;set _name to &quot;&quot;, $pastry to &quot;Cinnamon Swirl&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 After years of training, you reach the final of the World Pastry Championships
 
 You&#39;re up against your bitter rival Larry, another ex-asset manager
@@ -2753,9 +2761,11 @@ You&#39;re up against your bitter rival Larry, another ex-asset manager
 &lt;&lt;textbox &quot;_name&quot; $pastry&gt;&gt;
 # &lt;&lt;link &quot;Choose Pastry&quot;&gt;&gt;&lt;&lt;set _name to _name.trim()&gt;&gt;&lt;&lt;set $pastry to _name&gt;&gt;&lt;&lt;goto &quot;Pastry Championships&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 # [[Switch to Apple Strudel|Pastry Championships][$pastry to &quot;Apple Strudel&quot;]]
-# [[Switch to Baklava|Pastry Championships][$pastry to &quot;Baklava&quot;]]</tw-passagedata><tw-passagedata pid="64" name="Pastry Championships" tags="" position="2225,1000" size="100,100">&lt;&lt;silently&gt;&gt;\
+# [[Switch to Baklava|Pastry Championships][$pastry to &quot;Baklava&quot;]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="64" name="Pastry Championships" tags="" position="2225,1000" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Pastry-chef.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 The contest is interrupted by gale-force winds
 
 Your $pastry is blown out of your hands
@@ -2764,7 +2774,8 @@ The skies of Edinburgh are filled with baked goods
 
 Maybe the pastry business wasn&#39;t for you...
 # [[Go get your job back|Get job back]]
-# [[Go live in nature|Life after pastry]]</tw-passagedata><tw-passagedata pid="65" name="Quick End" tags="win noreturn" position="1175,150" size="200,200">&lt;&lt;silently&gt;&gt;\
+# [[Go live in nature|Life after pastry]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="65" name="Quick End" tags="win noreturn" position="1175,150" size="200,200">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/YOU WIN.png&quot;&gt;&gt;
 &lt;&lt;set $notherapy to true&gt;&gt;\
 &lt;&lt;/silently&gt;&gt;\
@@ -2819,7 +2830,6 @@ You feel sad somehow
 # [[Push the sadness down]]</tw-passagedata><tw-passagedata pid="70" name="Chair shopping" tags="" position="1925,1100" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Stephen-chair.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
-&lt;&lt;type 20ms none&gt;&gt;\
 You arrive in a stylish, office chair showroom
 
 The choice is overwhelming
@@ -2827,8 +2837,7 @@ The choice is overwhelming
 But you feel empowered by possibilities of having lots of money
 # [[Sit on big leather chair|Chair room][$clothes to &quot;big leather chair&quot;]]
 # [[Sit on big ergonomic chair|Chair room][$clothes to &quot;big ergonomic chair&quot;]]
-# [[Sit on humble chair|Chair room][$clothes to &quot;humble chair&quot;]]
-&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="71" name="Dressing Room" tags="" position="1500,1525" size="100,100">&lt;&lt;silently&gt;&gt;\
+# [[Sit on humble chair|Chair room][$clothes to &quot;humble chair&quot;]]</tw-passagedata><tw-passagedata pid="71" name="Dressing Room" tags="" position="1500,1525" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
 In the changing room mirror, you like what you see
@@ -2968,6 +2977,7 @@ Fair enough…
 &lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="86" name="Emerge from the flames" tags="item" position="2500,1600" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Phoenix.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 You are reborn, not as an asset manager
 
 But as a magical phoenix asset manager
@@ -2975,7 +2985,9 @@ But as a magical phoenix asset manager
 You go flying and stuff &lt;&lt;set $phoenix to true&gt;&gt;
 
 !!PHOENIX MAGIC UNLOCKED!
-# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="87" name="Go to live in nature" tags="rework forest" position="2850,975" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="87" name="Go to live in nature" tags="rework forest" position="2850,975" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 It&#39;s another day out in the Scottish forest
 
 You discuss your emotions with your therapist...
@@ -2983,7 +2995,9 @@ You discuss your emotions with your therapist...
 …who happens to a bird
 # [[Discuss childhood]]
 # [[Discuss recent purchases|Discuss clothes]]
-# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="88" name="Life after office" tags="forest" position="750,1875" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="88" name="Life after office" tags="forest" position="750,1875" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 It&#39;s another day out in the Scottish forest
 
 You discuss your failed asset managing career with your therapist
@@ -2991,7 +3005,9 @@ You discuss your failed asset managing career with your therapist
 …who happens to be a bird
 # [[Discuss media bullying]]
 # [[Discuss staff bullying]]
-# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="89" name="Life after pastry" tags="forest" position="2775,825" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="89" name="Life after pastry" tags="forest" position="2775,825" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 It&#39;s another day out in the Scottish forest
 
 You discuss your defeat in the Pastry Championships with your therapist
@@ -2999,7 +3015,9 @@ You discuss your defeat in the Pastry Championships with your therapist
 …who happens to be a bird
 # [[Discuss your choice of pastry|Discuss pastry]]
 # [[Discuss annoying storm|Discuss storm]]
-# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="90" name="Spend more time in forest" tags="item" position="2275,1425" size="100,100">&lt;&lt;set $image to &quot;img/trees.png&quot;&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="90" name="Spend more time in forest" tags="item" position="2275,1425" size="100,100">&lt;&lt;set $image to &quot;img/trees.png&quot;&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 &lt;&lt;if $notherapy&gt;&gt;\
 You go to live in the Scottish forest, and come to see the natural world differently
 &lt;&lt;else&gt;&gt;\
@@ -3012,7 +3030,8 @@ You see yourself as part of it
 
 !!Understanding of natural world unlocked!&lt;&lt;set $nature to true&gt;&gt;
 # [[Go get your job back|Get job back]]
-# [[Keep living in forest]]</tw-passagedata><tw-passagedata pid="91" name="Fail Music" tags="" position="2350,100" size="100,100"></tw-passagedata><tw-passagedata pid="92" name="Learn" tags="" position="2775,600" size="100,100">Nothing to see here
+# [[Keep living in forest]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="91" name="Fail Music" tags="" position="2350,100" size="100,100"></tw-passagedata><tw-passagedata pid="92" name="Learn" tags="" position="2775,600" size="100,100">Nothing to see here
 
 &lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Passage List" tags="poof.ignore no-type" position="2625,350" size="100,100">&lt;&lt;for _p range Story.lookupWith(p =&gt; p)&gt;&gt;
   &lt;&lt;link _p.title _p.title&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -3100,7 +3119,6 @@ You see yourself as part of it
 &lt;head&gt;
 
 &lt;/head&gt;</tw-passagedata><tw-passagedata pid="99" name="StoryCaption" tags="no-type poof.ignore" position="75,175" size="100,100"></tw-passagedata><tw-passagedata pid="100" name="StoryDisplayTitle" tags="no-type poof.ignore" position="175,175" size="100,100">Asset Manager Quest</tw-passagedata><tw-passagedata pid="101" name="StoryInit" tags="utility" position="2450,75" size="100,100">&lt;&lt;cacheaudio &quot;load&quot; &quot;sound/load.mp3&quot;&gt;&gt;
-&lt;&lt;waitforaudio&gt;&gt;
 &lt;&lt;setvariables&gt;&gt;
 &lt;&lt;set $image to &quot;img/Asset Manager.png&quot;&gt;&gt;
 
