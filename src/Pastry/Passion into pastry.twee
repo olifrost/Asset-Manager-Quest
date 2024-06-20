@@ -3,6 +3,7 @@
 <<set $image to "img/Pastry-chef.png">>
 <</silently>>\
 <<set _name to "", $pastry to "Cinnamon Swirl">>\
+<<type 20ms none>>\
 After years of training, you reach the final of the World Pastry Championships
 
 You're up against your bitter rival Larry, another ex-asset manager
@@ -13,3 +14,4 @@ You're up against your bitter rival Larry, another ex-asset manager
 # <<link "Choose Pastry">><<set _name to _name.trim()>><<set $pastry to _name>><<goto "Pastry Championships">><</link>>
 # [[Switch to Apple Strudel|Pastry Championships][$pastry to "Apple Strudel"]]
 # [[Switch to Baklava|Pastry Championships][$pastry to "Baklava"]]
+<</type>>\

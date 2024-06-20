@@ -194,7 +194,7 @@
  .passage {
      text-align: center;
      padding-top: 1rem;
-     max-width: 800px;
+     max-width: 1200px;
      line-height: 1.8rem;
 }
  #passages h1 {

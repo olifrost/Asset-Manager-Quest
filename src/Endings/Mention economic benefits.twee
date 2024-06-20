@@ -2,7 +2,9 @@
 <<silently>>\
 <<set $image to "img/Coins.png">>
 <</silently>>\
+<<type 20ms none>>\
 You demonstrate to Chairman Sir Douglas Flint how your assets will become stuck in fossil fuels
 
 ...as the world moves on to renewables
 # [[It works!|Good End]]
+<</type>>\

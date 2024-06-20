@@ -2,7 +2,6 @@
 <<silently>>\
 <<set $image to "img/Stephen-chair.png">>
 <</silently>>\
-<<type 20ms none>>\
 You arrive in a stylish, office chair showroom
 
 The choice is overwhelming
@@ -11,4 +10,3 @@ But you feel empowered by possibilities of having lots of money
 # [[Sit on big leather chair|Chair room][$clothes to "big leather chair"]]
 # [[Sit on big ergonomic chair|Chair room][$clothes to "big ergonomic chair"]]
 # [[Sit on humble chair|Chair room][$clothes to "humble chair"]]
-<</type>>\

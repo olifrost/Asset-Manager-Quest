@@ -2,6 +2,7 @@
 <<silently>>\
 <<set $image to "img/Pastry-chef.png">>
 <</silently>>\
+<<type 20ms none>>\
 The contest is interrupted by gale-force winds
 
 Your $pastry is blown out of your hands
@@ -11,3 +12,4 @@ The skies of Edinburgh are filled with baked goods
 Maybe the pastry business wasn't for you...
 # [[Go get your job back|Get job back]]
 # [[Go live in nature|Life after pastry]]
+<</type>>\
