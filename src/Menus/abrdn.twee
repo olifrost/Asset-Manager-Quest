@@ -1,0 +1,23 @@
+:: abrdn [info noreturn] {"position":"175,725","size":"100,100"}
+!A True Story <span class="nobr">of Asset</span> Mismanagement
+''abrdn'' is a real (poorly named) company that is investing over $3.6 billions in bonds issued by fossil fuel expansionists.
+
+It's one of the few European asset managers that still hasn’t published a coal exclusion policy, and is overall the 4th most exposed asset manager to fossil fuel bonds.
+
+Nice stats! But what's that mean?
+
+For life on earth, it's a problem. Research shows that new fossil fuel developments are incompatible with keeping warming <span class="nobr">under 1.5c.</span>
+
+For business it's not good either – it's exposing abrdn to both financial and <span class="nobr">legal risk.</span>
+
+As the world moves on to renewables, abrdn's assets could become stranded in fossil fuels.
+
+But following a disastrous rebrand, company layoffs, and falling stocks, the new CEO has an opportunity to turn their fortunes around.
+
+If you can do it, they can too...
+<<if $alive>>\
+# <<link "Return to game" $return>><</link>>
+<<else>>\
+#[[Restart game|Intro][state.restart()]]
+<</if>>\
+Learn more about the <a class="nobr" href="https://toxicbonds.org">Toxic Bonds Network</a>

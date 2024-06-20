@@ -1,0 +1,63 @@
+:: PassageHeader [poof.ignore no-type] {"position":"2550,175","size":"100,100"}
+<<silently>>\
+<<set _tags to tags()>>
+<<if _tags.includes("ending")>>
+    <<set $alive to false>>
+<</if>>
+<</silently>>\
+<<if _tags.includes("ending")>>\
+    <<set $alive to false>>\
+    <<set $image to "img/GAME OVER 2.png">>\
+<</if>>\
+<<if _tags.includes("down")>>\
+<<set $approval to $approval - 3>>\
+<</if>>\
+<<silently>>\
+<<if _tags.includes("ending")>>
+    <<cacheaudio "fail" "sound/fail.mp3">>\
+    <<audio ":playing:not(:ui)" fadeoverto 1 0>>
+    <<audio "fail" play>>\
+<<elseif _tags.includes("intro")>>
+    <<audio "load" play volume 0.2>>
+<<elseif _tags.includes("win")>>
+    <<audio "win" play volume 0.2>>
+<<elseif _tags.includes("item")>>
+    <<audio "win" play>>
+<<elseif _tags.includes("beep")>>
+    <<audio "select" play>>
+<<elseif _tags.includes("owl")>>
+    <<cacheaudio "owl" "sound/owl.wav">>
+    <<audio "owl" play volume 0.2>>
+<<elseif _tags.includes("mystery")>>
+    <<audio "mystery" play>>
+<<elseif _tags.includes("forest")>>
+<<cacheaudio "forest" "sound/forest.mp3">>
+    <<audio "forest" play>>
+<<elseif _tags.includes("damange")>>
+    <<audio "explode" play>>
+<<elseif _tags.includes("danger")>>
+    <<audio "danger" play>>
+<<elseif _tags.includes("down")>>
+    <<if $approval === 0>>
+          <<audio "danger" play>>
+    <<else>>
+        <<audio "down" play>>
+    <</if>>
+<<elseif _tags.includes("nope")>>
+    <<audio "nope" play>>
+<<elseif _tags.includes("success")>>
+    <<audio "load" play>>
+<<else>>
+    <<if $alternateSound is undefined or $alternateSound is "select">>
+        <<set $alternateSound to "ping">>
+        <<audio "ping" play>>
+    <<else>>
+        <<set $alternateSound to "select">>
+        <<audio "select" play>>
+    <</if>>
+<</if>>
+<</silently>>\
+<<script>>gtag('event', 'loaded', {
+  'event_category': 'passage',
+  'event_label': State.variables.passage_name
+});<</script>>\

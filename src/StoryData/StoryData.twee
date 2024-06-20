@@ -1,0 +1,25 @@
+:: StoryData
+{
+  "ifid": "cc9f1d48-504f-4dc3-86f4-37e120fb9203",
+  "format": "SugarCube",
+  "format-version": "2.36.1",
+  "start": "Intro",
+  "tag-colors": {
+    "info": "blue",
+    "title": "green",
+    "ending": "orange",
+    "unlock": "yellow",
+    "rework": "none",
+    "noreturn": "red",
+    "win": "green",
+    "item": "yellow",
+    "down": "purple",
+    "mystery": "blue",
+    "damange": "orange",
+    "nope": "none",
+    "forest": "green",
+    "success": "green",
+    "danger": "orange"
+  },
+  "zoom": 0.6
+}

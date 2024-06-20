@@ -1,0 +1,7 @@
+:: Who [noreturn] {"position":"200,600","size":"100,100"}
+You enter combat with the game's creators, who go by the name ''Serious People''
+# <a href="https://olifro.st">Punch Oli Frost<br>(Words, Web, Music)</a>
+# <a href="https://www.mandrews.studio">Kick Mike Andrews<br>(Design)</a>
+# <span class="locked">Tackle Ruth Newton<br>(Producer)</span>
+# <span class="locked">Throw Jamie Inman<br>(Strategy)</span>
+<<if $alive>><<link "Return to game" $return>><</link>><<else>>[[Restart game|Intro][state.restart()]]<</if>>

@@ -1,0 +1,14 @@
+:: Buy child Nintendo Switch [nope] {"position":"1700,200","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Child.png">>
+<</silently>>\
+<<type 20ms none>>\
+The first game they play is called ''Asset Manager Quest''
+
+This brings up the whole climate crisis thing again
+
+The ''child'' resumes ''crying''
+# <<if not hasVisited("Buy child pony")>>[[Buy child pony]]<<else>>[[Buy another pony|Buy child pony]]<</if>>
+# [[Go back for more pastries]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]
+<</type>>\

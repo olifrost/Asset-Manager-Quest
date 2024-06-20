@@ -1,0 +1,9 @@
+:: Chair room {"position":"2050,1350","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Stephen-chair.png">>
+<</silently>>\
+The $clothes is comfy, but you're uncomfortable
+
+You feel sad somehow
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]

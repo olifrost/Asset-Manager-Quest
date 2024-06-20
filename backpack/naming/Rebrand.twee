@@ -1,0 +1,12 @@
+:: Rebrand {"position":"1000,1200","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Office.png">>
+<</silently>>\
+The branding agency who took you from ''Aberdeen'' to ''<<print $company>>'' suggests <br>''removing more vowels'' from your name
+
+This did not go well the last time
+
+What should we rebrand as?
+# [[Brdn? Yes sounds great|Rebrand fail][$company to "Brdn"]]
+# [[How about ABBAdn?|Rebrand fail][$company to "Abirdeen"]]
+# [[Could we be Abrgreen?|Fossil Fuel Policy][$company to "Abrgreen"]]

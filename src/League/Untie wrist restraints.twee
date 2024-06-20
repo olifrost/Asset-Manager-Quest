@@ -1,0 +1,12 @@
+:: Untie wrist restraints [damange] {"position":"900,775","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Fire.png">>
+<</silently>>\
+<<type 20ms none>>\
+The candle causes ''fire'' and ''commotion'', letting you escape into the hall.
+
+Blocking the exit are ''black belt disciples'' of the League of Asset Managers
+<</type>>\
+# [[Karate kick|Karate fail]]
+# [[Karate punch|Karate fail]]
+# [[Escape to basement]]

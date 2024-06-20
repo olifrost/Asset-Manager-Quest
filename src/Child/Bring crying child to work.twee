@@ -1,0 +1,6 @@
+:: Bring crying child to work [success] {"position":"750,400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Child.png">>
+<</silently>>\
+The crying child explains to the board the impact of the climate crisis on future generations...
+# [[It works!|Good End]]

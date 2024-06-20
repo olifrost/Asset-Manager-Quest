@@ -1,0 +1,12 @@
+:: Wear shorts with confidence [down] {"position":"1400,1700","size":"100,100"}
+<<silently>>\
+<<set $image to "img/shorts-tie-shirt-sad.png">>
+<</silently>>\
+It doesn't work.
+
+Staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+People continue laughing at your legs
+# [[Make staff pay for their own tea bags|Tea bags]]
+# [[Sell coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]

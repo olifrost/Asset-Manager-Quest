@@ -1,0 +1,11 @@
+:: Discuss clothes [nope] {"position":"2700,1250","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+You explore your emotional connection to the $clothes
+
+The bird offers no answers or help
+<<if not hasVisited("Discuss childhood")>>\
+# [[Discuss your childhood|Discuss childhood]]
+# [[Discuss climate crisis]]
+<<else>>\
+# [[Discuss climate crisis]]
+<</if>>\

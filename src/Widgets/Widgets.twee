@@ -1,0 +1,53 @@
+:: Widgets [widget nobr no-type] {"position":"2425,300","size":"100,100"}
+<<widget "approval">>
+<<run Health($approval, $maxapproval, "horizontalhealthbar", true)>>
+<div id="horizontalhealthbarbkg" class="hzbarbkg">
+<div id="horizontalhealthbar" class="hzbar"  style="width: 100%;"></div></div>
+<<script>>$(document).one(':passagerender', function (ev) {
+	Health(State.variables.approval, State.variables.maxapproval, "horizontalhealthbar", true, ev.content);
+});<</script>><</widget>>
+
+<<widget "PlayTrack">>
+    <<set _trackList = {  /* Add your track IDs and filenames below. */
+        "start_bgm" : "track1.mp3"
+    }>>
+    <<set _nextTrack = $args.raw>>
+    <<if def _trackList[_nextTrack]>>
+        <<if !TrackExists(_nextTrack)>>  /* If track doesn't exist, load it. */
+            <<set _bgm = setup.SoundPath + _trackList[_nextTrack]>>
+            <<cacheaudio _nextTrack _bgm>>
+        <</if>>
+        <<if !TrackExists(_nextTrack)>>
+            <<run alert('Error: Cannot load file "' + setup.SoundPath + _trackList[_nextTrack] + '".')>>
+        <<else>>
+            <<if isPlaying(_nextTrack)>>  /* If track is already playing, stop it. */
+                <<masteraudio stop>>
+            <<else>>  /* If track is not playing, play it. */
+                <<masteraudio stop>>
+                <<set _bgm = setup.SoundPath + "track1.mp3">>
+<<cacheaudio "start_bgm" _bgm>>
+                <<audio _nextTrack loop volume 0 fadein>>
+            <</if>>
+        <</if>>
+    <<else>>
+        <<run alert('Error: Unknown track "' + _nextTrack + '".')>>
+    <</if>>
+<</widget>>
+
+<<widget "setvariables">>
+<<set $league to false>>
+<<set $alive to true>>
+<<set $nature to false>>
+<<set $god to false>>
+<<set $child to false>>
+<<set $phoenix to false>>
+<<set $pastry to false>>
+<<set $shorts to false>>
+<<set $notherapy to false>>
+<<set $undead to false>>
+<<set $company to "abrdn">>
+<<set $approval to 12>>
+<<set $maxapproval to 100>>
+<<set $invincible to false>>
+<<set $gameLoaded to false>>
+<</widget>>

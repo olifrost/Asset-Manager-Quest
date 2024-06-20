@@ -1,0 +1,13 @@
+:: Get kidnapped [damange] {"position":"1250,800","size":"100,100"}
+<<silently>>\
+<<set $image to "img/League.png">>
+<</silently>>\
+<<type 20ms none>>\
+People jump out the ''mysterious van'' and bag you
+
+You wake up in a ''candlelit'' room, surrounded by cloaked figures.
+
+"Welcome... to the League of Asset Managers" they chant in unison
+# [[The who?|League Short]]
+# [[Let me go! I've got financial assets to manage|League Short]]
+<</type>>\

@@ -1,0 +1,11 @@
+:: Join League [item] {"position":"400,800","size":"100,100"}
+<<silently>>\
+<<set $image to "img/League.png">>
+<</silently>>\
+!!LEAGUE OF ASSET MANAGERS UNLOCKED!
+
+The league hands you a cloak adorned with their crest
+
+"It's super comfy. I wear mine to bed" <<set $league to true>>
+# [[Question cloak's appropriateness|Question cloak]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$league to true]]

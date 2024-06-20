@@ -1,0 +1,3277 @@
+<html>
+<head>
+<title>Asset Manager Quest (Illuminated)</title>
+<style type="text/css">
+html { box-sizing: border-box;}
+*, *:before, *:after { box-sizing: inherit;}
+
+html, body {
+margin: 0px;
+padding: 0px;
+font-family:'Open Sans', 'Source Code Pro', 'Deja Vu Sans', 'Arial', sans-serif;
+font-size: 12pt;
+}
+
+input {
+font-family:'Open Sans', 'Source Code Pro', 'Deja Vu Sans', 'Arial', sans-serif;
+}
+
+#header {
+border: 1px solid #990;
+width: 100%;
+height: 35px;
+font-size: 12pt;
+font-weight: bold;
+background: #36c;
+color: #eef;
+padding: 5px;
+}
+
+#workspace {
+position: absolute;
+top: 35px;
+left: 0;
+right: 0;
+bottom: 25px;
+}
+
+#sidebar {
+position: absolute;
+left: 0;
+top: 0px;
+bottom: 0px;
+width: 250px;
+border-right: 1px solid #999;
+background: #eee;
+}
+#sidebar span {
+display: inline-block;
+width: 100%;
+text-decoration: none;
+color: #009;
+cursor: pointer;
+}
+#sidebar span:hover {
+background: #ffc;
+text-decoration: underline;
+}
+#links {
+height: 120px;
+font-size: 10pt;
+padding: 4px;
+}
+#passageListHeader {
+width: 100%;
+height: 25px;
+padding: 0px;
+}
+#filter {
+font-size: 10pt;
+font-weight: bold;
+margin: 0px;
+padding: 0px;
+width: 100%;
+height: 25px;
+border: 0px;
+border-top: 1px solid #999;
+border-bottom: 1px solid #999;
+background: #ddf;
+}
+#filter:focus {
+outline: none;
+box-shadow: none;
+}
+#passageListContent {
+position: absolute;
+top: 145px;
+bottom: 0;
+left: 0;
+width: 250px;
+overflow: auto;
+padding: 4px;
+font-size: 10pt;
+}
+.flag {
+display: inline-block;
+float: right;
+width: 15px;
+height: 15px;
+font-size: 7pt;
+text-align: center;
+font-weight: bold;
+margin: 2px 2px 0px 0px;
+}
+.reviewed {
+border: 1px solid #090;
+background: #bfb;
+border-radius: 5px;
+}
+.changed {
+border: 1px solid #900;
+background: #fbb;
+border-radius: 7px;
+}
+
+
+#contentArea { 
+height: 99%;
+margin-left: 250px;
+padding: 5px 5px 5px 10px;
+overflow: auto;
+}
+
+
+#generalOutput {
+display: none;
+}
+#generalHeader {
+height: 35px;
+padding: 2px;
+border-bottom: 1px solid #999;
+}
+#generalTitle {
+display: inline-block;
+font-weight: bold;
+font-size: 16pt;
+}
+
+.infoTile {
+display: inline-block;
+float: left;
+overflow: auto;
+border: 1px solid #999;
+border-radius: 5px;
+margin: 10px 10px 0px 0px;
+}
+.tile1x1 {
+width: 200px;
+height: 250px;
+}
+.tile2x1 {
+width: 410px;
+height: 250px;
+}
+.tile1x2 {
+width: 200px;
+height: 510px;
+}
+.tile2x2 {
+width: 410px;
+height: 510px;
+}
+.infoTile .title {
+background: #ddf;
+display: block;
+font-weight: bold;
+border-bottom: 1px solid #999;
+padding: 1px 2px 1px 4px;
+}
+
+.infoTile .content {
+font-size: 8pt;
+}
+.infoTile p {
+margin: 0px;
+padding: 4px;
+line-height: 150%;
+}
+.infoTile table {
+border-spacing: 0px;
+width: 100%;
+font-size: 8pt;
+}
+.infoTile table tr.header td {
+background: #eee;
+border-bottom: 1px solid #999;
+font-weight: bold;
+}
+.infoTile table td {
+padding: 2px;
+margin: 0px;
+text-align: right;
+padding-right: 4px;
+border-left: 1px solid #999;
+}
+.infoTile table td:nth-of-type(1) {
+border-left: 0px;
+padding-left: 4px;
+text-align: left;
+}
+.infoTile span.link {
+display: inline-block;
+width: 100%;
+text-decoration: none;
+color: #009;
+cursor: pointer;
+}
+.infoTile span.link:hover {
+background: #ffc;
+text-decoration: underline;
+}
+
+
+
+#passageViewer {
+display: none;
+}
+#passageHeader {
+height: 35px;
+padding: 2px;
+border-bottom: 1px solid #999;
+}
+#passageTitle {
+display: inline-block;
+font-weight: bold;
+font-size: 16pt;
+}
+#passageTags {
+position: absolute;
+top: 0;
+display: inline-block;
+padding: 0px 0px 0px 15px;
+margin-top: 10px;
+}
+
+#passageControls {
+display: block;
+font-size: 9pt;
+border-bottom: 1px solid #999;
+background: #eee;
+height: 25px;
+padding: 2px 5px 1px 5px;
+}
+#passageControls input {
+font-size: 8pt;
+}
+#dirtyControls {
+float: right;
+display: none;
+}
+#reviewedControls {
+display: none;
+}
+#unreviewedControls {
+display: none;
+}
+
+#passageContent {
+position: absolute;
+top: 60px;
+bottom: 0;
+left: 260px;
+right: 0;
+}
+/* #editor {
+margin-top: 5px;
+font-size: 14pt;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: 100%;
+resize: vertical;
+margin-bottom: 400px;
+border: 0px;
+} */
+#editor {
+font-size: 14pt;
+width: 100%;
+height: 99%;
+resize: none;
+}
+#editorCorral {
+margin-top: 5px;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: 100%;
+border: 0px;
+}
+
+#editor:focus {
+outline: 0px;
+}
+#changeViewer {
+font-size: 10pt;
+white-space: pre-wrap;
+display: none;
+border-top: 1px dashed #999;
+padding-top: 10px;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+width: 100%;
+height: 300px;
+overflow: auto;
+}
+
+.tag {
+border: 1px solid #cc9;
+padding: 1px 5px 1px 5px;
+margin-right: 4px;
+margin-bottom: 3px;
+background: #fea;
+color: #660;
+border-radius: 3px;
+font-size: 9pt;
+cursor: pointer;
+}
+
+ins {
+background: #9f9;
+}
+
+del {
+background: #f99;
+}
+
+#footer {
+position: absolute;
+height: 25px;
+bottom: 0;
+left: 0;
+right: 0;
+font-weight: bold;
+background: #36c;
+color: #eef;
+font-size: 12pt;
+padding: 1px 4px 0px 4px;
+}
+#footer input {
+font-weight: bold;
+font-size: 8pt;
+}
+#footerLeft {
+}
+#footerRight {
+float: right;
+}
+</style>
+<script type="text/javascript">
+/**
+ * Diff Match and Patch
+ *
+ * Copyright 2006 Google Inc.
+ * http://code.google.com/p/google-diff-match-patch/
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */(function(){function diff_match_patch(){this.Diff_Timeout=1;this.Diff_EditCost=4;this.Match_Threshold=0.5;this.Match_Distance=1E3;this.Patch_DeleteThreshold=0.5;this.Patch_Margin=4;this.Match_MaxBits=32}
+diff_match_patch.prototype.diff_main=function(a,b,c,d){"undefined"==typeof d&&(d=0>=this.Diff_Timeout?Number.MAX_VALUE:(new Date).getTime()+1E3*this.Diff_Timeout);if(null==a||null==b)throw Error("Null input. (diff_main)");if(a==b)return a?[[0,a]]:[];"undefined"==typeof c&&(c=!0);var e=c,f=this.diff_commonPrefix(a,b);c=a.substring(0,f);a=a.substring(f);b=b.substring(f);var f=this.diff_commonSuffix(a,b),g=a.substring(a.length-f);a=a.substring(0,a.length-f);b=b.substring(0,b.length-f);a=this.diff_compute_(a,
+b,e,d);c&&a.unshift([0,c]);g&&a.push([0,g]);this.diff_cleanupMerge(a);return a};
+diff_match_patch.prototype.diff_compute_=function(a,b,c,d){if(!a)return[[1,b]];if(!b)return[[-1,a]];var e=a.length>b.length?a:b,f=a.length>b.length?b:a,g=e.indexOf(f);return-1!=g?(c=[[1,e.substring(0,g)],[0,f],[1,e.substring(g+f.length)]],a.length>b.length&&(c[0][0]=c[2][0]=-1),c):1==f.length?[[-1,a],[1,b]]:(e=this.diff_halfMatch_(a,b))?(f=e[0],a=e[1],g=e[2],b=e[3],e=e[4],f=this.diff_main(f,g,c,d),c=this.diff_main(a,b,c,d),f.concat([[0,e]],c)):c&&100<a.length&&100<b.length?this.diff_lineMode_(a,b,
+d):this.diff_bisect_(a,b,d)};
+diff_match_patch.prototype.diff_lineMode_=function(a,b,c){var d=this.diff_linesToChars_(a,b);a=d.chars1;b=d.chars2;d=d.lineArray;a=this.diff_main(a,b,!1,c);this.diff_charsToLines_(a,d);this.diff_cleanupSemantic(a);a.push([0,""]);for(var e=d=b=0,f="",g="";b<a.length;){switch(a[b][0]){case 1:e++;g+=a[b][1];break;case -1:d++;f+=a[b][1];break;case 0:if(1<=d&&1<=e){a.splice(b-d-e,d+e);b=b-d-e;d=this.diff_main(f,g,!1,c);for(e=d.length-1;0<=e;e--)a.splice(b,0,d[e]);b+=d.length}d=e=0;g=f=""}b++}a.pop();return a};
+diff_match_patch.prototype.diff_bisect_=function(a,b,c){for(var d=a.length,e=b.length,f=Math.ceil((d+e)/2),g=f,h=2*f,j=Array(h),i=Array(h),k=0;k<h;k++)j[k]=-1,i[k]=-1;j[g+1]=0;i[g+1]=0;for(var k=d-e,q=0!=k%2,r=0,t=0,p=0,w=0,v=0;v<f&&!((new Date).getTime()>c);v++){for(var n=-v+r;n<=v-t;n+=2){var l=g+n,m;m=n==-v||n!=v&&j[l-1]<j[l+1]?j[l+1]:j[l-1]+1;for(var s=m-n;m<d&&s<e&&a.charAt(m)==b.charAt(s);)m++,s++;j[l]=m;if(m>d)t+=2;else if(s>e)r+=2;else if(q&&(l=g+k-n,0<=l&&l<h&&-1!=i[l])){var u=d-i[l];if(m>=
+u)return this.diff_bisectSplit_(a,b,m,s,c)}}for(n=-v+p;n<=v-w;n+=2){l=g+n;u=n==-v||n!=v&&i[l-1]<i[l+1]?i[l+1]:i[l-1]+1;for(m=u-n;u<d&&m<e&&a.charAt(d-u-1)==b.charAt(e-m-1);)u++,m++;i[l]=u;if(u>d)w+=2;else if(m>e)p+=2;else if(!q&&(l=g+k-n,0<=l&&(l<h&&-1!=j[l])&&(m=j[l],s=g+m-l,u=d-u,m>=u)))return this.diff_bisectSplit_(a,b,m,s,c)}}return[[-1,a],[1,b]]};
+diff_match_patch.prototype.diff_bisectSplit_=function(a,b,c,d,e){var f=a.substring(0,c),g=b.substring(0,d);a=a.substring(c);b=b.substring(d);f=this.diff_main(f,g,!1,e);e=this.diff_main(a,b,!1,e);return f.concat(e)};
+diff_match_patch.prototype.diff_linesToChars_=function(a,b){function c(a){for(var b="",c=0,f=-1,g=d.length;f<a.length-1;){f=a.indexOf("\\n",c);-1==f&&(f=a.length-1);var r=a.substring(c,f+1),c=f+1;(e.hasOwnProperty?e.hasOwnProperty(r):void 0!==e[r])?b+=String.fromCharCode(e[r]):(b+=String.fromCharCode(g),e[r]=g,d[g++]=r)}return b}var d=[],e={};d[0]="";var f=c(a),g=c(b);return{chars1:f,chars2:g,lineArray:d}};
+diff_match_patch.prototype.diff_charsToLines_=function(a,b){for(var c=0;c<a.length;c++){for(var d=a[c][1],e=[],f=0;f<d.length;f++)e[f]=b[d.charCodeAt(f)];a[c][1]=e.join("")}};diff_match_patch.prototype.diff_commonPrefix=function(a,b){if(!a||!b||a.charAt(0)!=b.charAt(0))return 0;for(var c=0,d=Math.min(a.length,b.length),e=d,f=0;c<e;)a.substring(f,e)==b.substring(f,e)?f=c=e:d=e,e=Math.floor((d-c)/2+c);return e};
+diff_match_patch.prototype.diff_commonSuffix=function(a,b){if(!a||!b||a.charAt(a.length-1)!=b.charAt(b.length-1))return 0;for(var c=0,d=Math.min(a.length,b.length),e=d,f=0;c<e;)a.substring(a.length-e,a.length-f)==b.substring(b.length-e,b.length-f)?f=c=e:d=e,e=Math.floor((d-c)/2+c);return e};
+diff_match_patch.prototype.diff_commonOverlap_=function(a,b){var c=a.length,d=b.length;if(0==c||0==d)return 0;c>d?a=a.substring(c-d):c<d&&(b=b.substring(0,c));c=Math.min(c,d);if(a==b)return c;for(var d=0,e=1;;){var f=a.substring(c-e),f=b.indexOf(f);if(-1==f)return d;e+=f;if(0==f||a.substring(c-e)==b.substring(0,e))d=e,e++}};
+diff_match_patch.prototype.diff_halfMatch_=function(a,b){function c(a,b,c){for(var d=a.substring(c,c+Math.floor(a.length/4)),e=-1,g="",h,j,n,l;-1!=(e=b.indexOf(d,e+1));){var m=f.diff_commonPrefix(a.substring(c),b.substring(e)),s=f.diff_commonSuffix(a.substring(0,c),b.substring(0,e));g.length<s+m&&(g=b.substring(e-s,e)+b.substring(e,e+m),h=a.substring(0,c-s),j=a.substring(c+m),n=b.substring(0,e-s),l=b.substring(e+m))}return 2*g.length>=a.length?[h,j,n,l,g]:null}if(0>=this.Diff_Timeout)return null;
+var d=a.length>b.length?a:b,e=a.length>b.length?b:a;if(4>d.length||2*e.length<d.length)return null;var f=this,g=c(d,e,Math.ceil(d.length/4)),d=c(d,e,Math.ceil(d.length/2)),h;if(!g&&!d)return null;h=d?g?g[4].length>d[4].length?g:d:d:g;var j;a.length>b.length?(g=h[0],d=h[1],e=h[2],j=h[3]):(e=h[0],j=h[1],g=h[2],d=h[3]);h=h[4];return[g,d,e,j,h]};
+diff_match_patch.prototype.diff_cleanupSemantic=function(a){for(var b=!1,c=[],d=0,e=null,f=0,g=0,h=0,j=0,i=0;f<a.length;)0==a[f][0]?(c[d++]=f,g=j,h=i,i=j=0,e=a[f][1]):(1==a[f][0]?j+=a[f][1].length:i+=a[f][1].length,e&&(e.length<=Math.max(g,h)&&e.length<=Math.max(j,i))&&(a.splice(c[d-1],0,[-1,e]),a[c[d-1]+1][0]=1,d--,d--,f=0<d?c[d-1]:-1,i=j=h=g=0,e=null,b=!0)),f++;b&&this.diff_cleanupMerge(a);this.diff_cleanupSemanticLossless(a);for(f=1;f<a.length;){if(-1==a[f-1][0]&&1==a[f][0]){b=a[f-1][1];c=a[f][1];
+d=this.diff_commonOverlap_(b,c);e=this.diff_commonOverlap_(c,b);if(d>=e){if(d>=b.length/2||d>=c.length/2)a.splice(f,0,[0,c.substring(0,d)]),a[f-1][1]=b.substring(0,b.length-d),a[f+1][1]=c.substring(d),f++}else if(e>=b.length/2||e>=c.length/2)a.splice(f,0,[0,b.substring(0,e)]),a[f-1][0]=1,a[f-1][1]=c.substring(0,c.length-e),a[f+1][0]=-1,a[f+1][1]=b.substring(e),f++;f++}f++}};
+diff_match_patch.prototype.diff_cleanupSemanticLossless=function(a){function b(a,b){if(!a||!b)return 6;var c=a.charAt(a.length-1),d=b.charAt(0),e=c.match(diff_match_patch.nonAlphaNumericRegex_),f=d.match(diff_match_patch.nonAlphaNumericRegex_),g=e&&c.match(diff_match_patch.whitespaceRegex_),h=f&&d.match(diff_match_patch.whitespaceRegex_),c=g&&c.match(diff_match_patch.linebreakRegex_),d=h&&d.match(diff_match_patch.linebreakRegex_),i=c&&a.match(diff_match_patch.blanklineEndRegex_),j=d&&b.match(diff_match_patch.blanklineStartRegex_);
+return i||j?5:c||d?4:e&&!g&&h?3:g||h?2:e||f?1:0}for(var c=1;c<a.length-1;){if(0==a[c-1][0]&&0==a[c+1][0]){var d=a[c-1][1],e=a[c][1],f=a[c+1][1],g=this.diff_commonSuffix(d,e);if(g)var h=e.substring(e.length-g),d=d.substring(0,d.length-g),e=h+e.substring(0,e.length-g),f=h+f;for(var g=d,h=e,j=f,i=b(d,e)+b(e,f);e.charAt(0)===f.charAt(0);){var d=d+e.charAt(0),e=e.substring(1)+f.charAt(0),f=f.substring(1),k=b(d,e)+b(e,f);k>=i&&(i=k,g=d,h=e,j=f)}a[c-1][1]!=g&&(g?a[c-1][1]=g:(a.splice(c-1,1),c--),a[c][1]=
+h,j?a[c+1][1]=j:(a.splice(c+1,1),c--))}c++}};diff_match_patch.nonAlphaNumericRegex_=/[^a-zA-Z0-9]/;diff_match_patch.whitespaceRegex_=/\s/;diff_match_patch.linebreakRegex_=/[\\r\\n]/;diff_match_patch.blanklineEndRegex_=/\\n\\r?\\n$/;diff_match_patch.blanklineStartRegex_=/^\\r?\\n\\r?\\n/;
+diff_match_patch.prototype.diff_cleanupEfficiency=function(a){for(var b=!1,c=[],d=0,e=null,f=0,g=!1,h=!1,j=!1,i=!1;f<a.length;){if(0==a[f][0])a[f][1].length<this.Diff_EditCost&&(j||i)?(c[d++]=f,g=j,h=i,e=a[f][1]):(d=0,e=null),j=i=!1;else if(-1==a[f][0]?i=!0:j=!0,e&&(g&&h&&j&&i||e.length<this.Diff_EditCost/2&&3==g+h+j+i))a.splice(c[d-1],0,[-1,e]),a[c[d-1]+1][0]=1,d--,e=null,g&&h?(j=i=!0,d=0):(d--,f=0<d?c[d-1]:-1,j=i=!1),b=!0;f++}b&&this.diff_cleanupMerge(a)};
+diff_match_patch.prototype.diff_cleanupMerge=function(a){a.push([0,""]);for(var b=0,c=0,d=0,e="",f="",g;b<a.length;)switch(a[b][0]){case 1:d++;f+=a[b][1];b++;break;case -1:c++;e+=a[b][1];b++;break;case 0:1<c+d?(0!==c&&0!==d&&(g=this.diff_commonPrefix(f,e),0!==g&&(0<b-c-d&&0==a[b-c-d-1][0]?a[b-c-d-1][1]+=f.substring(0,g):(a.splice(0,0,[0,f.substring(0,g)]),b++),f=f.substring(g),e=e.substring(g)),g=this.diff_commonSuffix(f,e),0!==g&&(a[b][1]=f.substring(f.length-g)+a[b][1],f=f.substring(0,f.length-
+g),e=e.substring(0,e.length-g))),0===c?a.splice(b-d,c+d,[1,f]):0===d?a.splice(b-c,c+d,[-1,e]):a.splice(b-c-d,c+d,[-1,e],[1,f]),b=b-c-d+(c?1:0)+(d?1:0)+1):0!==b&&0==a[b-1][0]?(a[b-1][1]+=a[b][1],a.splice(b,1)):b++,c=d=0,f=e=""}""===a[a.length-1][1]&&a.pop();c=!1;for(b=1;b<a.length-1;)0==a[b-1][0]&&0==a[b+1][0]&&(a[b][1].substring(a[b][1].length-a[b-1][1].length)==a[b-1][1]?(a[b][1]=a[b-1][1]+a[b][1].substring(0,a[b][1].length-a[b-1][1].length),a[b+1][1]=a[b-1][1]+a[b+1][1],a.splice(b-1,1),c=!0):a[b][1].substring(0,
+a[b+1][1].length)==a[b+1][1]&&(a[b-1][1]+=a[b+1][1],a[b][1]=a[b][1].substring(a[b+1][1].length)+a[b+1][1],a.splice(b+1,1),c=!0)),b++;c&&this.diff_cleanupMerge(a)};diff_match_patch.prototype.diff_xIndex=function(a,b){var c=0,d=0,e=0,f=0,g;for(g=0;g<a.length;g++){1!==a[g][0]&&(c+=a[g][1].length);-1!==a[g][0]&&(d+=a[g][1].length);if(c>b)break;e=c;f=d}return a.length!=g&&-1===a[g][0]?f:f+(b-e)};
+diff_match_patch.prototype.diff_prettyHtml=function(a){for(var b=[],c=/&/g,d=/</g,e=/>/g,f=/\\n/g,g=0;g<a.length;g++){var h=a[g][0],j=a[g][1],j=j.replace(c,"&amp;").replace(d,"&lt;").replace(e,"&gt;").replace(f,"&para;<br>");switch(h){case 1:b[g]='<ins style="background:#e6ffe6;">'+j+"</ins>";break;case -1:b[g]='<del style="background:#ffe6e6;">'+j+"</del>";break;case 0:b[g]="<span>"+j+"</span>"}}return b.join("")};
+diff_match_patch.prototype.diff_text1=function(a){for(var b=[],c=0;c<a.length;c++)1!==a[c][0]&&(b[c]=a[c][1]);return b.join("")};diff_match_patch.prototype.diff_text2=function(a){for(var b=[],c=0;c<a.length;c++)-1!==a[c][0]&&(b[c]=a[c][1]);return b.join("")};diff_match_patch.prototype.diff_levenshtein=function(a){for(var b=0,c=0,d=0,e=0;e<a.length;e++){var f=a[e][0],g=a[e][1];switch(f){case 1:c+=g.length;break;case -1:d+=g.length;break;case 0:b+=Math.max(c,d),d=c=0}}return b+=Math.max(c,d)};
+diff_match_patch.prototype.diff_toDelta=function(a){for(var b=[],c=0;c<a.length;c++)switch(a[c][0]){case 1:b[c]="+"+encodeURI(a[c][1]);break;case -1:b[c]="-"+a[c][1].length;break;case 0:b[c]="="+a[c][1].length}return b.join("\t").replace(/%20/g," ")};
+diff_match_patch.prototype.diff_fromDelta=function(a,b){for(var c=[],d=0,e=0,f=b.split(/\t/g),g=0;g<f.length;g++){var h=f[g].substring(1);switch(f[g].charAt(0)){case "+":try{c[d++]=[1,decodeURI(h)]}catch(j){throw Error("Illegal escape in diff_fromDelta: "+h);}break;case "-":case "=":var i=parseInt(h,10);if(isNaN(i)||0>i)throw Error("Invalid number in diff_fromDelta: "+h);h=a.substring(e,e+=i);"="==f[g].charAt(0)?c[d++]=[0,h]:c[d++]=[-1,h];break;default:if(f[g])throw Error("Invalid diff operation in diff_fromDelta: "+
+f[g]);}}if(e!=a.length)throw Error("Delta length ("+e+") does not equal source text length ("+a.length+").");return c};diff_match_patch.prototype.match_main=function(a,b,c){if(null==a||null==b||null==c)throw Error("Null input. (match_main)");c=Math.max(0,Math.min(c,a.length));return a==b?0:a.length?a.substring(c,c+b.length)==b?c:this.match_bitap_(a,b,c):-1};
+diff_match_patch.prototype.match_bitap_=function(a,b,c){function d(a,d){var e=a/b.length,g=Math.abs(c-d);return!f.Match_Distance?g?1:e:e+g/f.Match_Distance}if(b.length>this.Match_MaxBits)throw Error("Pattern too long for this browser.");var e=this.match_alphabet_(b),f=this,g=this.Match_Threshold,h=a.indexOf(b,c);-1!=h&&(g=Math.min(d(0,h),g),h=a.lastIndexOf(b,c+b.length),-1!=h&&(g=Math.min(d(0,h),g)));for(var j=1<<b.length-1,h=-1,i,k,q=b.length+a.length,r,t=0;t<b.length;t++){i=0;for(k=q;i<k;)d(t,c+
+k)<=g?i=k:q=k,k=Math.floor((q-i)/2+i);q=k;i=Math.max(1,c-k+1);var p=Math.min(c+k,a.length)+b.length;k=Array(p+2);for(k[p+1]=(1<<t)-1;p>=i;p--){var w=e[a.charAt(p-1)];k[p]=0===t?(k[p+1]<<1|1)&w:(k[p+1]<<1|1)&w|((r[p+1]|r[p])<<1|1)|r[p+1];if(k[p]&j&&(w=d(t,p-1),w<=g))if(g=w,h=p-1,h>c)i=Math.max(1,2*c-h);else break}if(d(t+1,c)>g)break;r=k}return h};
+diff_match_patch.prototype.match_alphabet_=function(a){for(var b={},c=0;c<a.length;c++)b[a.charAt(c)]=0;for(c=0;c<a.length;c++)b[a.charAt(c)]|=1<<a.length-c-1;return b};
+diff_match_patch.prototype.patch_addContext_=function(a,b){if(0!=b.length){for(var c=b.substring(a.start2,a.start2+a.length1),d=0;b.indexOf(c)!=b.lastIndexOf(c)&&c.length<this.Match_MaxBits-this.Patch_Margin-this.Patch_Margin;)d+=this.Patch_Margin,c=b.substring(a.start2-d,a.start2+a.length1+d);d+=this.Patch_Margin;(c=b.substring(a.start2-d,a.start2))&&a.diffs.unshift([0,c]);(d=b.substring(a.start2+a.length1,a.start2+a.length1+d))&&a.diffs.push([0,d]);a.start1-=c.length;a.start2-=c.length;a.length1+=
+c.length+d.length;a.length2+=c.length+d.length}};
+diff_match_patch.prototype.patch_make=function(a,b,c){var d;if("string"==typeof a&&"string"==typeof b&&"undefined"==typeof c)d=a,b=this.diff_main(d,b,!0),2<b.length&&(this.diff_cleanupSemantic(b),this.diff_cleanupEfficiency(b));else if(a&&"object"==typeof a&&"undefined"==typeof b&&"undefined"==typeof c)b=a,d=this.diff_text1(b);else if("string"==typeof a&&b&&"object"==typeof b&&"undefined"==typeof c)d=a;else if("string"==typeof a&&"string"==typeof b&&c&&"object"==typeof c)d=a,b=c;else throw Error("Unknown call format to patch_make.");
+if(0===b.length)return[];c=[];a=new diff_match_patch.patch_obj;for(var e=0,f=0,g=0,h=d,j=0;j<b.length;j++){var i=b[j][0],k=b[j][1];!e&&0!==i&&(a.start1=f,a.start2=g);switch(i){case 1:a.diffs[e++]=b[j];a.length2+=k.length;d=d.substring(0,g)+k+d.substring(g);break;case -1:a.length1+=k.length;a.diffs[e++]=b[j];d=d.substring(0,g)+d.substring(g+k.length);break;case 0:k.length<=2*this.Patch_Margin&&e&&b.length!=j+1?(a.diffs[e++]=b[j],a.length1+=k.length,a.length2+=k.length):k.length>=2*this.Patch_Margin&&
+e&&(this.patch_addContext_(a,h),c.push(a),a=new diff_match_patch.patch_obj,e=0,h=d,f=g)}1!==i&&(f+=k.length);-1!==i&&(g+=k.length)}e&&(this.patch_addContext_(a,h),c.push(a));return c};diff_match_patch.prototype.patch_deepCopy=function(a){for(var b=[],c=0;c<a.length;c++){var d=a[c],e=new diff_match_patch.patch_obj;e.diffs=[];for(var f=0;f<d.diffs.length;f++)e.diffs[f]=d.diffs[f].slice();e.start1=d.start1;e.start2=d.start2;e.length1=d.length1;e.length2=d.length2;b[c]=e}return b};
+diff_match_patch.prototype.patch_apply=function(a,b){if(0==a.length)return[b,[]];a=this.patch_deepCopy(a);var c=this.patch_addPadding(a);b=c+b+c;this.patch_splitMax(a);for(var d=0,e=[],f=0;f<a.length;f++){var g=a[f].start2+d,h=this.diff_text1(a[f].diffs),j,i=-1;if(h.length>this.Match_MaxBits){if(j=this.match_main(b,h.substring(0,this.Match_MaxBits),g),-1!=j&&(i=this.match_main(b,h.substring(h.length-this.Match_MaxBits),g+h.length-this.Match_MaxBits),-1==i||j>=i))j=-1}else j=this.match_main(b,h,g);
+if(-1==j)e[f]=!1,d-=a[f].length2-a[f].length1;else if(e[f]=!0,d=j-g,g=-1==i?b.substring(j,j+h.length):b.substring(j,i+this.Match_MaxBits),h==g)b=b.substring(0,j)+this.diff_text2(a[f].diffs)+b.substring(j+h.length);else if(g=this.diff_main(h,g,!1),h.length>this.Match_MaxBits&&this.diff_levenshtein(g)/h.length>this.Patch_DeleteThreshold)e[f]=!1;else{this.diff_cleanupSemanticLossless(g);for(var h=0,k,i=0;i<a[f].diffs.length;i++){var q=a[f].diffs[i];0!==q[0]&&(k=this.diff_xIndex(g,h));1===q[0]?b=b.substring(0,
+j+k)+q[1]+b.substring(j+k):-1===q[0]&&(b=b.substring(0,j+k)+b.substring(j+this.diff_xIndex(g,h+q[1].length)));-1!==q[0]&&(h+=q[1].length)}}}b=b.substring(c.length,b.length-c.length);return[b,e]};
+diff_match_patch.prototype.patch_addPadding=function(a){for(var b=this.Patch_Margin,c="",d=1;d<=b;d++)c+=String.fromCharCode(d);for(d=0;d<a.length;d++)a[d].start1+=b,a[d].start2+=b;var d=a[0],e=d.diffs;if(0==e.length||0!=e[0][0])e.unshift([0,c]),d.start1-=b,d.start2-=b,d.length1+=b,d.length2+=b;else if(b>e[0][1].length){var f=b-e[0][1].length;e[0][1]=c.substring(e[0][1].length)+e[0][1];d.start1-=f;d.start2-=f;d.length1+=f;d.length2+=f}d=a[a.length-1];e=d.diffs;0==e.length||0!=e[e.length-1][0]?(e.push([0,
+c]),d.length1+=b,d.length2+=b):b>e[e.length-1][1].length&&(f=b-e[e.length-1][1].length,e[e.length-1][1]+=c.substring(0,f),d.length1+=f,d.length2+=f);return c};
+diff_match_patch.prototype.patch_splitMax=function(a){for(var b=this.Match_MaxBits,c=0;c<a.length;c++)if(!(a[c].length1<=b)){var d=a[c];a.splice(c--,1);for(var e=d.start1,f=d.start2,g="";0!==d.diffs.length;){var h=new diff_match_patch.patch_obj,j=!0;h.start1=e-g.length;h.start2=f-g.length;""!==g&&(h.length1=h.length2=g.length,h.diffs.push([0,g]));for(;0!==d.diffs.length&&h.length1<b-this.Patch_Margin;){var g=d.diffs[0][0],i=d.diffs[0][1];1===g?(h.length2+=i.length,f+=i.length,h.diffs.push(d.diffs.shift()),
+j=!1):-1===g&&1==h.diffs.length&&0==h.diffs[0][0]&&i.length>2*b?(h.length1+=i.length,e+=i.length,j=!1,h.diffs.push([g,i]),d.diffs.shift()):(i=i.substring(0,b-h.length1-this.Patch_Margin),h.length1+=i.length,e+=i.length,0===g?(h.length2+=i.length,f+=i.length):j=!1,h.diffs.push([g,i]),i==d.diffs[0][1]?d.diffs.shift():d.diffs[0][1]=d.diffs[0][1].substring(i.length))}g=this.diff_text2(h.diffs);g=g.substring(g.length-this.Patch_Margin);i=this.diff_text1(d.diffs).substring(0,this.Patch_Margin);""!==i&&
+(h.length1+=i.length,h.length2+=i.length,0!==h.diffs.length&&0===h.diffs[h.diffs.length-1][0]?h.diffs[h.diffs.length-1][1]+=i:h.diffs.push([0,i]));j||a.splice(++c,0,h)}}};diff_match_patch.prototype.patch_toText=function(a){for(var b=[],c=0;c<a.length;c++)b[c]=a[c];return b.join("")};
+diff_match_patch.prototype.patch_fromText=function(a){var b=[];if(!a)return b;a=a.split("\\n");for(var c=0,d=/^@@ -(\d+),?(\d*) \+(\d+),?(\d*) @@$/;c<a.length;){var e=a[c].match(d);if(!e)throw Error("Invalid patch string: "+a[c]);var f=new diff_match_patch.patch_obj;b.push(f);f.start1=parseInt(e[1],10);""===e[2]?(f.start1--,f.length1=1):"0"==e[2]?f.length1=0:(f.start1--,f.length1=parseInt(e[2],10));f.start2=parseInt(e[3],10);""===e[4]?(f.start2--,f.length2=1):"0"==e[4]?f.length2=0:(f.start2--,f.length2=
+parseInt(e[4],10));for(c++;c<a.length;){e=a[c].charAt(0);try{var g=decodeURI(a[c].substring(1))}catch(h){throw Error("Illegal escape in patch_fromText: "+g);}if("-"==e)f.diffs.push([-1,g]);else if("+"==e)f.diffs.push([1,g]);else if(" "==e)f.diffs.push([0,g]);else if("@"==e)break;else if(""!==e)throw Error('Invalid patch mode "'+e+'" in: '+g);c++}}return b};diff_match_patch.patch_obj=function(){this.diffs=[];this.start2=this.start1=null;this.length2=this.length1=0};
+diff_match_patch.patch_obj.prototype.toString=function(){var a,b;a=0===this.length1?this.start1+",0":1==this.length1?this.start1+1:this.start1+1+","+this.length1;b=0===this.length2?this.start2+",0":1==this.length2?this.start2+1:this.start2+1+","+this.length2;a=["@@ -"+a+" +"+b+" @@\\n"];var c;for(b=0;b<this.diffs.length;b++){switch(this.diffs[b][0]){case 1:c="+";break;case -1:c="-";break;case 0:c=" "}a[b+1]=c+encodeURI(this.diffs[b][1])+"\\n"}return a.join("").replace(/%20/g," ")};
+this.diff_match_patch=diff_match_patch;this.DIFF_DELETE=-1;this.DIFF_INSERT=1;this.DIFF_EQUAL=0;})()</script>
+<script type="text/javascript">
+/**
+ * Illume - Twine Proofing Story Format
+ * 
+ * Copyright (c) 2015 Michael McCollum
+ * http://www.maximumverbosity.net/twine/Illume/
+ *
+ * This license applies exclusively to the Illume story format for Twine 2. No ownership of, nor
+ * licensing restrictions on, the content within the generated story are stated or implied.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+window.onload = function() {
+if (typeof(window.Illume) == "undefined") {
+
+
+window.Illume = {
+
+init: function() { 
+Illume.UI.init();
+Illume.Editor.init();
+Illume.Diff.init();
+Illume.Story.init();
+Illume.Passages.init();
+Illume.Overview.init();
+
+this.UI.updateList();
+this.Overview.showStoryOverview();
+
+},
+
+
+popout:function(content) {
+var w = window.open();
+w.document.write(content);
+},
+
+download:function(filename, text, contentType) {
+if (!contentType)
+contentType = 'text/plain';
+
+window.URL = window.URL || window.webkitURL;
+var dataBlob = new Blob([text], {type: contentType});
+
+var downloader = document.createElement('a');
+downloader.setAttribute('innerHtml', 'downloader');
+downloader.setAttribute('href', window.URL.createObjectURL(dataBlob));
+downloader.setAttribute('download', filename);
+downloader.onclick = function() {
+document.body.removeChild(event.target);
+};
+document.body.appendChild(downloader);
+downloader.click();
+},
+
+viewChangeList:function() {
+this.generateChangeList(false);
+},
+
+saveChangeList:function() {
+this.generateChangeList(true);
+},
+
+generateChangeList:function(forExport) {
+var buffer = [];
+var diffs;
+var p;
+
+var matches = Illume.Passages.findPassages(function(p) { return p.changed;});
+var title = Illume.Story.storyName + ' Change List - ' + (new Date()).toLocaleString();
+
+if (matches.length < 1) {
+alert('No changes have been made.');
+return '';
+}
+
+buffer.push('<html><he','ad>');
+buffer.push('<title>',title,'</title>');
+buffer.push('<style type="text/css">');
+buffer.push('ins {background: #9f9;} del {background: #f99;}');
+buffer.push("body{font-family:'Open Sans','Source Code Pro','Deja Vu Sans','Arial',sans-serif;}");
+buffer.push("h1{text-align:center;}");
+buffer.push("h2{margin:50px 0px 0px 10px;}");
+buffer.push("input{float:right;}");
+buffer.push("pre{margin: 0px;line-height: 175%;font-size: 12pt;border: solid #999;border-width: 1px 0px 1px 0px;}");
+buffer.push('</style>');
+buffer.push('</he','ad><bo','dy>');
+
+buffer.push('<h1>', title, '</h1>');
+
+for (var i in matches) {
+p = matches[i];
+diffs = window.Illume.Diff.diff(this.encodeEntities(p.originalContent), this.encodeEntities(p.content));
+
+buffer.push('<div id="p.' + p.id + '">');
+buffer.push('<input type="button" value="Done" onclick="this.parentNode.remove(this);" />');
+buffer.push("<h2>", p.name, "</h2>");
+buffer.push("<pre>", window.Illume.Diff.formatDiffs(diffs),"</pre>");
+buffer.push("</div>");
+}
+
+buffer.push('</bo', 'dy></html>');
+
+var output = buffer.join('');
+
+if (forExport) {
+this.download(title + '.html', output, 'text/html');
+} else {
+this.popout(output);
+}
+
+},
+
+encodeEntities:function(s) {
+return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+},
+
+exportTwee: function() {
+this.download(Illume.Story.storyName + ".tw", Illume.Entweedle.export(), 'text/plain');
+},
+
+saveToFile:function() {
+alert("Note: the saved file will be a fresh copy of this illumination and will not include any changes you've made to this version.");
+this.download(Illume.Story.storyName + " (Illuminated).html", window.document.documentElement.innerHTML, 'text/html');
+}
+
+
+}
+
+
+window.Illume.Overview = {
+introText: '',
+tips: '',
+
+init:function() {
+this.introText = window.document.getElementById('introText').innerHTML;
+this.tips = window.document.getElementById('tips').innerHTML;
+},
+
+showStoryOverview:function() {
+Illume.Story.compileStats();
+
+var buffer = [];
+
+buffer.push(this.generateTile("Welcome to Illume", Illume.Overview.introText,'2x1'));
+buffer.push(this.generateTile("Stats", this.generateTable(Illume.Story.generateStorySummary()) + '<p>These do not reflect changes made during review or by macros during play.</p>'));
+buffer.push(this.generateTile("Review Summary", this.generateTable(Illume.Passages.generateReviewSummary())));
+
+buffer.push(this.generateTile("Passage Summary", this.generateTable(Illume.Passages.generateSummary()),'2x1'));
+buffer.push(this.generateTile("Tags", this.generateTable(Illume.Story.getTagSummary(), true),'1x1'));
+
+buffer.push(this.generateTile("Tips", Illume.Overview.tips));
+
+
+Illume.UI.showGeneralOutput('Story Overview', buffer.join(''));
+},
+
+generateTile:function(title,content,size,classes) {
+var buffer = [];
+if (!size)
+size = '1x1';
+
+buffer.push('<div class="infoTile tile', size, ' ', classes, '"><div class="title">');
+buffer.push(title);
+buffer.push('</div><div class="content">');
+buffer.push(content);
+buffer.push('</div></div>');
+
+return buffer.join('');
+},
+
+generateTable:function(o, preserveLabels) {
+var label,link,data;
+var buffer = [];
+var isHeader = false;
+
+buffer.push("<table>");
+for (key in o) {
+label = key;
+
+if (label.indexOf("header.") > -1) {
+label = label.substring(7);
+isHeader = true;
+} else {
+isHeader = false
+}
+
+
+if (!preserveLabels) {
+label = label.replace(/[A-Z][a-z]*/g, function(word) { return ' ' + word.charAt(0).toUpperCase() + word.substr(1);});
+label = label.charAt(0).toUpperCase() + label.substr(1);
+}
+
+data = o[key];
+
+link = data['illumeLink'];
+
+buffer.push("<tr");
+if (isHeader) {
+buffer.push(' class="header"');
+}
+buffer.push("><td>");
+if (link && link.length > 0) {
+buffer.push('<span class="link" onclick="' + link + '">');
+}
+buffer.push(label);
+if (link) {
+buffer.push('</span>');
+}
+buffer.push("</td>");
+if (typeof data == "object") {
+for (var i in data) {
+if (i == 'illumeLink')
+continue;
+
+buffer.push('<td>', data[i], '</td>');
+}
+} else {
+buffer.push('<td>', data, '</td>')
+}
+buffer.push("</tr>");
+}
+buffer.push("</table>");
+
+return buffer.join('');
+
+}
+}
+
+
+window.Illume.Diff = {
+logic: null,
+
+init:function() {
+this.logic = new window.diff_match_patch();
+},
+
+diff: function(s1, s2) {
+var diffs = this.logic.diff_main(s1, s2);
+this.cleanup(diffs);
+return diffs;
+},
+
+cleanup:function(diffs) {
+this.logic.diff_cleanupSemantic(diffs);
+},
+
+formatDiffs:function(diffs) {
+var html = [];
+var i = 0;
+for (var x = 0; x < diffs.length; x++) {
+var op = diffs[x][0];    
+var data = diffs[x][1];
+var text = data;
+switch (op) {
+case window.DIFF_INSERT:
+html[x] = '<ins>' + text + '</ins>';
+break;
+case window.DIFF_DELETE:
+html[x] = '<del>' + text + '</del>';
+break;
+case window.DIFF_EQUAL:
+html[x] = '' + text + '';
+break;
+}
+if (op !== window.DIFF_DELETE) {
+i += data.length;
+}
+}
+return html.join('');
+}
+
+}
+
+
+window.Illume.UI = {
+filter:null,
+filterTag: null,
+byTagOption: null,
+passageListContent: null,
+passageViewer: null,
+generalOutput: null,
+
+init:function() {
+this.filter = window.document.getElementById('filter');
+this.byTagOption = window.document.getElementById('byTagOption');
+this.passageListContent = window.document.getElementById('passageListContent');
+this.passageViewer = window.document.getElementById('passageViewer');
+this.generalOutput = window.document.getElementById('generalOutput');
+},
+
+filterChanged: function() {
+if (this.filter.value == 'byTag') {
+this.filterTag = null;
+}
+this.updateList();
+},
+
+filterByTag:function(tag) {
+this.filterTag = tag;
+this.filter.value = 'byTag';
+this.updateList();
+},
+
+updateFilterList:function() {
+this.byTagOption.textContent = "By Tag...";
+},
+
+switchFilter:function(value) {
+this.filter.value = value;
+this.updateList();
+},
+
+
+updateList:function() {
+var matches = {};
+
+if (this.filter.value == 'unreviewed') {
+matches = Illume.Passages.findPassages(function(p) { return !p.reviewed;});
+} else if (this.filter.value == 'reviewed') {
+matches = Illume.Passages.findPassages(function(p) { return p.reviewed;});
+} else if (this.filter.value == 'changed') {
+matches = Illume.Passages.findPassages(function(p) { return p.changed;});
+} else if (this.filter.value == 'unchanged') {
+matches = Illume.Passages.findPassages(function(p) { return !p.changed;});
+} else if (this.filter.value == 'orphans') {
+matches = Illume.Passages.findPassages(function(p) { return (p.inboundLinks == 0)});
+} else if (this.filter.value == 'deadEnds') {
+matches = Illume.Passages.findPassages(function(p) { return (p.links == 0)});
+} else if (this.filter.value == 'passThroughs') {
+matches = Illume.Passages.findPassages(function(p) { return (p.links == 1 && p.inboundLinks == 1)});
+} else if (this.filter.value == 'all') {
+matches = Illume.Passages.getAll();
+} else if (this.filter.value == 'byTag') {
+if (!this.filterTag)
+this.filterTag = window.prompt("Show passages with tag:");
+if (!this.filterTag)
+return;
+
+this.byTagOption.textContent = "By Tag... [" + this.filterTag + "]";
+
+matches = Illume.Passages.findByTag(this.filterTag);
+}
+
+this.passageListContent.innerHTML = '';
+
+var buffer = [];
+
+for (var i in matches) {
+buffer.push("<span onclick=\"window.Illume.UI.showPassage('", matches[i].id, "');\">");
+if (matches[i].reviewed) {
+buffer.push('<div class="flag reviewed">R</div>');
+}
+if (matches[i].changed) {
+buffer.push('<div class="flag changed">C</div>');
+}
+buffer.push(matches[i].name);
+buffer.push("</span>");
+}
+
+this.passageListContent.innerHTML = buffer.join('');
+
+this.updateFooter();
+},
+
+updateFooter:function() {
+var footerLeft = window.document.getElementById('footerLeft');
+var footerRight = window.document.getElementById('footerRight');
+
+var reviewed = Illume.Passages.countPassages(function(p) { return p.reviewed;});
+var changed = Illume.Passages.countPassages(function(p) { return p.changed;});
+var total = Illume.Passages.passageCount;
+var remaining = total - reviewed;
+var reviewedPercentage = Math.ceil((reviewed / total) * 100);
+
+var buffer = [];
+
+if (remaining > 0) {
+buffer.push(reviewed, ' reviewed, ');
+buffer.push(remaining, ' remaining');
+buffer.push(" (");
+}
+buffer.push(reviewedPercentage, '% reviewed');
+if (remaining > 0) {
+buffer.push(')');
+}
+
+footerLeft.innerHTML = buffer.join('');
+
+buffer = [];
+
+if (changed > 0) {
+buffer.push(changed);
+buffer.push(' changed <input type="button" id="footerChangeListButton" value="Show Change List" onclick="Illume.viewChangeList()">');
+}
+
+footerRight.innerHTML = buffer.join('');
+
+
+
+},
+
+showGeneralOutput:function(title, content) {
+var header = window.document.getElementById('generalTitle');
+var body = window.document.getElementById('generalContent');
+
+header.innerHTML = title;
+body.innerHTML = content;
+
+generalOutput.style.display = 'block';
+passageViewer.style.display = 'none';
+},
+
+showPassage:function(id) {
+var p = Illume.Passages.getPassage(id);
+
+if (!p) {
+alert(id + ' not found');
+return;
+}
+
+window.document.getElementById("passageTitle").textContent = p.name;
+
+var tagContainer = window.document.getElementById("passageTags");
+
+tagContainer.innerHTML = '';
+
+var buffer = [];
+for (var i in p.tags) {
+if (p.tags[i]) {
+buffer.push("<span class=\"tag\" onclick=\"window.Illume.UI.filterByTag('");
+buffer.push(p.tags[i]);
+buffer.push("');\">");
+buffer.push(p.tags[i]);
+buffer.push("</span>");
+}
+}
+
+tagContainer.innerHTML = buffer.join('');
+
+Illume.Editor.editPassage(id);
+
+generalOutput.style.display = 'none';
+passageViewer.style.display = 'block';
+
+}
+
+
+}
+
+
+window.Illume.Editor = {
+editor:null,
+currentPassageID: null,
+currentPassage: null,
+changeViewer: null,
+controls: null,
+changesShown: false,
+
+init:function() {
+this.editor = window.document.getElementById('editor');
+this.controls = window.document.getElementById('passageControls');
+this.changeViewer = window.document.getElementById('changeViewer');
+
+this.editor.onchange = this.changeHandler;
+this.editor.onkeyup = this.inputHandler;
+},
+
+editPassage:function(id) {
+this.currentPassageID = id;
+this.currentPassage = Illume.Passages.getPassage(id);
+
+this.editor.value = this.currentPassage.content;
+this.updateControls();
+},
+
+setReviewedHandler:function(isReviewed) {
+Illume.Editor.setReviewed(isReviewed);
+},
+
+setReviewed:function(isReviewed) {
+if (this.currentPassage.reviewed != isReviewed) {
+this.currentPassage.reviewed = isReviewed;
+this.updateControls();
+Illume.UI.updateList();
+}
+},
+
+revert:function() {
+this.currentPassage.content = this.currentPassage.originalContent;
+this.currentPassage.changed = false;
+this.editPassage(this.currentPassageID);
+Illume.UI.updateList();
+this.hideChanges();
+},
+
+updateControls:function() {
+var c = window.document.getElementById('dirtyControls');
+var r = window.document.getElementById('reviewedControls');
+var ur = window.document.getElementById('unreviewedControls');
+
+c.style.display = (this.currentPassage.changed) ? 'inline-block' : 'none';
+r.style.display = (this.currentPassage.reviewed) ? 'inline-block' : 'none';
+ur.style.display = (!this.currentPassage.reviewed) ? 'inline-block' : 'none';
+
+this.currentPassage.changed ? this.showChanges() : this.hideChanges();
+},
+
+showChanges: function() {
+this.updateChangeViewer(true);
+this.updateChangeDiffs();
+},
+
+hideChanges:function() {
+this.updateChangeViewer(false);
+},
+
+toggleChanges:function() {
+this.updateChangeViewer(!this.changesShown);
+},
+
+updateChangeViewer:function(shown) {
+this.changeViewer.style.display = (shown ? 'block' : 'none');
+//this.editor.style.bottom = (shown ? '300px' : '0px');   //DEBUG
+window.document.getElementById('editorCorral').style.bottom = (shown ? '300px' : '0px');
+
+this.changesShown = shown;
+this.updateChangeDiffs();
+},
+
+updateChangeDiffs:function() {
+if (this.changesShown) {
+var p = this.currentPassage;
+var diffs = window.Illume.Diff.diff(Illume.encodeEntities(p.originalContent), Illume.encodeEntities(p.content));
+this.changeViewer.innerHTML = window.Illume.Diff.formatDiffs(diffs);
+}
+},
+
+updatePassage:function() {
+this.currentPassage.content = this.editor.value;
+},
+
+inputHandler:function() {
+if (!Illume.Editor.currentPassage.changed) {
+Illume.Editor.currentPassage.changed = true;
+Illume.UI.updateList();
+}
+Illume.Editor.updatePassage();
+Illume.Editor.updateControls();
+Illume.Editor.updateChangeDiffs();
+},
+
+changeHandler:function() {
+Illume.Editor.updatePassage();
+Illume.Editor.updateControls();
+Illume.Editor.updateChangeDiffs();
+}
+
+
+}
+
+
+window.Illume.Story = {
+storyData:null,
+storyName:'Asset Manager Quest',
+storyFormat: '',
+startPassage: 1,
+stats: {},
+wordCount: 0,
+tags: {},
+
+init:function() {
+this.loadStoryData();
+},
+
+loadStoryData:function() {
+var storyDataElements = window.document.getElementsByTagName("tw-storydata");
+if (storyDataElements.length > 0) {
+this.storyData = storyDataElements[0];
+this.storyFormat = this.storyData.getAttribute("format");
+this.startPassage = this.storyData.getAttribute("startnode");
+}
+},
+
+compileStats:function() {
+var p;
+
+var s = {
+format: this.storyFormat,
+passageCount: Illume.Passages.passageCount,
+wordCount: this.wordCount,
+orphans: Illume.Passages.countPassages( function(p) { return (p.inboundLinks < 1); }),
+deadEnds: Illume.Passages.countPassages( function(p) { return (p.links < 1); }),
+'pass-throughs': Illume.Passages.countPassages( function(p) { return (p.links == 1 && p.inboundLinks == 1); }),
+
+averageLinks: Math.floor(Illume.Passages.averageConnectivity * 100) / 100 ,
+averageWords: Math.floor(Illume.Passages.averageLength * 100) / 100
+
+};
+
+this.stats = s;
+},
+
+generateStorySummary:function() {
+var result = Object.create(this.stats);
+
+result['format'] = result.format;
+result.orphans = {
+illumeLink:"Illume.UI.switchFilter('orphans');",
+value:result.deadEnds
+}
+result.deadEnds = {
+illumeLink:"Illume.UI.switchFilter('deadEnds');",
+value:result.deadEnds
+}
+result['pass-throughs'] = {
+illumeLink:"Illume.UI.switchFilter('passThroughs');",
+value:result['pass-throughs']
+}
+result.passageCount = {
+illumeLink:"Illume.UI.switchFilter('all');",
+value:result.passageCount
+}
+
+return result;
+},
+
+getTagSummary:function() {
+var results = {
+"header.Tag": "Occurences"
+}
+var label;
+
+for (var t in this.tags) {
+label = "<span class=\"tag\" onclick=\"window.Illume.UI.filterByTag('" + t + "');\">" + t + "</span>";
+results[label] = this.tags[t];
+}
+
+return results;
+}
+
+}
+
+
+window.Illume.Passages = {
+passages: [],
+linkCount:{},
+deadLinks:[],
+passageCount: 0,
+averageConnectivity: 0,
+averageLength: 0,
+
+basePassage: {
+id:-1,
+name: "Undefined",
+tags: [],
+links: 0,
+inboundLinks: 0,
+connections: 0,
+sugarcubeMacros: 0,
+harloweMacros: 0,
+harloweHooks: 0,
+wordCount: 0,
+content: '',
+originalContent: '',
+reviewed: false,
+changed: false
+},
+
+
+init: function() {
+this.loadPassages();
+},
+
+getPassage: function(id) {
+return this.passages[id];
+},
+
+getAll:function() {
+return this.passages.slice();
+},
+
+findByTag:function(tag) {
+var results = [];
+var p;
+
+results.length = 0;
+for (var i = 0; i < this.passages.length; i++) {
+p = this.passages[i];
+if (p && p.tags.indexOf(tag) > -1) {
+results.push(p);
+}
+}
+return results;
+},
+
+findByName:function(name) {
+var p;
+
+for (var i in this.passages) {
+p = this.passages[i];
+if (p && p.name == name) {
+return p;
+}
+}
+return null;
+},
+
+findPassages:function(checkFunction) {
+var p;
+var results = [];
+
+if (!checkFunction || typeof(checkFunction) != "function") {
+return -1;
+}
+
+for (var i in this.passages) {
+p = this.passages[i];
+
+if (checkFunction(p)) {
+results.push(p);
+}
+}
+
+return results;
+},
+
+countPassages:function(checkFunction) {
+var results = this.findPassages(checkFunction);
+if (!results)
+return 0;
+else
+return results.length;
+},
+
+loadPassages: function() {
+var passageElements = window.document.getElementsByTagName("tw-passagedata");
+var e;
+var p;
+var tagString;
+
+linkCount = {};
+
+var matchers = {
+links:/[^`]\[{2}(.*)\]{2}(?=[^`])/g,
+sugarcubeMacros:/\<{2}.*\>{2}/g,
+harloweMacros:/[^`]\([^\W]*:.*\)(?=[^`])/g,
+harloweHooks:/[^`\[]\[[^\[\]]*\](?=[^`\]])/g
+};
+
+this.passages.length = 0;
+for (var i = 0; i < passageElements.length; i++) {
+p = Object.create(this.basePassage);
+e = passageElements[i];
+
+tagString = e.getAttribute("tags").trim();
+
+if (!tagString || tagString.length < 1)
+p.tags = [];
+else 
+p.tags = tagString.split(" ");
+
+if (p.tags.indexOf("illumeIgnore") > -1) {
+continue;
+}
+
+if (p.tags.indexOf("illumeReviewed") > -1) {
+p.reviewed = true;
+}
+
+p.id = e.getAttribute("pid");
+p.name = e.getAttribute("name");
+p.content = e.textContent;
+p.originalContent = e.textContent;
+p.strippedContent = e.textContent;
+
+for (var j in matchers) {
+p[j] = (p.content.match(matchers[j]) || []).length;
+}
+
+if (p.harloweMacros > 0)
+p.strippedContent = p.strippedContent.replace(matchers.harloweMacros, '');
+
+
+if (p.sugarcubeMacros > 0)
+p.strippedContent = p.strippedContent.replace(matchers.sugarcubeMacros, '');
+
+var re, match, destination;
+
+re = matchers.links;
+re.lastIndex = 0;
+
+var destinations = [];
+
+
+while ((match = re.exec(' ' + p.content + ' ')) !== null) {
+destination = match[1];
+
+if (destination.indexOf("->") > -1) {
+//harlowe right link
+destination = destination.substring(destination.indexOf("->") + 2);
+} else if (destination.indexOf("<-") > -1) {
+//harlowe left link
+destination = destination.substring(0, destination.indexOf("<-"));
+} else if (destination.indexOf("|") > -1) {
+//sugarcube link
+destination = destination.substring(destination.indexOf("|") + 1);
+}
+
+if (destinations.indexOf(destination) < 0)
+destinations.push(destination);
+}
+
+
+for (var d in destinations) {
+//alert('adding a link from ' + p.name + ' to ' + destinations[d]);
+if (linkCount[destinations[d]])
+++linkCount[destinations[d]];
+else
+linkCount[destinations[d]] = 1;
+}
+
+p.wordCount = p.strippedContent.trim().replace(/\s+/g, ' ').split(' ').length;
+
+this.passages[p.id] = p;
+}
+
+
+var killList = [];
+var connectivityTotal = 0;
+this.passageCount = 0
+Illume.Story.wordCount = 0;
+Illume.Story.tags = {};
+
+for (var i in this.passages) {
+p = this.passages[i];
+p.inboundLinks = (linkCount[p.name] || 0);
+p.connections = p.links + p.inboundLinks;
+killList.push(p.name);
+
+Illume.Story.wordCount += p.wordCount;
+connectivityTotal += p.connections;
+++this.passageCount;
+
+for (var t in p.tags) {
+if (!Illume.Story.tags[p.tags[t]])
+Illume.Story.tags[p.tags[t]] = 1;
+else
+++Illume.Story.tags[p.tags[t]];
+}
+}
+
+for (var n in killList) {
+delete(linkCount[killList[n]]);
+}
+
+this.averageLength = Illume.Story.wordCount / this.passageCount;
+this.averageConnectivity = connectivityTotal / this.passageCount;
+
+this.deadLinks = linkCount;
+},
+
+generateSummary:function() {
+var ps = this.passages.slice();
+var results = {};
+var p;
+
+ps.sort(function(a,b) {
+if (a.connections < b.connections)
+return 1;
+if (a.connections > b.connections)
+return -1;
+return 0;
+});
+
+results["header.Passage"] = [
+'Length',
+'Links (In/Out)'
+];
+
+for (var i in ps) {
+p = ps[i];
+results[p.name] = {
+illumeLink:"Illume.UI.showPassage('" + p.id + "');",
+wordCount: p.wordCount,
+connections: p.connections + " (" + p.inboundLinks + "/" + p.links + ")"
+};
+}
+
+return results;
+},
+
+generateReviewSummary:function() {
+var result = {};
+var reviewed = this.countPassages(function(p) { return p.reviewed;});
+var changed = this.countPassages(function(p) { return p.changed;});
+
+result['totalPassages'] = {
+illumeLink:"window.Illume.UI.switchFilter('all');",
+value: this.passageCount
+}
+result['changed'] = {
+illumeLink:"window.Illume.UI.switchFilter('changed');",
+value: changed
+};
+result['reviewed'] = {
+illumeLink:"window.Illume.UI.switchFilter('reviewed');",
+value:reviewed
+};
+result['reviewCompleted'] = {
+illumeLink:"window.Illume.UI.switchFilter('unreviewed');",
+value:Math.ceil(reviewed / this.passageCount * 100) + '%'
+};
+
+
+
+return result;
+}
+
+}
+
+
+window.Illume.Entweedle = {
+
+export: function() {
+var output = window.document.getElementById("output");
+var buffer = [];
+
+var storyData = window.document.getElementsByTagName("tw-storydata");
+if (storyData) {
+buffer.push(this.buildPassage("StoryTitle","",storyData[0].getAttribute("name")));
+}
+var userScript = window.document.getElementById("twine-user-script");
+if (userScript) {
+buffer.push(this.buildPassage("UserScript","script",userScript.innerHTML));
+}
+
+var userStylesheet = window.document.getElementById("twine-user-stylesheet");
+if (userStylesheet) {
+buffer.push(this.buildPassage("UserStylesheet","stylesheet",userStylesheet.innerHTML));
+}
+
+var passages = window.document.getElementsByTagName("tw-passagedata");
+for (var i = 0; i < passages.length; i++) {
+buffer.push(this.buildPassageFromElement(passages[i]));
+}
+
+return buffer.join('');
+},
+
+
+buildPassageFromElement: function(passage) {
+var name = passage.getAttribute("name");
+if (!name) {
+name = "Untitled Passage";
+}
+var tags = passage.getAttribute("tags");
+var content = passage.textContent;
+
+return this.buildPassage(name, tags, content);
+},
+
+buildPassage: function(title, tags, content) {
+var result = [];
+
+result.push(":: ",title);
+if (tags) {
+result.push("[",tags,"]");
+}
+result.push("\r\n", this.scrub(content),"\r\n\r\n");
+
+return result.join('');
+},
+
+scrub: function(content) {
+content = content.replace(/^::/gm, " ::");
+return content;
+}
+}
+
+
+window.Illume.init();
+}
+}
+
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset Manager Quest</title>
+<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+<link rel="shortcut icon" href="/icon/favicon.ico">
+<link rel="manifest" href="icon/site.webmanifest">
+<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#08104f">
+<meta name="theme-color" content="#ff86cc">
+
+<meta name="title" content="Asset Manager Quest">
+<meta name="description" content="Invest in the planet, or let it burn!">
+<meta name="keywords" content="asset manager, abrdn, game">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="Oli Frost">
+
+<meta property="og:title" content="Asset Manager Quest">
+<meta property="og:type" content="game">
+<meta property="og:description" content="Invest in the planet, or let it burn!">
+<meta property="og:image" content="cover.png">
+<meta property="og:url" content="assetmanager.quest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="og:site_name" content="Asset Manager Quest">
+<meta name="twitter:image:alt" content="Abrdn">
+</head>
+<body>
+<div id="header">
+Asset Manager Quest
+</div>
+<div id="workspace">
+<div id="sidebar">
+<div id="links">
+<span onclick="window.Illume.Overview.showStoryOverview();">Story Overview</span>
+<span onclick="window.Illume.viewChangeList();">View Change List</span>
+<span onclick="window.Illume.saveChangeList();">Export Change List...</span>
+<span onclick="window.Illume.exportTwee();">Export Twee Source</span>
+<span onclick="window.Illume.saveToFile();">Export Illumination...</span>
+</div>
+<div id="passageListHeader">
+<select id="filter" oninput="window.Illume.UI.updateFilterList();" onchange="window.Illume.UI.filterChanged();">
+<option value="unreviewed">Unreviewed</option>
+<option value="reviewed">Reviewed</option>
+<option value="changed">Changed</option>
+<option value="unchanged">Unchanged</option>
+<option value="orphans">Orphans</option>
+<option value="deadEnds">Dead Ends</option>
+<option value="passThroughs">Pass-Throughs</option>
+<option id="byTagOption" value="byTag">By Tag...</option>
+<option value="all">All Passages</option>
+</select>
+</div>
+<div id="passageListContent"></div>
+</div>
+<div id="contentArea">
+<div id="generalOutput">
+<div id="generalHeader">
+<div id="generalTitle"></div>
+</div>
+<div id="generalContent"></div>
+</div>
+<div id="passageViewer">
+<div id="passageHeader">
+<div id="passageTitle"></div>
+<div id="passageTags"></div>
+</div>
+<div id="passageControls">
+<div id="dirtyControls">
+Modified <input id="revertChangesButton" type="button" value="Revert" onclick="Illume.Editor.revert();" />
+</div>
+<div id="reviewedControls">
+Reviewed <input id="unreviewedButton" type="button" value="Flag as Unreviewed" onclick="Illume.Editor.setReviewedHandler(false);"/>
+</div>
+<div id="unreviewedControls">
+Unreviewed <input id="reviewedButton" type="button" value="Flag as Reviewed" onclick="Illume.Editor.setReviewedHandler(true);"/>
+</div>
+</div>
+<div id="passageContent">
+<div id="editorCorral"><textarea id="editor"></textarea></div>
+<div id="changeViewer"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footerRight"></div>
+<div id="footerLeft"></div>
+</div>
+<div id="introText" style="display: none;">
+<p>
+This is the Story Overview, from which you can find general information and statistics about your story.
+</p>
+<p>
+Use the list at the lower-left to filter and view the passages of your story, and click on a passage to open it in review mode. While reviewing a passage, you can make changes in-place, compare your changed version to the original, revert those changes if needed, and flag a passage as reviewed to help you keep track of which passages have been reviewed and which ones remain.
+</p>
+<p>
+You can use the links at the top left to view a change list, which shows all changes made to all passages, or export it to a file. You can also save a copy of this illumination for later use, or export your story in twee source format.
+</p>
+<p>
+For more information about Illume, visit the <a href="https://maximumverbosity.net/twine/Illume/">Illume web site</a>.
+</p>
+</div>
+<div id="tips" style="display: none;">
+<p>
+Tag a passage "illumeIgnore" and it will be totally ignored by Illume for all purposes.
+</p>
+<p>
+If a passage is not being modified, tag it "illumeReviewed" to set its initial state to Reviewed. The editor can still refer back to it if needed.
+</p>
+</div>
+<div id="storyData" style="display: none;">
+<!-- UUID://CC9F1D48-504F-4DC3-86F4-37E120FB9203// --><tw-storydata name="Asset Manager Quest" startnode="66" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="CC9F1D48-504F-4DC3-86F4-37E120FB9203" zoom="0.6" format="Illume" format-version="1.0.5" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("modules/animate.min.css");
+@font-face {
+  font-display: swap;
+  font-family: 'Jersey 10';
+  font-style: normal;
+  font-weight: 400;
+  src: url('font/jersey-10-v2-latin-regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'lores-12';
+    src: url('font/LoRes12OT-Regular.woff2') format('woff2'),
+        url('font/LoRes12OT-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Wrapper */
+ .hidden {
+        display: none;
+   		margin: auto;
+}
+.nb {
+	white-space: nowrap;  
+}
+ body {
+     display: flex;
+     font-family: "lores-12","DotGothic16", monospace;
+     letter-spacing: 0.5px;
+     font-weight: normal;
+     font-size: 1.5em;
+     background-color: #00094a;
+}
+
+#init-screen {
+  background-color: #00094a;
+   color: #FDA0D9; 
+}
+ body a {
+     color: #FDA0D9; 
+}
+ h1, h2, h3 {
+     margin: 0;
+     font-family: "Jersey 10", monospace;
+   font-weight: 400;
+}
+/* Banner */
+ .header {
+     width: 100%;
+}
+/* Menu */
+ .menu {
+     display: flex;
+     background-color: #FB008C;
+     border-bottom: 3px solid #9b9eb1;
+     font-size: 1rem;
+     flex-direction: row-reverse;
+}
+ .logo-bar, .menu-options {
+     height: 2rem;
+}
+ .menu svg path {
+     fill: white;
+}
+/* Menu */
+ .menu-options {
+     max-width: 19em;
+     display: flex;
+     flex: 1;
+}
+ .menu-options img, .menu-options svg {
+     height: 1rem;
+     width: 1rem;
+}
+ .menu-options a {
+     background-color: #ff86cc;
+     color: #FB008C;
+     font-size: 0.8rem;
+     transition: background-color 0.3s;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex: 1;
+     border-right: 1px solid #ff1899; 
+}
+ @media (hover: hover) {
+     .menu-options a:hover {
+         background-color: #ff1899;
+         text-decoration: none;
+    }
+   a:hover {
+     color: #ff1899;
+     text-decoration: none;
+   }
+}
+/* Logo */
+ .logo-bar {
+     display: flex;
+     flex: 1;
+     background-color: #4d5275;
+     justify-content: flex-end;
+}
+ #small-logo {
+     display: flex;
+     background-color: #4d5275;
+     width: 19rem;
+}
+ #small-logo img {
+     height: 60%;
+     margin: auto;
+     position: relative;
+     right: -1rem;
+}
+/* Differnt Colour Intro */
+ .menu a[data-passage="Intro"] {
+     background-color: #ff1899;
+     color: white;
+}
+ .menu a[data-passage="Intro"]:hover {
+     background-color: #9b9eb1;
+     color: white;
+}
+ .menu a[data-passage="Who"]:hover {
+     color: white;
+}
+/* Fix Icon */
+ .menu a[data-passage="abrdn"] svg {
+     height: 35%;
+}
+
+/* Banner */
+ #banner {
+     display: flex;
+     background-image: url("img/grid.png");
+     background-position: bottom;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-size: 100% 50%;
+     border-bottom: 3px solid #9b9eb1;
+     height: 100px;
+    animation: sway 5s infinite alternate;
+   animation-timing-function: ease-in-out;
+}
+
+@keyframes sway {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 20px; /* Adjust the value to control the sway distance */
+    }
+}
+ #banner div {
+     flex: 1;
+}
+ #banner-left img, #banner-right img, #banner-logo img {
+     max-height: 100px;
+}
+ #banner-logo img {
+     height: 120%;
+     margin: auto;
+}
+ #banner-logo {
+     display: flex;
+}
+ #banner-right img {
+     float: right;
+}
+/* Main Text */
+ .game-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     background-color: #070C4E;
+     border-right: 3px solid #9b9eb1;
+     border-left: 3px solid #9b9eb1;
+     width: 100%;
+     max-width: 1800px;
+     min-height: 100vh;
+     height: 100%;
+     margin-left: auto;
+     margin-right: auto;
+}
+ .game-content {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+ #passages {
+     padding: 1rem;
+     padding-top: 1rem;
+}
+ .passage {
+     text-align: center;
+     padding-top: 1rem;
+     max-width: 800px;
+     line-height: 1.8rem;
+}
+ #passages h1 {
+     font-size: 3rem;
+     line-height: 3rem;
+     margin-bottom: 1.5rem;
+}
+ #passages input {
+     width: 95%;
+     min-width: 0em;
+     border: 2px solid #ff86cc;
+}
+input,
+input:not(:disabled):focus,
+input:not(:disabled):hover,
+select,
+select:not(:disabled):focus,
+select:not(:disabled):hover,
+textarea,
+textarea:not(:disabled):focus,
+textarea:not(:disabled):hover{
+    background-color: #4d5275;
+}
+#passages img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 13em;
+  margin-bottom: -2em;
+  position:relative;
+  bottom: 2rem;
+}
+
+#passages #gameover img {
+    width: 15em;
+  margin-bottom: -2em;
+  bottom: 1.5rem;
+}
+/* Choices */
+.selected {
+      background-color: #FB008C !important;
+      border-bottom: 2px solid #c7026e!important;
+    }
+
+ .passage ol {
+     font-family: "Jersey 10";
+     margin: 0;
+     margin-top: 2rem;
+     font-size: 2rem;
+     list-style-type: none;
+     padding: 0;
+     width: 100%;
+}
+ .passage ol a, .passage ol .locked {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #ff86cc;
+     border-bottom: 2px solid #FECFEA;
+     padding: 20px;
+     color: #00094a;
+     transition: background-color 0.3s, border-bottom 0.3s, transform 0.3s;
+     font-size: 1em;
+     line-height: 2rem;
+     margin-bottom: 0.5em;
+   text-decoration: none !important;
+}
+ @media (hover: hover) {
+     .passage ol a:hover {
+         background-color: #ff86cc;
+         transform: scale(1.05);
+         text-decoration: none;
+    }
+     .passage ol .locked:hover {
+     background-color: #8C8EA5;
+     transform: scale(1);
+     cursor: default;
+}
+}
+ .passage ol .locked {
+     background-color: #8C8EA5;
+     border-bottom: 2px solid #565673;
+     color: white;
+}
+ button {
+     background-color: #FDA0D9;
+     border-radius: 2px;
+     color: #08053E;
+     border: 0;
+     padding: 5px 15px;
+     border-bottom: 2px solid #FECFEA;
+}
+ button:hover {
+     background-color: #F60079;
+     border-bottom: 2px solid #FECFEA;
+     color: white;
+}
+ .floating {
+     animation-name: floating;
+     animation-duration: 1.5s;
+     animation-iteration-count: infinite;
+     animation-timing-function: ease-in-out;
+     margin-top: 0px;
+}
+ @keyframes floating {
+     0% {
+         transform: translate(0, 0px);
+    }
+     50% {
+         transform: translate(0, 5px);
+    }
+     100% {
+         transform: translate(0, -0px);
+    }
+}
+/* Splash Screen */
+ #splash-screen {
+     position: fixed;
+     left: 0;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 100;
+     background-color: #050630;
+     color: #eee;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-position: center;
+   background-image: url("img/AMQ-Title-BG.png");
+   background-size: cover;
+    /* Center the image */
+     background-repeat: no-repeat;
+       animation: zoomin 5s 1;
+}
+ @media (min-width: 1200px){
+      #splash-screen {
+             background-image: url("img/AMQ-Title-BG-Wide.png");
+           	background-size: auto 100%;
+    }
+}
+ @media (min-width: 1600px){
+      #splash-screen {
+             background-image: url("img/AMQ-Title-BG-UltraWide.png");
+    }
+}
+@keyframes zoomin {
+  0% {
+    background-size: auto 100%;
+  }
+  100% {
+    background-size: auto 105%;
+  }
+}
+
+
+ #splash-logo {
+     display: block;
+     text-align: center;
+     position: relative;
+     bottom: 2.5rem; 
+}
+ #splash-logo img {
+   	width: 100%;
+	width: 25rem;
+}
+ #splash-logo > p {
+     display: block;
+     position: relative;
+     bottom: 1rem;
+     left: 1rem;
+}
+ @media (min-width: 620px){
+     .optional-br {
+         display: none;
+    }
+   .game-container {
+     border-top: 3px solid #9b9eb1;
+     -webkit-border-top-left-radius: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+   }
+}
+ @media (max-width: 620px) {
+     .menu {
+         display: block;
+    }
+     .menu-options {
+         max-width: 100%;
+    }
+     .logo-bar {
+         justify-content: center;
+    }
+     #small-logo img {
+         right: 0;
+    }
+     #banner, .menu, .game-container {
+         border-width: 1px;
+    }
+   .game-container {
+     border: none;
+   }
+    #splash-logo img {
+      width: 20rem;
+   }
+}
+/* Larger Screens */
+ @media (min-width: 1200px){
+     #banner, #banner-left img, #banner-right img, #banner-logo img {
+         height: 150px;
+         max-height: 150px;
+    }
+}
+ @media (min-width: 1500px){
+     #banner, #banner-left img, #banner-right img, #banner-logo img {
+         height: 200px;
+         max-height: 200px;
+    }
+      html {
+     font-size: 150% !important;
+   }
+}
+/*.passage {
+     color: #fff;
+     text-shadow: 0px 0px 20px #fff;
+     font-size: 20px;
+     line-height: 22px;
+}
+ .passage a, .passage a:hover, .passage a:active {
+     color: #fff;
+     text-shadow: 0px 0px 20px #fff;
+}
+*/
+/* Horizontal Health Bar - Start */
+ .hzbarbkg {
+    /* default class for all horizontal bar backgrounds */
+     position: relative;
+     height: 15px;
+     width: 100%;
+     background-color: #4d5275;
+     border-radius: 10px;
+     z-index: 10;
+     visibility: visible;
+}
+ .hzbar {
+    /* default class for all horizontal bars */
+     position: absolute;
+     bottom: 0px;
+     left: 0px;
+     height: 15px;
+     background-color: #ff86cc;
+     border-radius: 10px;
+     z-index: 20;
+     transition: width ease 3s, background-color ease 3s;
+}
+/* Horizontal Health Bar - End */
+
+.drunk {
+     animation: drunkCam 10s infinite alternate;
+     color: white;
+}
+ @keyframes drunkCam {
+     0% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     20% {
+         filter: blur(1px);
+         text-shadow: 8px 0 0 grey;
+    }
+     24% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     26% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     28% {
+         filter: blur(1px);
+         text-shadow: 10px 0 0 grey;
+    }
+     30% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     60% {
+         filter: blur(1px);
+         text-shadow: 5px 0 0 grey;
+    }
+     62% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     65% {
+         filter: blur(2px);
+         text-shadow: 8px 0 0 grey;
+    }
+     67% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+     80% {
+         filter: blur(0px);
+         text-shadow: 8px 0 0 grey;
+    }
+     85% {
+         filter: blur(2px);
+         text-shadow: 10px 0 0 grey;
+    }
+     88% {
+         filter: blur(1px);
+         text-shadow: 5px 0 0 grey;
+    }
+     90% {
+         filter: blur(0px);
+         text-shadow: 0 0 0 grey;
+    }
+}
+/* Drunk Text - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
+// Do not type on previously visited passages
+Config.macros.typeVisitedPassages = false;
+
+// No Return
+$(document).on(':passagestart', function (ev) {
+	if (!ev.passage.tags.includes('noreturn')) {
+		State.variables.return = ev.passage.title;
+	}
+});
+
+function CopyToClipboard(id)
+{
+var r = document.createRange();
+r.selectNode(document.getElementById(id));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+}
+
+//Clipboard
+function myFunction() {
+  // Get the text field
+  var copyText = document.getElementById("myInput");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+}
+// Sound
+setup.Path = "";  // Running in a browser
+setup.ImagePath = setup.Path + "image/";
+setup.SoundPath = setup.Path + "sound/";
+
+// Check to see if trackID is currently loaded
+window.TrackExists = function (trackID) {
+	return SimpleAudio.tracks.has(trackID);
+};
+
+// Check to see if trackID is the currently playing track
+window.isPlaying = function (trackID) {
+	var track = SimpleAudio.tracks.get(trackID);
+	return track !== null && track.isPlaying();
+};
+
+// Splash
+
+(function () {
+	// Duration of the splash image's fade in.
+	var fadeIn  = 500; // in milliseconds
+
+	// Delay before the splash screen begins to fade out.
+	var linger  = 2000; // in milliseconds
+
+	// Duration of the splash screen's fade out.
+	var fadeOut = 1000; // in milliseconds
+
+	// Splash image.
+	var $image  = $('<span id="splash-logo"><img class="animate__animated animate__fadeInUp" src="img/AMQ-Rev.png"><p class="animate__animated animate__fadeInUp animate__delay-1s">Loading assets...</p></span>').hide();
+
+	// Display the splash screen.
+	$(document.body)
+		.find('#splash-screen')
+			.delay(linger)
+			.fadeOut(fadeOut);
+
+	// Set up the removal of the splash screen.
+	setTimeout(function () {
+		$('#splash-screen').remove();
+	}, fadeIn + linger + fadeOut + 1000);
+})();
+
+// Death
+Config.navigation.override = function (dest) {
+	var sv = State.variables;
+	// If $health is less-than-or-equal to 0, go to the "You Died" passage instead.
+	if (sv.approval <= 0 && sv.invincible === false) {
+		return "You Died";
+	}
+};
+
+// Health Bar
+window.Health = function (approval, maxapproval, BarID, Horizontal, Container) {
+	if (Container == undefined) {
+		Container = document;
+	}
+  
+	var HP = parseInt((approval / maxapproval) * 100).clamp(0, 100);
+	var BarElement = $(Container).find("#" + BarID);
+	if (Horizontal) {
+		BarElement.css({ width: approval + "%" });
+	} else {
+		BarElement.css({ height: approval + "%" });
+	}
+	BarElement.attr("title", approval + "/" + maxapproval + "");
+	$(Container).find("#" + BarID + "bkg").attr("title", approval + "/" + maxapproval + "%");
+};
+/* twine-user-script #2: "splash.js" */
+/* twine-user-script #3: "keyboard.js" */
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    const links = document.querySelectorAll('ol li a');
+
+    if (key >= '1' && key <= '3') {
+        /*const index = parseInt(key, 10) - 1; // Convert key to 0-based index
+        if (links[index]) {
+            links[index].click();
+        }*/
+    } else if (key === ']') {
+        // Move down the list
+        if (currentIndex < links.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Wrap around to the top
+        }
+        updateSelection(links);
+    } else if (key === '[') {
+        // Move up the list
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = links.length - 1; // Wrap around to the bottom
+        }
+        updateSelection(links);
+    } else if (key === 'Enter') {
+        // Select the current item
+        if (currentIndex >= 0 && currentIndex < links.length) {
+            links[currentIndex].click();
+            currentIndex = -1;
+            updateSelection(links); // Update selection to remove any highlight
+        }
+    }
+});
+
+let currentIndex = -1; // No item is selected initially
+
+function updateSelection(links) {
+    // Remove the selected class from all links
+    links.forEach(link => link.classList.remove('selected'));
+
+    // Add the selected class to the current link
+    if (currentIndex >= 0 && currentIndex < links.length) {
+        links[currentIndex].classList.add('selected');
+        links[currentIndex].focus();
+    }
+}</script><tw-tag name="title" color="green"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
+# [[Remedy acidic soils]]
+# [[Become a pile again|Stay as pile]]</tw-passagedata><tw-passagedata pid="2" name="Definitely remain ash" tags="" position="2875,1525" size="100,100">Ok, you&#39;re a pile of ash
+# [[Blow in wind]]
+# [[Remedy acidic soils]]
+# [[Stay as pile]]</tw-passagedata><tw-passagedata pid="3" name="Keep living in forest" tags="damange" position="2300,1600" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Fire.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The climate crisis deepens
+
+You and your woodland camp is consumed by a &#39;&#39;wildfire&#39;&#39;
+# [[Emerge from the flames]]
+# [[Remain a pile of ash]]</tw-passagedata><tw-passagedata pid="4" name="Remain a pile of ash" tags="mystery" position="2875,1375" size="100,100">You&#39;ll just be some ash and that&#39;s it
+
+Are you sure?
+# [[Definitely remain ash]]
+# [[Emerge from the flames]]</tw-passagedata><tw-passagedata pid="5" name="Stay as pile" tags="" position="3075,1625" size="100,100">You remain as a pile, for a while
+# [[Blow in wind]]
+# [[Remedy acidic soils]]
+# [[Stay as pile]]</tw-passagedata><tw-passagedata pid="6" name="Ask staff for help with horse problem" tags="nope" position="2025,575" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/pony-zombie.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Staff morale is &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+Due to &#39;&#39;low morale&#39;&#39;, the &#39;&#39;staff&#39;&#39; don&#39;t want to help
+# [[Fire some staff|Fire workforce]]
+# [[Fight undead horse alone]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="7" name="Bring crying child to work" tags="success" position="750,400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Child.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The crying child explains to the board the impact of the climate crisis on future generations...
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="8" name="Buy child Nintendo Switch" tags="nope" position="1700,200" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Child.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+The first game they play is called &#39;&#39;Asset Manager Quest&#39;&#39;
+
+This brings up the whole climate crisis thing again
+
+The &#39;&#39;child&#39;&#39; resumes &#39;&#39;crying&#39;&#39;
+# &lt;&lt;if not hasVisited(&quot;Buy child pony&quot;)&gt;&gt;[[Buy child pony]]&lt;&lt;else&gt;&gt;[[Buy another pony|Buy child pony]]&lt;&lt;/if&gt;&gt;
+# [[Go back for more pastries]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="9" name="Fight undead horse alone" tags="damange" position="2150,300" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/pony-zombie.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Your fists are no match for its undead hooves
+# [[Go to Asset Manager Heaven|Fly to the celestial realm]]</tw-passagedata><tw-passagedata pid="10" name="Go home to crying child" tags="item" position="1500,400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Child.png&quot;&gt;&gt;
+&lt;&lt;set $child to true&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+!!CRYING CHILD UNLOCKED!
+
+The &#39;&#39;crying child&#39;&#39; seems to be upset
+
+It might be worried about its &#39;&#39;future on earth&#39;&#39;
+# [[Buy child Nintendo Switch]]
+# [[Buy child pony]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="11" name="Named Pony" tags="nope" position="1900,400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Pony-dead.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+It&#39;s a beautiful summer&#39;s day
+
+Thanks to the climate crisis, $pony dies from heat exhaustion.
+
+Your &#39;&#39;child&#39;&#39; is now &#39;&#39;crying&#39;&#39; again
+# [[Resurrect pony][$undead to true]]
+# [[Buy child Nintendo Switch]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="12" name="Resurrect pony" tags="mystery" position="2200,500" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/pony-zombie.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+You agree to help a necromancer manage their financial assets on the side
+
+They resurrect $pony
+
+Undead $pony comes for your family
+# [[Fight undead horse alone]]
+# [[Ask staff for help with horse problem]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="13" name="Resurrect" tags="noreturn item" position="2550,1225" size="100,100">!!CELESTIAL REALM UNLOCKED!
+
+God resurrects you&lt;&lt;set $god to true&gt;&gt;
+
+Your experience of the fragility of life readjusts your priorities
+# [[Return to implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="14" name="Call on celestial realm" tags="success" position="900,350" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Wings-flight.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Angels fill the board room...
+
+Using divine light, they show the board the impacts of the climate crisis
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="15" name="Fossil Fuel Policy" tags="noreturn danger" position="700,75" size="200,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $invincible to false&gt;&gt;
+&lt;&lt;set $image to &quot;img/Board.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+!FINAL BOSS
+The board calls you into a meeting room
+
+&quot;A policy against fossil fuel bonds? How dare you put the polar bears before our short term profits???&quot;&lt;span id=&quot;tip&quot;&gt;&lt;br&gt;&lt;br&gt;&#39;&#39;TIP:  [[Start again|Intro]] and unlock more defences&#39;&#39;&lt;/span&gt;
+# [[Mention economic benefits]]
+# [[Mention severity of climate crisis]]
+# [[Mention company risk modelling|Risk]]
+# &lt;&lt;if $league&gt;&gt;[[Summon League]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $nature&gt;&gt;[[Use profound understanding of nature]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $god&gt;&gt;[[Call on celestial realm]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $child&gt;&gt;[[Bring crying child to work]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $phoenix&gt;&gt;[[Using phoenix magic]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $pastry&gt;&gt;[[Make everyone pastries]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+# &lt;&lt;if $shorts&gt;&gt;[[Show them your shorts]]&lt;&lt;else&gt;&gt;&lt;span class=&quot;locked&quot;&gt;Option Locked&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;script&gt;
+$(document).one(&#39;:passagedisplay&#39;, function() {
+    let listItems = document.querySelectorAll(&quot;ol li&quot;); 
+    let parent = listItems[0].parentNode;
+
+    let unlocked = Array.from(listItems).filter(el =&gt; !el.querySelector(&#39;.locked&#39;));
+    let locked = Array.from(listItems).filter(el =&gt; el.querySelector(&#39;.locked&#39;));
+
+    // Clear the parent container
+    parent.innerHTML = &#39;&#39;;
+
+    // Append unlocked elements first, then locked elements
+    unlocked.forEach(el =&gt; parent.appendChild(el));
+    locked.forEach(el =&gt; parent.appendChild(el));
+});
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="16" name="Make everyone pastries" tags="" position="500,600" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Lannan.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The pastries are a hit
+
+While Douglas is distracted you implement the fossil fuel exclusion policy
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="17" name="Mention economic benefits" tags="success" position="450,150" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Coins.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+You demonstrate to Chairman Sir Douglas Flint how your assets will become stuck in fossil fuels
+
+...as the world moves on to renewables
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="18" name="Mention severity of climate crisis" tags="success" position="475,0" size="100,100">&lt;&lt;set $image to &quot;img/Fire.png&quot;&gt;&gt;\
+You bring up findings from the IPCC and IEA that shows new fossil fuel projects are incompatible with limiting warming to 1.5c
+
+However, existing reserves could be used in the long transition to renewables...
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="19" name="Risk" tags="success" position="1000,25" size="100,100">You show Chairman Sir Douglas Flint the company&#39;s climate scenario modelling
+
+Including how it&#39;s to be based on wildly optimistic estimates of how the economy would hold up in a warmer world
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="20" name="Summon League" tags="success" position="400,300" size="100,100">The League of Asset Managers kidnap the board and convince them to join
+
+Everyone gets a cloak
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="21" name="Underworld" tags="ending" position="2400,1000" size="100,100">God sends you to the Asset Manager Underworld.
+
+Apparently the fires burn from fossil fuels $company invested in
+
+The fires are hot.
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Use profound understanding of nature" tags="success" position="450,450" size="100,100">You take the board on an away day to the woods
+
+...and show them the interconnectedness of the natural world
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="23" name="Using phoenix magic" tags="success" position="600,400" size="100,100">You spread your fiery wings and cast a spell of persuasion
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="24" name="Bad End" tags="ending" position="125,1425" size="100,100">The moral lesson portal closes behind you
+
+Your relationship with your grandchild is ruined
+
+But for those back in the present day, there&#39;s still hope
+
+Help us get abrdn&#39;s board to beat Asset Manager Quest
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Remedy acidic soils" tags="ending no-type" position="2875,1725" size="100,100">!GAME OVER!
+The soil beneath you loses its &#39;&#39;acidity&#39;&#39;
+
+You grow into a stinging nettle
+
+But for the next CEO, it doens&#39;t have to be this way
+
+Help us get abrdn&#39;s board to beat Asset Manager Quest
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Sell loss" tags="ending" position="700,1400" size="100,100">$company fires you
+
+You are no longer an asset manager CEO
+
+But perhaps your successor can turn things around…
+
+Help us get abrdn&#39;s board to play Asset Manager Quest
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Face reckoning by almighty power" tags="" position="2200,1200" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Wings-1.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;if $evadeGod == true&gt;&gt;God uses his God magic to return you to his office&lt;&lt;else&gt;&gt;You sit down in a chair in God&#39;s cloudy office&lt;&lt;/if&gt;&gt;
+
+The almighty one is pacing back and forth, furiously stroking their wispy beard
+
+&#39;&#39;Defend your place in heaven&#39;&#39;
+# [[Mention company&#39;s tree planting|Unhappy God][$answer to &quot;More trees?&quot;]]
+# [[Mention company&#39;s double-sided photo-copying|Unhappy God][$answer to &quot;Double-sided photocopying?&quot;]]</tw-passagedata><tw-passagedata pid="28" name="Fly to the celestial realm" tags="" position="2000,1200" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Wings-1.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+You&#39;re kicking back with the angels in Asset Manager heaven
+
+God calls you into his office to talk about $company&#39;s coal policy.
+
+It seems going to &#39;&#39;heaven&#39;&#39; might have been a clerical error
+# [[Give God the slip, go cloud surfing|Face reckoning by almighty power][$evadeGod to true]]
+# [[Face reckoning by almighty power][$evadeGod to false]]</tw-passagedata><tw-passagedata pid="29" name="Unhappy God" tags="damange" position="2375,1225" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Wings-1.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&quot;$answer&quot;
+
+God picks up the phone and starts to dial 666
+
+It&#39;s the devil&#39;s number...
+# [[Ask for second chance on earth|Resurrect]]
+# [[Accept fate|Underworld]]</tw-passagedata><tw-passagedata pid="30" name="Continue getting arse kicked" tags="" position="700,1200" size="100,100">You return with more violence
+
+They respond with compassion
+
+&quot;What are you so afraid of?&quot;
+# [[I&#39;m afraid of success|Disciples respond]]
+# [[I&#39;m afraid to be loved|Disciples respond]]
+# [[I&#39;m afraid of your weird Asset Management cult|Disciples respond]]</tw-passagedata><tw-passagedata pid="31" name="Escape to basement" tags="mystery" position="700,800" size="100,100">The Ghost of Asset Management Future taps you on the shoulder and startles you
+
+&quot;Why are you running?&quot;
+# [[I&#39;m afraid of success|Ghost responds]]
+# [[I&#39;m afraid to be loved|Ghost responds]]
+# [[I&#39;m afraid of ghosts|Ghost responds]]</tw-passagedata><tw-passagedata pid="32" name="Get kidnapped" tags="damange" position="1250,800" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/League.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+People jump out the &#39;&#39;mysterious van&#39;&#39; and bag you
+
+You wake up in a &#39;&#39;candlelit&#39;&#39; room, surrounded by cloaked figures.
+
+&quot;Welcome... to the League of Asset Managers&quot; they chant in unison
+# [[The who?|League Short]]
+# [[Let me go! I&#39;ve got financial assets to manage|League Short]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="33" name="Ghost responds" tags="" position="600,1000" size="100,100">The ghost manager nods understandingly 
+
+&quot;It&#39;s good you can be honest with yourself&quot;
+
+&quot;But you must know the consequences of your choices&quot;
+
+The ghost opens a &#39;&#39;moral lesson portal&#39;&#39;
+# [[Enter portal, receive moral lesson|Vision of Future]]
+# [[Skip lesson, join league|Join League]]</tw-passagedata><tw-passagedata pid="34" name="Join League" tags="item" position="400,800" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/League.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+!!LEAGUE OF ASSET MANAGERS UNLOCKED!
+
+The league hands you a cloak adorned with their crest
+
+&quot;It&#39;s super comfy. I wear mine to bed&quot; &lt;&lt;set $league to true&gt;&gt;
+# [[Question cloak&#39;s appropriateness|Question cloak]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$league to true]]</tw-passagedata><tw-passagedata pid="35" name="Karate fail" tags="damange" position="750,1025" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Karate.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Pow, pow
+
+The black belt Asset Managers floor you with their martial prowess
+
+You wish you&#39;d worn a more loose fitting suit
+# [[Escape to basement]]
+# [[Continue getting arse kicked]]
+# [[Surrender and join the League|Join League]]</tw-passagedata><tw-passagedata pid="36" name="League Short" tags="" position="1025,950" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/League.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&quot;&#39;&#39;The League&#39;&#39; is a secret society of asset managers…
+
+…who use their assets for good, not for evil&quot;
+
+&quot;We think you have great potential…&quot;
+# [[Join league, stop funding fossil fuels|Join League]]
+# [[Untie wrist restraints, throw candle|Untie wrist restraints]]</tw-passagedata><tw-passagedata pid="37" name="Question cloak" tags="noreturn" position="325,500" size="100,100">The League gives you a silent, cold stare
+
+Pressure is mounting in the room
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="38" name="Sorry Kid" tags="" position="225,1150" size="100,100">&quot;Oh, ok...&quot;
+
+Your grandchild leaves the room to play with his new water desalination device
+# [[Return to reality, join League|Join League]]
+# [[Stay in horrible future, end game|Bad End]]</tw-passagedata><tw-passagedata pid="39" name="Untie wrist restraints" tags="damange" position="900,775" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Fire.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+The candle causes &#39;&#39;fire&#39;&#39; and &#39;&#39;commotion&#39;&#39;, letting you escape into the hall.
+
+Blocking the exit are &#39;&#39;black belt disciples&#39;&#39; of the League of Asset Managers
+&lt;&lt;/type&gt;&gt;\
+# [[Karate kick|Karate fail]]
+# [[Karate punch|Karate fail]]
+# [[Escape to basement]]</tw-passagedata><tw-passagedata pid="40" name="Vision of Future" tags="mystery" position="400,1200" size="100,100">It&#39;s Christmas eve, thirty years in the future. Large parts of the globe are currently uninhabitable
+
+You&#39;re about to sing a Mariah Carey song, but your grandchild interrupts
+
+&quot;You did everything you could to stop the climate crisis... didn&#39;t you Grandad?&quot;
+# [[Return to reality, join League|Join League]]
+# [[Tell grandchild you invested in fossil fuel expansion in line with your company&#39;s risk assessments|Sorry Kid]]</tw-passagedata><tw-passagedata pid="41" name="Who" tags="noreturn" position="200,600" size="100,100">You enter combat with the game&#39;s creators, who go by the name &#39;&#39;Serious People&#39;&#39;
+# &lt;a href=&quot;https://olifro.st&quot;&gt;Punch Oli Frost&lt;br&gt;(Words, Web, Music)&lt;/a&gt;
+# &lt;a href=&quot;https://www.mandrews.studio&quot;&gt;Kick Mike Andrews&lt;br&gt;(Design)&lt;/a&gt;
+# &lt;span class=&quot;locked&quot;&gt;Tackle Ruth Newton&lt;br&gt;(Producer)&lt;/span&gt;
+# &lt;span class=&quot;locked&quot;&gt;Throw Jamie Inman&lt;br&gt;(Strategy)&lt;/span&gt;
+&lt;&lt;if $alive&gt;&gt;&lt;&lt;link &quot;Return to game&quot; $return&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;else&gt;&gt;[[Restart game|Intro][state.restart()]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="abrdn" tags="info noreturn" position="175,725" size="100,100">!A True Story &lt;span class=&quot;nobr&quot;&gt;of Asset&lt;/span&gt; Mismanagement
+&#39;&#39;abrdn&#39;&#39; is a real (poorly named) company that is investing over $3.6 billions in bonds issued by fossil fuel expansionists.
+
+It&#39;s one of the few European asset managers that still hasn’t published a coal exclusion policy, and is overall the 4th most exposed asset manager to fossil fuel bonds.
+
+Nice stats! But what&#39;s that mean?
+
+For life on earth, it&#39;s a problem. Research shows that new fossil fuel developments are incompatible with keeping warming &lt;span class=&quot;nobr&quot;&gt;under 1.5c.&lt;/span&gt;
+
+For business it&#39;s not good either – it&#39;s exposing abrdn to both financial and &lt;span class=&quot;nobr&quot;&gt;legal risk.&lt;/span&gt;
+
+As the world moves on to renewables, abrdn&#39;s assets could become stranded in fossil fuels.
+
+But following a disastrous rebrand, company layoffs, and falling stocks, the new CEO has an opportunity to turn their fortunes around.
+
+If you can do it, they can too...
+&lt;&lt;if $alive&gt;&gt;\
+# &lt;&lt;link &quot;Return to game&quot; $return&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;else&gt;&gt;\
+#[[Restart game|Intro][state.restart()]]
+&lt;&lt;/if&gt;&gt;\
+Learn more about the &lt;a class=&quot;nobr&quot; href=&quot;https://toxicbonds.org&quot;&gt;Toxic Bonds Network&lt;/a&gt;</tw-passagedata><tw-passagedata pid="43" name="Accuse media bullies of bullying" tags="down" position="900,1400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Approval-down-2.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The media bullies bully you over your bullying accusation
+
+Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+Your &#39;&#39;kids&#39;&#39; ask if you can pick them up from school a couple of streets from the gate, to avoid them &#39;&#39;embarrassment&#39;&#39;
+# [[Do another rebrand]]
+# [[Implement Casual Fridays|It&#39;s time for casual Fridays]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="44" name="Fire workforce" tags="down" position="1600,1200" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Approval-down-1.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+Your secretary starts getting your &#39;&#39;lunch order&#39;&#39; wrong, quite likely on purpose
+
+Drastic action is needed to get your &#39;&#39;sandwiches&#39;&#39; back on track
+# [[It&#39;s time for a rebrand|Rebrand]]
+# [[It&#39;s time for casual Fridays]]
+# [[It&#39;s time to sell all of abrdn’s coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="45" name="Get job back" tags="" position="1750,775" size="100,200">&lt;&lt;type 20ms none&gt;&gt;\
+The share price of $company has fallen fast due to stranded assets in fossil fuels
+
+You aggressively buy shares and take back control
+&lt;&lt;if $pastry&gt;&gt;\
+
+Using your pastry profits...
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if not hasVisited(&quot;Give Bonus&quot;)&gt;&gt;\
+# [[Divest from the fossil fuel industry|Fossil Fuel Policy][$invincible to true]]
+# [[Give yourself a massive bonus|Give Bonus][$approval to 12]]
+# [[Make lots of staff redundant|Fire workforce]]
+&lt;&lt;else&gt;&gt;\
+# [[Divest from the fossil fuel industry|Fossil Fuel Policy][$invincible to true]]
+# [[Get back to firing workforce|Fire workforce][$approval to 12]]
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="46" name="Give Bonus" tags="down" position="1675,1025" size="200,100">£800,000 is deposited in your account, and staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+Staff stop looping you into funny email threads.
+
+However, the sun&#39;s out and it seems like a great day to...
+# [[Go clothes shopping|Go shopping]]
+# [[Go chair shopping|Chair shopping]]
+# [[Think about the impacts fossil fuel bonds have on all our futures|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="47" name="Go back to the office" tags="" position="1575,800" size="100,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Office.png&quot;&gt;&gt;
+&lt;&lt;set $approval to 12&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Back in your office you find a moment&#39;s peace surveying Edinburgh&#39;s skyline
+
+You ponder a brighter future at $company
+
+A way to change its reputation... a way to start a conversation...
+# [[Make loads of redundancies|Fire workforce]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="48" name="Go home to get changed" tags="down" position="1025,1700" size="100,100">!!SHORTS REMOVED!
+
+You return to the office, fully trousered&lt;&lt;set $shorts to false&gt;&gt;
+
+But now everyone has gone to the pub
+
+Without you...
+
+Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+# [[It&#39;s time for a rebrand|Rebrand]]
+# [[It&#39;s time to sell all of our coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="49" name="It&#39;s time for casual Fridays" tags="item" position="1175,1550" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/shorts-tie-shirt-2.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+!!SHORTS UNLOCKED!
+
+&lt;&lt;set $shorts to true&gt;&gt;On the first &#39;&#39;Casual Friday&#39;&#39; you wear shorts
+
+It&#39;s clearly not short weather, and everybody laughs at you
+# [[Wear shorts with confidence]]
+# [[Go home to get changed]]
+# [[Implement a policy against fossil fuels|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="50" name="Rebrand fail" tags="down" position="1225,1300" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Approval-down-2.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The &#39;&#39;&lt;&lt;print $company&gt;&gt;&#39;&#39; rebrand does not go well
+
+Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+The &#39;&#39;media bullies&#39;&#39; have started making satirical cartoons &lt;span class=&quot;nb&quot;&gt;about you&lt;/span&gt;
+# [[Accuse media bullies of bullying]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]
+&lt;&lt;script&gt;&gt;gtag(&#39;event&#39;, &#39;rename&#39;, {
+  &#39;event_category&#39;: &#39;abrdn&#39;,
+  &#39;event_label&#39;: State.variables.company
+});&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="51" name="Show them your shorts" tags="" position="700,575" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/shorts-tie-shirt-2.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+You put your leg up on the chair, confidently displaying your casual shorts
+
+While Chairman Sir Douglas Flint is distracted by your legs, you implement the fossil fuel exclusion policy
+
+# [[It works!|Good End]]</tw-passagedata><tw-passagedata pid="52" name="Sigh, with regret" tags="noreturn mystery" position="600,1600" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Stranded-Assets.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Years pass and your assets in fossil fuels have become stranded as the market moves on to renewables
+
+&#39;&#39;Abrdn&#39;&#39; is nicknamed &#39;&#39;Abrdoomed&#39;&#39;
+# [[Sell fossil fuel bonds at huge loss|Sell loss]]</tw-passagedata><tw-passagedata pid="53" name="Start selling staff&#39;s computers" tags="down" position="1225,1900" size="100,100">You sell off the staff&#39;s Bloomberg terminals
+
+The new computers are slow, and staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+Whenever you approach the water cooler, staff abruptly leave with half full glasses.
+
+&lt;&lt;approval&gt;&gt;
+&lt;&lt;if not hasVisited(&quot;Fire workforce&quot;)&gt;&gt;\
+# [[Make loads of people redundant|Fire workforce]]
+# [[Buy yourself a big chair|Chair shopping]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+&lt;&lt;else&gt;&gt;\
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Buy yourself a big chair|Chair shopping]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="54" name="Stay in office" tags="" position="1450,800" size="100,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Office.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+You&#39;re about to beat your &#39;&#39;high score&#39;&#39; when &#39;&#39;Tracy Hahn&#39;&#39; from HR interrupts
+
+Staff morale is at &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+&#39;&#39;But maybe you can fix that...&#39;&#39;
+# [[Make loads of redundancies|Fire workforce]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="55" name="Tea bags" tags="down" position="1250,1700" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Approval-down-2.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+Staff have to keep little mason jars on their desks with their own tea bags
+
+It saves around £180.33 per year, but staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+&lt;&lt;if not hasVisited(&quot;Fire workforce&quot;)&gt;&gt;\
+# [[Make loads of people redundant|Fire workforce]]
+# [[Start selling staff&#39;s computers]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+&lt;&lt;else&gt;&gt;\
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Start selling staff&#39;s computers]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="56" name="Wear shorts with confidence" tags="down" position="1400,1700" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/shorts-tie-shirt-sad.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+It doesn&#39;t work.
+
+Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%&#39;&#39;
+
+&lt;&lt;approval&gt;&gt;
+People continue laughing at your legs
+# [[Make staff pay for their own tea bags|Tea bags]]
+# [[Sell coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="57" name="You Died" tags="nope" position="750,1725" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Approval-down-3.png&quot;&gt;&gt;
+&lt;&lt;set $alive to false&gt;&gt;&lt;&lt;set $approval to 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&#39;&#39;Staff morale&#39;&#39; is too low
+
+Chairman Sir Douglas Flint pulls you into his office
+
+He wants to know your vision for abrdn
+&lt;&lt;if $nature&gt;&gt;\
+# [[Stop investing in fossil fuels|Fossil Fuel Policy][$invincible to true]]
+# [[Keep investing in fossil fuels|Sigh, with regret]]
+&lt;&lt;else&gt;&gt;\
+# [[Stop investing in fossil fuels|Fossil Fuel Policy][$invincible to true]]
+# [[Keep investing in fossil fuels|Sigh, with regret]]
+# [[Quit job, go live in forest|Life after office]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="Become a pastry chef" tags="item" position="1925,675" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Pastry-chef.png&quot;&gt;&gt;
+&lt;&lt;set $pastry to true&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+!!PASTRY TALENT UNLOCKED
+
+Three years pass...
+
+You now make croissants full time, which is lovely
+
+But besides rebranding the bakery Lannan as Lnnnn... 
+
+You haven&#39;t done much&lt;&lt;set $pastry to true&gt;&gt;
+# [[Go get your job back|Get job back]]
+# [[Put your passion into pastry|Passion into pastry]]</tw-passagedata><tw-passagedata pid="59" name="Discuss pastry" tags="nope" position="3000,850" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+Was $pastry really the right choice?
+
+Perhaps it wasn&#39;t ambitious enough
+
+The bird offers no answers or help
+&lt;&lt;if not hasVisited(&quot;Discuss storm&quot;)&gt;&gt;\
+# [[Discuss annoying storm|Discuss storm]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="60" name="Discuss storm" tags="nope" position="3025,675" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+You blame your defeat on the gale-force winds, making no mention of the climate crisis that made them more likely
+
+The bird offers no answers or help
+
+&lt;&lt;if not hasVisited(&quot;Discuss pastry&quot;)&gt;&gt;\
+# [[Discuss choice of pastry|Discuss pastry]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="61" name="Get pastries" tags="secondlevel" position="1350,500" size="100,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Lannan.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+Yeah, who needs penguins anyway.
+
+You pass a &#39;&#39;mysterious van&#39;&#39; on your way to the Lannan bakery
+
+As you finish your flaky &#39;&#39;croissant&#39;&#39;, your partner calls
+
+One of your children just learned how bad the climate crisis is and is &#39;&#39;crying&#39;&#39;
+# [[Go home to crying child]]
+# [[Go get more pastries|Go back for more pastries]]
+# [[Go check mysterious van|Get kidnapped]]
+&lt;&lt;/type&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Go back for more pastries" tags="nope" position="1625,575" size="100,100">&lt;&lt;type 20ms none&gt;&gt;\
+The hipster pastry shop lady raises her eyebrow inquisitively
+
+&quot;Another pastry? I&#39;m afraid we&#39;re sold out.&quot;
+
+&quot;The instability of gas prices has made us more conservative in how often we use the croissant oven&quot;
+# [[Stop investing in coal, oil and gas|Fossil Fuel Policy]]
+# [[Stop asking for pastries|Go back to the office]]
+# [[Become a pastry chef]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="63" name="Passion into pastry" tags="" position="2100,800" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Pastry-chef.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;set _name to &quot;&quot;, $pastry to &quot;Cinnamon Swirl&quot;&gt;&gt;\
+After years of training, you reach the final of the World Pastry Championships
+
+You&#39;re up against your bitter rival Larry, another ex-asset manager
+
+&#39;&#39;What will you bake?&#39;&#39;
+
+&lt;&lt;textbox &quot;_name&quot; $pastry&gt;&gt;
+# &lt;&lt;link &quot;Choose Pastry&quot;&gt;&gt;&lt;&lt;set _name to _name.trim()&gt;&gt;&lt;&lt;set $pastry to _name&gt;&gt;&lt;&lt;goto &quot;Pastry Championships&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+# [[Switch to Apple Strudel|Pastry Championships][$pastry to &quot;Apple Strudel&quot;]]
+# [[Switch to Baklava|Pastry Championships][$pastry to &quot;Baklava&quot;]]</tw-passagedata><tw-passagedata pid="64" name="Pastry Championships" tags="" position="2225,1000" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Pastry-chef.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The contest is interrupted by gale-force winds
+
+Your $pastry is blown out of your hands
+
+The skies of Edinburgh are filled with baked goods
+
+Maybe the pastry business wasn&#39;t for you...
+# [[Go get your job back|Get job back]]
+# [[Go live in nature|Life after pastry]]</tw-passagedata><tw-passagedata pid="65" name="Quick End" tags="win, noreturn" position="1175,150" size="200,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/YOU WIN.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 15ms none&gt;&gt;\
+Your fellow asset managers sing songs about you, praising &lt;span class=&quot;nobr&quot;&gt;your leadership&lt;/span&gt;
+
+&#39;&#39;$company&#39;&#39; gets its reputation back on track with a &#39;&#39;policy to stop investing in coal, oil and gas bonds&#39;&#39;
+
+While the world transitions to cleaner, cheaper, safer &lt;span class=&quot;nobr&quot;&gt;renewable energy&lt;/span&gt;
+
+Too easy? &lt;&lt;link &quot;Start again&quot; $return&gt;&gt;&lt;&lt;/link&gt;&gt; and make a different choice
+# &lt;&lt;link &quot;Restart game&quot; $return&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="66" name="Intro" tags="no-type intro" position="1025,550" size="200,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;setvariables&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms start 2s none&gt;&gt;\
+You are the new CEO of &#39;&#39;$company&#39;&#39; asset management
+
+Your company is stuck in the past, putting billions into fossil fuels
+
+One day, a &#39;&#39;thought&#39;&#39; arrives
+
+&quot;Maybe we should... &lt;br class=&quot;optional-br&quot;&gt;not do that?&quot;
+# [[Ignore thought, go get pastries|Get pastries]]
+# [[Ignore thought, play minesweeper|Stay in office]]
+# [[Listen to thought, stop funding fossil fuels|Quick End]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="67" name="Attack the hate" tags="mystery" position="1550,1825" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+The hate dodges. 
+
+Emotional capacity at &#39;&#39;250%&#39;&#39;
+
+You collapse due to too many emotions.
+# [[Go live in nature|Go to live in nature]]
+# [[Go clubbing]]</tw-passagedata><tw-passagedata pid="68" name="Buy yourself a big chair" tags="" position="1350,2000" size="100,100">Staff morale drops to &#39;&#39;&lt;&lt;print $approval&gt;&gt;%
+
+&lt;&lt;approval&gt;&gt;
+
+The chair is comfy, but you&#39;re uncomfortable
+
+You feel sad somehow
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]</tw-passagedata><tw-passagedata pid="69" name="Chair room" tags="" position="2050,1350" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Stephen-chair.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The $clothes is comfy, but you&#39;re uncomfortable
+
+You feel sad somehow
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]</tw-passagedata><tw-passagedata pid="70" name="Chair shopping" tags="" position="1925,1100" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Stephen-chair.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+You arrive in a stylish, office chair showroom
+
+The choice is overwhelming
+
+But you feel empowered by possibilities of having lots of money
+# [[Sit on big leather chair|Chair room][$clothes to &quot;big leather chair&quot;]]
+# [[Sit on big ergonomic chair|Chair room][$clothes to &quot;big ergonomic chair&quot;]]
+# [[Sit on humble chair|Chair room][$clothes to &quot;humble chair&quot;]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="71" name="Dressing Room" tags="" position="1500,1525" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+In the changing room mirror, you like what you see
+
+The $clothes is a perfect fit for your supple asset managing body
+
+But in your eyes, there&#39;s a sadness
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]</tw-passagedata><tw-passagedata pid="72" name="Explore the sadness" tags="rework" position="1900,1550" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+You care for the future of life on earth...
+
+But fund the destruction of it...
+
+The emotion becomes &#39;&#39;too much&#39;&#39;
+# [[Go to live in nature|Spend more time in forest]]</tw-passagedata><tw-passagedata pid="73" name="Go clubbing" tags="forest" position="1825,1900" size="100,100">&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;span class=&quot;drunk&quot;&gt;
+It&#39;s 3AM when you finally leave the sticky dance floor at &#39;&#39;Gari&#39;s&#39;&#39;
+
+A wise owl, that maybe isn&#39;t real, perches on a bollard.
+
+You feel like opening up to it&lt;/span&gt;
+# [[Discuss childhood]]
+# [[Discuss what you bought in the mall|Discuss clothes]]
+# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="74" name="Go shopping" tags="" position="1725,1275" size="100,100">&lt;&lt;type 20ms none&gt;&gt;\
+You arrive at one of Edinburgh&#39;s great shopping malls
+
+Madonna&#39;s &quot;Material Girl&quot; plays on the mall radio
+
+You feel empowered by possibilities of having lots of money
+# [[Try on plain white oxford shirts|Dressing Room][$clothes to &quot;white oxford shirt&quot;]]
+# [[Try on plain blue oxford shirts|Dressing Room][$clothes to &quot;blue oxford shirt&quot;]]
+# [[Try on funky tie|Dressing Room][$clothes to &quot;funky tie&quot;]]
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="75" name="Push anger down" tags="nope" position="2100,1800" size="100,100">The anger leads to hate
+
+The hate turns on you
+
+Emotional capacity at &#39;&#39;125%&#39;&#39;
+# [[Attack the hate]]
+# [[Explore self-hate|Explore the sadness]]</tw-passagedata><tw-passagedata pid="76" name="Push fear down" tags="nope" position="1725,1725" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+The fear leads to panic
+
+It gets more panicky
+
+Emotional capacity at &#39;&#39;75%&#39;&#39;
+# [[Push panic down]]
+# [[Explore emotions|Explore the sadness]]</tw-passagedata><tw-passagedata pid="77" name="Push panic down" tags="nope" position="1900,1750" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+The panic leads to anger.
+
+It gets more angry.
+
+Emotional capacity at &#39;&#39;95%&#39;&#39;
+# [[Push anger down]]
+# [[Explore emotions|Explore the sadness]]</tw-passagedata><tw-passagedata pid="78" name="Push the sadness down more" tags="nope" position="1700,1500" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The sadness turns into objectless fear
+
+It gets more fearful.
+
+Emotional capacity at &#39;&#39;50%&#39;&#39;
+# [[Push fear down]]
+# [[Explore the fear|Explore the sadness]]</tw-passagedata><tw-passagedata pid="79" name="Push the sadness down" tags="nope" position="1875,1375" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Sad Manager.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The sadness doesn&#39;t want to be pushed down
+
+It gets more sad
+
+Emotional capacity at &#39;&#39;40%&#39;&#39;
+# [[Keep trying to push sadness down|Push the sadness down more]]
+# [[Explore the sadness]]</tw-passagedata><tw-passagedata pid="80" name="Disciples respond" tags="" position="500,1400" size="100,100">&quot;It&#39;s good you can be honest with yourself&quot;
+
+&quot;But you must understand the consequences of the choices you&#39;re making&quot;
+
+The disciples open a &#39;&#39;moral lesson portal&#39;&#39;
+# [[Enter portal, receive moral lesson|Vision of Future]]
+# [[Skip lesson, join league|Join League]]</tw-passagedata><tw-passagedata pid="81" name="Discuss childhood" tags="rework nope" position="2900,1175" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+You recall a day the playground bullies laughed, and you cried
+
+The day you wore socks with the days of the week written on them
+
+The bird offers no answers or help
+&lt;&lt;if not hasVisited(&quot;Discuss clothes&quot;)&gt;&gt;\
+# [[Discuss your mall purchases|Discuss clothes]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="82" name="Discuss climate crisis" tags="" position="3075,1375" size="100,100">&lt;&lt;cacheaudio &quot;bird&quot; &quot;sound/bird-1.mp3&quot;&gt;&gt;\
+&lt;&lt;audio &quot;bird&quot; play volume 0.2&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+You care about the future of the planet
+
+Yet you funded the destruction of it
+
+The disparity between belief and action dawns on you
+
+The &#39;&#39;bird&#39;&#39; chirps appreciatively
+# [[Learn more from nature|Spend more time in forest]]
+# [[Go get your job back|Get job back]]</tw-passagedata><tw-passagedata pid="83" name="Discuss clothes" tags="nope" position="2700,1250" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+You explore your emotional connection to the $clothes
+
+The bird offers no answers or help
+&lt;&lt;if not hasVisited(&quot;Discuss childhood&quot;)&gt;&gt;\
+# [[Discuss your childhood|Discuss childhood]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="84" name="Discuss media bullying" tags="" position="750,2000" size="100,100">You complain about the media bullying you
+
+The bird points out you bully the planet every day
+
+Fair enough…
+&lt;&lt;if not hasVisited(&quot;Discuss staff bullying&quot;)&gt;&gt;\
+# [[Discuss staff bullying]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="85" name="Discuss staff bullying" tags="" position="875,2000" size="100,100">You complain about your staff bullying you
+
+The bird points out you bully the planet every day
+
+Fair enough…
+&lt;&lt;if not hasVisited(&quot;Discuss media bullying&quot;)&gt;&gt;\
+# [[Discuss media bullying]]
+# [[Discuss climate crisis]]
+&lt;&lt;else&gt;&gt;\
+# [[Discuss climate crisis]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="86" name="Emerge from the flames" tags="item" position="2500,1600" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Phoenix.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+You are reborn, not as an asset manager
+
+But as a magical phoenix asset manager
+
+You go flying and stuff &lt;&lt;set $phoenix to true&gt;&gt;
+
+!!PHOENIX MAGIC UNLOCKED!
+# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]</tw-passagedata><tw-passagedata pid="87" name="Go to live in nature" tags="rework forest" position="2850,975" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+It&#39;s another day out in the Scottish forest
+
+You discuss your emotions with your therapist...
+
+…who happens to a bird
+# [[Discuss childhood]]
+# [[Discuss recent purchases|Discuss clothes]]
+# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="88" name="Life after office" tags="forest" position="750,1875" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+It&#39;s another day out in the Scottish forest
+
+You discuss your failed asset managing career with your therapist
+
+…who happens to be a bird
+# [[Discuss media bullying]]
+# [[Discuss staff bullying]]
+# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="89" name="Life after pastry" tags="forest" position="2775,825" size="100,100">&lt;&lt;set $image to &quot;img/Bird therapist.png&quot;&gt;&gt;\
+It&#39;s another day out in the Scottish forest
+
+You discuss your defeat in the Pastry Championships with your therapist
+
+…who happens to be a bird
+# [[Discuss your choice of pastry|Discuss pastry]]
+# [[Discuss annoying storm|Discuss storm]]
+# [[Discuss climate crisis]]</tw-passagedata><tw-passagedata pid="90" name="Spend more time in forest" tags="item" position="2275,1425" size="100,100">&lt;&lt;set $image to &quot;img/trees.png&quot;&gt;&gt;\
+&lt;&lt;if $notherapy&gt;&gt;\
+You go to live in the Scottish forest, and come to see the natural world differently
+&lt;&lt;else&gt;&gt;\
+In the years that pass out in the forest, you come to see the natural world differently
+&lt;&lt;/if&gt;&gt;\
+
+Instead of an asset to be traded
+
+You see yourself as part of it
+
+!!Understanding of natural world unlocked!&lt;&lt;set $nature to true&gt;&gt;
+# [[Go get your job back|Get job back]]
+# [[Keep living in forest]]</tw-passagedata><tw-passagedata pid="91" name="Fail Music" tags="" position="2350,100" size="100,100"></tw-passagedata><tw-passagedata pid="92" name="Learn" tags="" position="2775,600" size="100,100">Nothing to see here
+
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="93" name="Passage List" tags="poof.ignore no-type" position="2625,350" size="100,100">&lt;&lt;for _p range Story.lookupWith(p =&gt; p)&gt;&gt;
+  &lt;&lt;link _p.title _p.title&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/for&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="PassageDone" tags="poof.ignore" position="2650,75" size="100,100"></tw-passagedata><tw-passagedata pid="95" name="PassageFooter" tags="Header poof.ignore no-type" position="25,975" size="100,100">&lt;&lt;if _tags.includes(&quot;ending&quot;)&gt;&gt;\
+[[Restart game|Intro][state.restart()]]
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="96" name="PassageHeader" tags="poof.ignore no-type" position="2550,175" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set _tags to tags()&gt;&gt;
+&lt;&lt;if _tags.includes(&quot;ending&quot;)&gt;&gt;
+    &lt;&lt;set $alive to false&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;if _tags.includes(&quot;ending&quot;)&gt;&gt;\
+    &lt;&lt;set $alive to false&gt;&gt;\
+    &lt;&lt;set $image to &quot;img/GAME OVER 2.png&quot;&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if _tags.includes(&quot;down&quot;)&gt;&gt;\
+&lt;&lt;set $approval to $approval - 3&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;silently&gt;&gt;\
+&lt;&lt;if _tags.includes(&quot;ending&quot;)&gt;&gt;
+    &lt;&lt;cacheaudio &quot;fail&quot; &quot;sound/fail.mp3&quot;&gt;&gt;\
+    &lt;&lt;audio &quot;:playing:not(:ui)&quot; fadeoverto 1 0&gt;&gt;
+    &lt;&lt;audio &quot;fail&quot; play&gt;&gt;\
+&lt;&lt;elseif _tags.includes(&quot;intro&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;load&quot; play volume 0.2&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;win&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;win&quot; play volume 0.2&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;item&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;win&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;beep&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;select&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;owl&quot;)&gt;&gt;
+    &lt;&lt;cacheaudio &quot;owl&quot; &quot;sound/owl.wav&quot;&gt;&gt;
+    &lt;&lt;audio &quot;owl&quot; play volume 0.2&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;mystery&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;mystery&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;forest&quot;)&gt;&gt;
+&lt;&lt;cacheaudio &quot;forest&quot; &quot;sound/forest.mp3&quot;&gt;&gt;
+    &lt;&lt;audio &quot;forest&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;damange&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;explode&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;danger&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;danger&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;down&quot;)&gt;&gt;
+    &lt;&lt;if $approval === 0&gt;&gt;
+          &lt;&lt;audio &quot;danger&quot; play&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;audio &quot;down&quot; play&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;nope&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;nope&quot; play&gt;&gt;
+&lt;&lt;elseif _tags.includes(&quot;success&quot;)&gt;&gt;
+    &lt;&lt;audio &quot;load&quot; play&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;if $alternateSound is undefined or $alternateSound is &quot;select&quot;&gt;&gt;
+        &lt;&lt;set $alternateSound to &quot;ping&quot;&gt;&gt;
+        &lt;&lt;audio &quot;ping&quot; play&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set $alternateSound to &quot;select&quot;&gt;&gt;
+        &lt;&lt;audio &quot;select&quot; play&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;script&gt;&gt;gtag(&#39;event&#39;, &#39;loaded&#39;, {
+  &#39;event_category&#39;: &#39;passage&#39;,
+  &#39;event_label&#39;: State.variables.passage_name
+});&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="97" name="PassageReady" tags="poof.ignore no-type" position="2550,75" size="100,100">&lt;&lt;set _tags to tags()&gt;&gt;
+&lt;&lt;set $image to &quot;img/Asset Manager.png&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="98" name="Snippets" tags="" position="2825,225" size="100,100">&lt;&lt;if $alternateSound is undefined or $alternateSound is &quot;select&quot;&gt;&gt;
+        &lt;&lt;set $alternateSound to &quot;ping&quot;&gt;&gt;
+        &lt;&lt;audio &quot;ping&quot; play&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set $alternateSound to &quot;select&quot;&gt;&gt;
+        &lt;&lt;audio &quot;select&quot; play&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+    
+     &lt;div id=&quot;gamestate&quot; class=&quot;animate__animated animate__jackInTheBox&quot;&gt;[img[img/WIN.png]]&lt;/div&gt;
+     
+             &lt;div id=&quot;gameover&quot; class=&quot;animate__animated animate__jackInTheBox&quot;&gt;[img[img/GAME OVER 2.png]]&lt;/div&gt;
+             
+             
+             
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+
+&lt;/head&gt;</tw-passagedata><tw-passagedata pid="99" name="StoryCaption" tags="no-type poof.ignore" position="75,175" size="100,100"></tw-passagedata><tw-passagedata pid="100" name="StoryDisplayTitle" tags="no-type poof.ignore" position="175,175" size="100,100">Asset Manager Quest</tw-passagedata><tw-passagedata pid="101" name="StoryInit" tags="utility" position="2450,75" size="100,100">&lt;&lt;cacheaudio &quot;load&quot; &quot;sound/load.mp3&quot;&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt;
+&lt;&lt;setvariables&gt;&gt;
+&lt;&lt;set $image to &quot;img/Asset Manager.png&quot;&gt;&gt;
+
+&lt;&lt;cacheaudio &quot;ping&quot; &quot;sound/ping1.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;select&quot; &quot;sound/ping2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;win&quot; &quot;sound/win.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;down&quot; &quot;sound/down.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;mystery&quot; &quot;sound/mystery.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;explode&quot; &quot;sound/explode.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;danger&quot; &quot;sound/danger.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;nope&quot; &quot;sound/nope.mp3&quot;&gt;&gt;
+&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
+	&lt;&lt;track &quot;select&quot;&gt;&gt;
+	&lt;&lt;track &quot;win&quot;&gt;&gt;
+  	&lt;&lt;track &quot;load&quot;&gt;&gt;
+     &lt;&lt;track &quot;ping&quot;&gt;&gt;
+      &lt;&lt;track &quot;down&quot;&gt;&gt;
+      &lt;&lt;track &quot;mystery&quot;&gt;&gt;
+      &lt;&lt;track &quot;explode&quot;&gt;&gt;
+      &lt;&lt;track &quot;danger&quot;&gt;&gt;
+      &lt;&lt;track &quot;nope&quot;&gt;&gt;
+&lt;&lt;/createaudiogroup&gt;&gt;
+&lt;&lt;audio &quot;:all:ui&quot; volume 0.40&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="StoryInterface" tags="" position="275,25" size="100,100">&lt;body&gt;
+&lt;div id=&quot;splash-screen&quot;&gt;&lt;span id=&quot;splash-logo&quot;&gt;&lt;img class=&quot;animate__animated animate__fadeInUp&quot; src=&quot;img/AMQ-Rev.png&quot;&gt;&lt;p class=&quot;animate__animated animate__fadeInUp animate__delay-1s&quot;&gt;Loading assets...&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;game-container&quot; id=&quot;protectedContent&quot; class=&quot;hidden&quot;&gt;
+        &lt;div class=&quot;header&quot;&gt;
+            &lt;div id=&quot;sidePanel&quot; data-passage=&quot;sidePanel&quot; class=&quot;menu&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;banner&quot;&gt;
+                 &lt;div id=&quot;banner-left&quot;&gt;&lt;img src=&quot;img/banner-left.png&quot;&gt;&lt;/div&gt;
+           		 &lt;div id=&quot;banner-logo&quot; data-passage=&quot;theimage&quot; class=&quot;floating animate__animated animate__fadeInUp&quot;&gt;&lt;/div&gt;
+             	 &lt;div id=&quot;banner-right&quot;&gt;&lt;img src=&quot;img/banner-right.png&quot;&gt;&lt;/div&gt;             
+  		  &lt;/div&gt;
+        &lt;/div&gt;      
+        &lt;div class=&quot;game-content&quot;&gt;
+            &lt;div id=&quot;passages&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-YJK5VPRCDE&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(&#39;js&#39;, new Date());
+
+  gtag(&#39;config&#39;, &#39;G-YJK5VPRCDE&#39;);
+&lt;/script&gt;
+&lt;/body&gt;</tw-passagedata><tw-passagedata pid="103" name="StoryShare" tags="poof.ignore" position="175,275" size="100,100">[[LinkedIn|https://linkedin.com/]]</tw-passagedata><tw-passagedata pid="104" name="StorySubtitle" tags="no-type poof.ignore" position="75,0" size="100,100">The game where you get to be a financial asset manager</tw-passagedata><tw-passagedata pid="105" name="TypeTemplate" tags="poof.ignore" position="2725,350" size="100,100">&lt;&lt;type &quot;&quot;&gt;&gt;
+&lt;&lt;display&gt;&gt;</tw-passagedata><tw-passagedata pid="106" name="no-type" tags="" position="75,75" size="100,100"></tw-passagedata><tw-passagedata pid="107" name="sidePanel" tags="no-type" position="2625,450" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;div class=&quot;logo-bar&quot;&gt;
+&lt;div  id=&quot;small-logo&quot; &gt;&lt;img src=&quot;img/AMQ-Logo-Long-White-Fill.png&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;menu-options&quot;&gt;
+ [img[Restart|img/restart-w.svg][Intro][state.restart()]]
+    &lt;a data-passage=&quot;abrdn&quot;&gt;
+             &lt;svg version=&quot;1.1&quot; id=&quot;Layer_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+         viewBox=&quot;0 0 1200 1200&quot; style=&quot;enable-background:new 0 0 1200 1200;&quot; xml:space=&quot;preserve&quot;&gt;
+    &lt;g&gt;
+        &lt;path d=&quot;M637.3,525.1H787v149.8H637.3L637.3,525.1z&quot;/&gt;
+        &lt;path d=&quot;M487.5,525.1h149.8v149.8H487.5V525.1z&quot;/&gt;
+        &lt;path d=&quot;M487.5,674.9h149.8v149.8H487.5V674.9z&quot;/&gt;
+        &lt;path d=&quot;M190.6,225.6h149.8v149.8H190.6L190.6,225.6z&quot;/&gt;
+        &lt;path d=&quot;M340.3,75.9h149.8v149.8H340.3L340.3,75.9z&quot;/&gt;
+        &lt;path d=&quot;M487.5,75.9h149.8v149.8H487.5V75.9z&quot;/&gt;
+        &lt;path d=&quot;M637.3,75.9H787v149.8H637.3L637.3,75.9z&quot;/&gt;
+        &lt;path d=&quot;M787,225.6h149.8v149.8H787V225.6z&quot;/&gt;
+        &lt;path d=&quot;M787,375.4h149.8v149.8H787V375.4z&quot;/&gt;
+        &lt;path d=&quot;M487.5,974.4h149.8v149.8H487.5V974.4z&quot;/&gt;
+    &lt;/g&gt;
+    &lt;/svg&gt;
+&lt;/a&gt;
+&lt;&lt;link [img[img/music.svg]]&gt;&gt;
+	&lt;&lt;PlayTrack start_bgm&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+
+	[[CREDITS|Who]]
+&lt;/div&gt;
+
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="108" name="theimage" tags="utility" position="2675,200" size="100,100">[img[$image]]</tw-passagedata><tw-passagedata pid="109" name="Widgets" tags="widget nobr no-type" position="2425,300" size="100,100">&lt;&lt;widget &quot;approval&quot;&gt;&gt;
+&lt;&lt;run Health($approval, $maxapproval, &quot;horizontalhealthbar&quot;, true)&gt;&gt;
+&lt;div id=&quot;horizontalhealthbarbkg&quot; class=&quot;hzbarbkg&quot;&gt;
+&lt;div id=&quot;horizontalhealthbar&quot; class=&quot;hzbar&quot;  style=&quot;width: 100%;&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;&lt;script&gt;&gt;$(document).one(&#39;:passagerender&#39;, function (ev) {
+	Health(State.variables.approval, State.variables.maxapproval, &quot;horizontalhealthbar&quot;, true, ev.content);
+});&lt;&lt;/script&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;PlayTrack&quot;&gt;&gt;
+    &lt;&lt;set _trackList = {  /* Add your track IDs and filenames below. */
+        &quot;start_bgm&quot; : &quot;track1.mp3&quot;
+    }&gt;&gt;
+    &lt;&lt;set _nextTrack = $args.raw&gt;&gt;
+    &lt;&lt;if def _trackList[_nextTrack]&gt;&gt;
+        &lt;&lt;if !TrackExists(_nextTrack)&gt;&gt;  /* If track doesn&#39;t exist, load it. */
+            &lt;&lt;set _bgm = setup.SoundPath + _trackList[_nextTrack]&gt;&gt;
+            &lt;&lt;cacheaudio _nextTrack _bgm&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+        &lt;&lt;if !TrackExists(_nextTrack)&gt;&gt;
+            &lt;&lt;run alert(&#39;Error: Cannot load file &quot;&#39; + setup.SoundPath + _trackList[_nextTrack] + &#39;&quot;.&#39;)&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            &lt;&lt;if isPlaying(_nextTrack)&gt;&gt;  /* If track is already playing, stop it. */
+                &lt;&lt;masteraudio stop&gt;&gt;
+            &lt;&lt;else&gt;&gt;  /* If track is not playing, play it. */
+                &lt;&lt;masteraudio stop&gt;&gt;
+                &lt;&lt;set _bgm = setup.SoundPath + &quot;track1.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;start_bgm&quot; _bgm&gt;&gt;
+                &lt;&lt;audio _nextTrack loop volume 0 fadein&gt;&gt;
+            &lt;&lt;/if&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;run alert(&#39;Error: Unknown track &quot;&#39; + _nextTrack + &#39;&quot;.&#39;)&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;setvariables&quot;&gt;&gt;
+&lt;&lt;set $league to false&gt;&gt;
+&lt;&lt;set $alive to true&gt;&gt;
+&lt;&lt;set $nature to false&gt;&gt;
+&lt;&lt;set $god to false&gt;&gt;
+&lt;&lt;set $child to false&gt;&gt;
+&lt;&lt;set $phoenix to false&gt;&gt;
+&lt;&lt;set $pastry to false&gt;&gt;
+&lt;&lt;set $shorts to false&gt;&gt;
+&lt;&lt;set $notherapy to false&gt;&gt;
+&lt;&lt;set $undead to false&gt;&gt;
+&lt;&lt;set $company to &quot;abrdn&quot;&gt;&gt;
+&lt;&lt;set $approval to 12&gt;&gt;
+&lt;&lt;set $maxapproval to 100&gt;&gt;
+&lt;&lt;set $invincible to false&gt;&gt;
+&lt;&lt;set $gameLoaded to false&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="110" name="nobr" tags="poof.ignore" position="175,0" size="100,100"></tw-passagedata><tw-passagedata pid="111" name="CTA" tags="" position="250,1550" size="100,100">#  &lt;a class=&quot;locked&quot; &gt;Reshare our post on LinkedIn&lt;/a&gt;
+# &lt;a href=&quot;mailto:?subject=Asset Manager Quest&amp;body=Found this great game where you get to be an Asset Manager https://assetmanager.quest&quot;&gt;Share link in email&lt;/a&gt;
+# [[Learn more about abrdn|abrdn]]</tw-passagedata><tw-passagedata pid="112" name="Good End" tags="win" position="1175,150" size="200,200">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/YOU WIN.png&quot;&gt;&gt;
+&lt;&lt;set $notherapy to true&gt;&gt;\
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
+Your fellow asset managers sing songs about you, praising &lt;span class=&quot;nobr&quot;&gt;your leadership&lt;/span&gt;
+
+&#39;&#39;$company&#39;&#39; gets its reputation back on track with a &#39;&#39;policy to stop investing in coal, oil and gas bonds&#39;&#39;
+
+While the world transitions to cleaner, cheaper, safer &lt;span class=&quot;nobr&quot;&gt;renewable energy&lt;/span&gt;
+&lt;&lt;if $undead &gt;&gt;
+Staff are happy to help you deal with the undead horse too...
+&lt;&lt;/if&gt;&gt;\
+
+Too easy? [[Start again|Intro]] and make a different choice
+
+Or help us get abrdn&#39;s board to beat the game too
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="113" name="Buy child pony" tags="" position="1700,400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Pony.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+&lt;&lt;set _name to &quot;&quot;, $pony to &quot;Sparkle&quot;&gt;&gt;\
+What should we call the &#39;&#39;pony&#39;&#39;?
+
+&lt;&lt;textbox &quot;_name&quot; $pony&gt;&gt;
+# &lt;&lt;link &quot;Choose Name&quot;&gt;&gt;&lt;&lt;set _name to _name.trim()&gt;&gt;&lt;&lt;set $pony to _name&gt;&gt;&lt;&lt;goto &quot;Named Pony&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="Do another rebrand" tags="" position="900,1575" size="100,100">&lt;&lt;set _name to &quot;&quot;, $company to &quot;ABBAdn&quot;&gt;&gt;\
+What should we rebrand as?
+
+&lt;&lt;textbox &quot;_name&quot; $company&gt;&gt;
+# &lt;&lt;link &quot;Choose Name&quot;&gt;&gt;&lt;&lt;set _name to _name.trim()&gt;&gt;&lt;&lt;set $company to _name&gt;&gt;&lt;&lt;goto &quot;Rebrand fail&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="115" name="Rebrand" tags="" position="1000,1200" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;set $image to &quot;img/Office.png&quot;&gt;&gt;
+&lt;&lt;/silently&gt;&gt;\
+The branding agency who took you from &#39;&#39;Aberdeen&#39;&#39; to &#39;&#39;&lt;&lt;print $company&gt;&gt;&#39;&#39; suggests &#39;&#39;removing more vowels&#39;&#39; from your name
+
+This did not go well the last time
+
+What should we rebrand as?
+
+&lt;&lt;textbox &quot;_name&quot; &quot;Brdn&quot;&gt;&gt;
+# &lt;&lt;link &quot;Choose Name&quot;&gt;&gt;&lt;&lt;set _name to _name.trim()&gt;&gt;&lt;&lt;set $company to _name&gt;&gt;&lt;&lt;goto &quot;Rebrand fail&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+# [[Could we be  ‘Abrgreen’?|Fossil Fuel Policy][$company to &quot;Abrgreen&quot;]]</tw-passagedata></tw-storydata>
+</div>
+</body>
+</html>

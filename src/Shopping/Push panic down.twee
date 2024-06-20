@@ -1,0 +1,12 @@
+:: Push panic down [nope] {"position":"1900,1750","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Sad Manager.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+The panic leads to anger.
+
+It gets more angry.
+
+Emotional capacity at ''95%''
+# [[Push anger down]]
+# [[Explore emotions|Explore the sadness]]

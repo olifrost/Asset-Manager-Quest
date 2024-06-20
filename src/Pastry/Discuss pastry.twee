@@ -1,0 +1,13 @@
+:: Discuss pastry [nope] {"position":"3000,850","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+Was $pastry really the right choice?
+
+Perhaps it wasn't ambitious enough
+
+The bird offers no answers or help
+<<if not hasVisited("Discuss storm")>>\
+# [[Discuss annoying storm|Discuss storm]]
+# [[Discuss climate crisis]]
+<<else>>\
+# [[Discuss climate crisis]]
+<</if>>\

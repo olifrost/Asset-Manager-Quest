@@ -1,0 +1,18 @@
+:: Get job back {"position":"1750,775","size":"100,200"}
+<<type 20ms none>>\
+The share price of $company has fallen fast due to stranded assets in fossil fuels
+
+You aggressively buy shares and take back control
+<<if $pastry>>\
+
+Using your pastry profits...
+<</if>>\
+<<if not hasVisited("Give Bonus")>>\
+# [[Divest from the fossil fuel industry|Fossil Fuel Policy][$invincible to true]]
+# [[Give yourself a massive bonus|Give Bonus][$approval to 12]]
+# [[Make lots of staff redundant|Fire workforce]]
+<<else>>\
+# [[Divest from the fossil fuel industry|Fossil Fuel Policy][$invincible to true]]
+# [[Get back to firing workforce|Fire workforce][$approval to 12]]
+<</if>>\
+<</type>>\

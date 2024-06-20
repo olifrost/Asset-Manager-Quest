@@ -1,0 +1,12 @@
+:: Emerge from the flames [item] {"position":"2500,1600","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Phoenix.png">>
+<</silently>>\
+You are reborn, not as an asset manager
+
+But as a magical phoenix asset manager
+
+You go flying and stuff <<set $phoenix to true>>
+
+!!PHOENIX MAGIC UNLOCKED!
+# [[Confront company about fossil fuel policy|Fossil Fuel Policy][$invincible to true]]

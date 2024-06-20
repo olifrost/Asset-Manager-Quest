@@ -1,0 +1,3 @@
+:: PassageReady [poof.ignore no-type] {"position":"2550,75","size":"100,100"}
+<<set _tags to tags()>>
+<<set $image to "img/Asset Manager.png">>\

@@ -1,0 +1,9 @@
+:: Keep living in forest [damange] {"position":"2300,1600","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Fire.png">>
+<</silently>>\
+The climate crisis deepens
+
+You and your woodland camp is consumed by a ''wildfire''
+# [[Emerge from the flames]]
+# [[Remain a pile of ash]]

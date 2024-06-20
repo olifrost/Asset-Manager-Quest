@@ -1,0 +1,12 @@
+:: Named Pony [nope] {"position":"1900,400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Pony-dead.png">>
+<</silently>>\
+It's a beautiful summer's day
+
+Thanks to the climate crisis, $pony dies from heat exhaustion.
+
+Your ''child'' is now ''crying'' again
+# [[Resurrect pony][$undead to true]]
+# [[Buy child Nintendo Switch]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]

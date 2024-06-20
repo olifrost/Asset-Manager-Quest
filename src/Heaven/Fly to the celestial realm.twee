@@ -1,0 +1,11 @@
+:: Fly to the celestial realm {"position":"2000,1200","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Wings-1.png">>
+<</silently>>\
+You're kicking back with the angels in Asset Manager heaven
+
+God calls you into his office to talk about $company's coal policy.
+
+It seems going to ''heaven'' might have been a clerical error
+# [[Give God the slip, go cloud surfing|Face reckoning by almighty power][$evadeGod to true]]
+# [[Face reckoning by almighty power][$evadeGod to false]]

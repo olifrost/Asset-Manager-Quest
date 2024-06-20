@@ -1,0 +1,10 @@
+:: Go to live in nature [rework forest] {"position":"2850,975","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+It's another day out in the Scottish forest
+
+You discuss your emotions with your therapist...
+
+…who happens to a bird
+# [[Discuss childhood]]
+# [[Discuss recent purchases|Discuss clothes]]
+# [[Discuss climate crisis]]

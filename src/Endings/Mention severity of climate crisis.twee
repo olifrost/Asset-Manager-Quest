@@ -1,0 +1,6 @@
+:: Mention severity of climate crisis [success] {"position":"475,0","size":"100,100"}
+<<set $image to "img/Fire.png">>\
+You bring up findings from the IPCC and IEA that shows new fossil fuel projects are incompatible with limiting warming to 1.5c
+
+However, existing reserves could be used in the long transition to renewables...
+# [[It works!|Good End]]

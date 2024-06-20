@@ -1,0 +1,12 @@
+:: Attack the hate [mystery] {"position":"1550,1825","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Sad Manager.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+The hate dodges. 
+
+Emotional capacity at ''250%''
+
+You collapse due to too many emotions.
+# [[Go live in nature|Go to live in nature]]
+# [[Go clubbing]]

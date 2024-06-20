@@ -1,0 +1,11 @@
+:: Explore the sadness [rework] {"position":"1900,1550","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Sad Manager.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+You care for the future of life on earth...
+
+But fund the destruction of it...
+
+The emotion becomes ''too much''
+# [[Go to live in nature|Spend more time in forest]]

@@ -1,0 +1,8 @@
+:: Buy child pony {"position":"1700,400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Pony.png">>
+<</silently>>\
+What should we call the ''pony''?
+# [[Sparkle|Named Pony][$pony to "Sparkle"]]
+# [[Gumdrop|Named Pony][$pony to "Gumdrop"]]
+# [[Honey Bubble|Named Pony][$pony to "Honey Bubble"]]

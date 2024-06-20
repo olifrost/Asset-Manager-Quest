@@ -1,0 +1,18 @@
+:: Tea bags [down] {"position":"1250,1700","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Approval-down-2.png">>
+<</silently>>\
+Staff have to keep little mason jars on their desks with their own tea bags
+
+It saves around £180.33 per year, but staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+<<if not hasVisited("Fire workforce")>>\
+# [[Make loads of people redundant|Fire workforce]]
+# [[Start selling staff's computers]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+<<else>>\
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Start selling staff's computers]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+<</if>>\

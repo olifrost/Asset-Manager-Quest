@@ -1,0 +1,13 @@
+:: Discuss climate crisis {"position":"3075,1375","size":"100,100"}
+<<cacheaudio "bird" "sound/bird-1.mp3">>\
+<<audio "bird" play volume 0.2>>\
+<<set $image to "img/Bird therapist.png">>\
+You care about the future of the planet
+
+Yet you funded the destruction of it
+
+The disparity between belief and action dawns on you
+
+The ''bird'' chirps appreciatively
+# [[Learn more from nature|Spend more time in forest]]
+# [[Go get your job back|Get job back]]

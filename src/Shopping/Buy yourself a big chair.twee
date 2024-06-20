@@ -1,0 +1,10 @@
+:: Buy yourself a big chair {"position":"1350,2000","size":"100,100"}
+Staff morale drops to ''<<print $approval>>%
+
+<<approval>>
+
+The chair is comfy, but you're uncomfortable
+
+You feel sad somehow
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]

@@ -1,0 +1,36 @@
+:: Fossil Fuel Policy [noreturn danger] {"position":"700,75","size":"200,200"}
+<<silently>>\
+<<set $invincible to false>>
+<<set $image to "img/Board.png">>
+<</silently>>\
+!FINAL BOSS
+The board calls you into a meeting room
+
+"A policy against fossil fuel bonds? How dare you put the polar bears before our short term profits???"<span id="tip"><br><br>''TIP:  [[Start again|Intro]] and unlock more defences''</span>
+# [[Mention economic benefits]]
+# [[Mention severity of climate crisis]]
+# [[Mention company risk modelling|Risk]]
+# <<if $league>>[[Summon League]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $nature>>[[Use profound understanding of nature]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $god>>[[Call on celestial realm]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $child>>[[Bring crying child to work]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $phoenix>>[[Using phoenix magic]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $pastry>>[[Make everyone pastries]]<<else>><span class="locked">Option Locked</span><</if>>
+# <<if $shorts>>[[Show them your shorts]]<<else>><span class="locked">Option Locked</span><</if>>
+
+<script>
+$(document).one(':passagedisplay', function() {
+    let listItems = document.querySelectorAll("ol li"); 
+    let parent = listItems[0].parentNode;
+
+    let unlocked = Array.from(listItems).filter(el => !el.querySelector('.locked'));
+    let locked = Array.from(listItems).filter(el => el.querySelector('.locked'));
+
+    // Clear the parent container
+    parent.innerHTML = '';
+
+    // Append unlocked elements first, then locked elements
+    unlocked.forEach(el => parent.appendChild(el));
+    locked.forEach(el => parent.appendChild(el));
+});
+</script>

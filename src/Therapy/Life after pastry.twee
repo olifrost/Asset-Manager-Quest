@@ -1,0 +1,10 @@
+:: Life after pastry [forest] {"position":"2775,825","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+It's another day out in the Scottish forest
+
+You discuss your defeat in the Pastry Championships with your therapist
+
+…who happens to be a bird
+# [[Discuss your choice of pastry|Discuss pastry]]
+# [[Discuss annoying storm|Discuss storm]]
+# [[Discuss climate crisis]]

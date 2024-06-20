@@ -1,0 +1,17 @@
+:: Rebrand fail [down] {"position":"1225,1300","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Approval-down-2.png">>
+<</silently>>\
+The ''<<print $company>>'' rebrand does not go well
+
+Staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+The ''media bullies'' have started making satirical cartoons <span class="nb">about you</span>
+# [[Accuse media bullies of bullying]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]
+<<script>>gtag('event', 'rename', {
+  'event_category': 'abrdn',
+  'event_label': State.variables.company
+});<</script>>\

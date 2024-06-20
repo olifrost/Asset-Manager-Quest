@@ -1,0 +1,13 @@
+:: Fire workforce [down] {"position":"1600,1200","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Approval-down-1.png">>
+<</silently>>\
+Staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+Your secretary starts getting your ''lunch order'' wrong, quite likely on purpose
+
+Drastic action is needed to get your ''sandwiches'' back on track
+# [[It's time for a rebrand|Rebrand]]
+# [[It's time for casual Fridays]]
+# [[It's time to sell all of abrdn’s coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]

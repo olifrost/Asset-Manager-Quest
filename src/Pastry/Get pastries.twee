@@ -1,0 +1,16 @@
+:: Get pastries [secondlevel] {"position":"1350,500","size":"100,200"}
+<<silently>>\
+<<set $image to "img/Lannan.png">>
+<</silently>>\
+<<type 20ms none>>\
+Yeah, who needs penguins anyway.
+
+You pass a ''mysterious van'' on your way to the Lannan bakery
+
+As you finish your flaky ''croissant'', your partner calls
+
+One of your children just learned how bad the climate crisis is and is ''crying''
+# [[Go home to crying child]]
+# [[Go get more pastries|Go back for more pastries]]
+# [[Go check mysterious van|Get kidnapped]]
+<</type>>

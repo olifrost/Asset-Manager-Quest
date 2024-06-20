@@ -1,0 +1,13 @@
+:: Stay in office [] {"position":"1450,800","size":"100,200"}
+<<silently>>\
+<<set $image to "img/Office.png">>
+<</silently>>\
+You're about to beat your ''high score'' when ''Tracy Hahn'' from HR interrupts
+
+Staff morale is at ''<<print $approval>>%''
+
+<<approval>>
+''But maybe you can fix that...''
+# [[Make loads of redundancies|Fire workforce]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]

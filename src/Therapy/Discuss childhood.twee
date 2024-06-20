@@ -1,0 +1,13 @@
+:: Discuss childhood [rework nope] {"position":"2900,1175","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+You recall a day the playground bullies laughed, and you cried
+
+The day you wore socks with the days of the week written on them
+
+The bird offers no answers or help
+<<if not hasVisited("Discuss clothes")>>\
+# [[Discuss your mall purchases|Discuss clothes]]
+# [[Discuss climate crisis]]
+<<else>>\
+# [[Discuss climate crisis]]
+<</if>>\

@@ -1,0 +1,20 @@
+:: Good End [win] {"position":"1175,150","size":"200,200"}
+<<silently>>\
+<<set $image to "img/YOU WIN.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+<<type 20ms none>>\
+Your fellow asset managers sing songs about you, praising <span class="nobr">your leadership</span>
+
+''$company'' gets its reputation back on track with a ''policy to stop investing in coal, oil and gas bonds''
+
+While the world transitions to cleaner, cheaper, safer <span class="nobr">renewable energy</span>
+<<if $undead >>
+Staff are happy to help you deal with the undead horse too...
+<</if>>\
+
+Too easy? [[Start again|Intro]] and make a different choice
+
+Or help us get abrdn's board to beat the game too
+<<include "CTA">>
+<</type>>\

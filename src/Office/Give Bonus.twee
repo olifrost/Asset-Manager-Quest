@@ -1,0 +1,10 @@
+:: Give Bonus [down] {"position":"1675,1025","size":"200,100"}
+£800,000 is deposited in your account, and staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+Staff stop looping you into funny email threads.
+
+However, the sun's out and it seems like a great day to...
+# [[Go clothes shopping|Go shopping]]
+# [[Go chair shopping|Chair shopping]]
+# [[Think about the impacts fossil fuel bonds have on all our futures|Fossil Fuel Policy][$invincible to true]]

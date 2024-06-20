@@ -1,0 +1,12 @@
+:: It's time for casual Fridays [item] {"position":"1175,1550","size":"100,100"}
+<<silently>>\
+<<set $image to "img/shorts-tie-shirt-2.png">>
+<</silently>>\
+!!SHORTS UNLOCKED!
+
+<<set $shorts to true>>On the first ''Casual Friday'' you wear shorts
+
+It's clearly not short weather, and everybody laughs at you
+# [[Wear shorts with confidence]]
+# [[Go home to get changed]]
+# [[Implement a policy against fossil fuels|Fossil Fuel Policy][$invincible to true]]

@@ -1,0 +1,7 @@
+:: Resurrect [noreturn item] {"position":"2550,1225","size":"100,100"}
+!!CELESTIAL REALM UNLOCKED!
+
+God resurrects you<<set $god to true>>
+
+Your experience of the fragility of life readjusts your priorities
+# [[Return to implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]

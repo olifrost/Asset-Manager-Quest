@@ -1,0 +1,15 @@
+:: Spend more time in forest [item] {"position":"2275,1425","size":"100,100"}
+<<set $image to "img/trees.png">>\
+<<if $notherapy>>\
+You go to live in the Scottish forest, and come to see the natural world differently
+<<else>>\
+In the years that pass out in the forest, you come to see the natural world differently
+<</if>>\
+
+Instead of an asset to be traded
+
+You see yourself as part of it
+
+!!Understanding of natural world unlocked!<<set $nature to true>>
+# [[Go get your job back|Get job back]]
+# [[Keep living in forest]]

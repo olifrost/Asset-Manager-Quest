@@ -1,0 +1,11 @@
+:: Dressing Room {"position":"1500,1525","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Sad Manager.png">>
+<</silently>>\
+In the changing room mirror, you like what you see
+
+The $clothes is a perfect fit for your supple asset managing body
+
+But in your eyes, there's a sadness
+# [[Explore the sadness|Explore the sadness]]
+# [[Push the sadness down]]

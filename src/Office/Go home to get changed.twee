@@ -1,0 +1,14 @@
+:: Go home to get changed [down] {"position":"1025,1700","size":"100,100"}
+!!SHORTS REMOVED!
+
+You return to the office, fully trousered<<set $shorts to false>>
+
+But now everyone has gone to the pub
+
+Without you...
+
+Staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+# [[It's time for a rebrand|Rebrand]]
+# [[It's time to sell all of our coal, oil and gas bonds|Fossil Fuel Policy][$invincible to true]]

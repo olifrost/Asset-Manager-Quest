@@ -1,0 +1,11 @@
+:: League Short {"position":"1025,950","size":"100,100"}
+<<silently>>\
+<<set $image to "img/League.png">>
+<</silently>>\
+"''The League'' is a secret society of asset managers…
+
+…who use their assets for good, not for evil"
+
+"We think you have great potential…"
+# [[Join league, stop funding fossil fuels|Join League]]
+# [[Untie wrist restraints, throw candle|Untie wrist restraints]]

@@ -1,0 +1,6 @@
+:: Fight undead horse alone [damange] {"position":"2150,300","size":"100,100"}
+<<silently>>\
+<<set $image to "img/pony-zombie.png">>
+<</silently>>\
+Your fists are no match for its undead hooves
+# [[Go to Asset Manager Heaven|Fly to the celestial realm]]

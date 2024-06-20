@@ -1,0 +1,13 @@
+:: Go home to crying child [item] {"position":"1500,400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Child.png">>
+<<set $child to true>>
+<</silently>>\
+!!CRYING CHILD UNLOCKED!
+
+The ''crying child'' seems to be upset
+
+It might be worried about its ''future on earth''
+# [[Buy child Nintendo Switch]]
+# [[Buy child pony]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]

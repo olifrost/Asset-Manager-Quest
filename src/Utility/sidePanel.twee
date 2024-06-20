@@ -1,0 +1,32 @@
+:: sidePanel [no-type] {"position":"2625,450","size":"100,100"}
+<<nobr>>
+<div class="logo-bar">
+<div  id="small-logo" ><img src="img/AMQ-Logo-Long-White-Fill.png"></div>
+</div>
+<div class="menu-options">
+ [img[Restart|img/restart-w.svg][Intro][state.restart()]]
+    <a data-passage="abrdn">
+             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 1200 1200" style="enable-background:new 0 0 1200 1200;" xml:space="preserve">
+    <g>
+        <path d="M637.3,525.1H787v149.8H637.3L637.3,525.1z"/>
+        <path d="M487.5,525.1h149.8v149.8H487.5V525.1z"/>
+        <path d="M487.5,674.9h149.8v149.8H487.5V674.9z"/>
+        <path d="M190.6,225.6h149.8v149.8H190.6L190.6,225.6z"/>
+        <path d="M340.3,75.9h149.8v149.8H340.3L340.3,75.9z"/>
+        <path d="M487.5,75.9h149.8v149.8H487.5V75.9z"/>
+        <path d="M637.3,75.9H787v149.8H637.3L637.3,75.9z"/>
+        <path d="M787,225.6h149.8v149.8H787V225.6z"/>
+        <path d="M787,375.4h149.8v149.8H787V375.4z"/>
+        <path d="M487.5,974.4h149.8v149.8H487.5V974.4z"/>
+    </g>
+    </svg>
+</a>
+<<link [img[img/music.svg]]>>
+	<<PlayTrack start_bgm>>
+<</link>>
+
+	[[CREDITS|Who]]
+</div>
+
+<</nobr>>

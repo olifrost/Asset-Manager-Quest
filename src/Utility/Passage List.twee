@@ -1,0 +1,4 @@
+:: Passage List [poof.ignore no-type] {"position":"2625,350","size":"100,100"}
+<<for _p range Story.lookupWith(p => p)>>
+  <<link _p.title _p.title>><</link>>
+<</for>>

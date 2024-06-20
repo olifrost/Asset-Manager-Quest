@@ -1,0 +1,13 @@
+:: Accuse media bullies of bullying [down] {"position":"900,1400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Approval-down-2.png">>
+<</silently>>\
+The media bullies bully you over your bullying accusation
+
+Staff morale drops to ''<<print $approval>>%''
+
+<<approval>>
+Your ''kids'' ask if you can pick them up from school a couple of streets from the gate, to avoid them ''embarrassment''
+# [[Do another rebrand]]
+# [[Implement Casual Fridays|It's time for casual Fridays]]
+# [[Implement fossil fuel exclusion policy|Fossil Fuel Policy][$invincible to true]]

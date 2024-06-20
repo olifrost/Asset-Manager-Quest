@@ -1,0 +1,26 @@
+:: StoryInit [utility] {"position":"2450,75","size":"100,100"}
+<<cacheaudio "load" "sound/load.mp3">>
+<<waitforaudio>>
+<<setvariables>>
+<<set $image to "img/Asset Manager.png">>
+
+<<cacheaudio "ping" "sound/ping1.mp3">>
+<<cacheaudio "select" "sound/ping2.mp3">>
+<<cacheaudio "win" "sound/win.mp3">>
+<<cacheaudio "down" "sound/down.mp3">>
+<<cacheaudio "mystery" "sound/mystery.mp3">>
+<<cacheaudio "explode" "sound/explode.mp3">>
+<<cacheaudio "danger" "sound/danger.mp3">>
+<<cacheaudio "nope" "sound/nope.mp3">>
+<<createaudiogroup ":ui">>
+	<<track "select">>
+	<<track "win">>
+  	<<track "load">>
+     <<track "ping">>
+      <<track "down">>
+      <<track "mystery">>
+      <<track "explode">>
+      <<track "danger">>
+      <<track "nope">>
+<</createaudiogroup>>
+<<audio ":all:ui" volume 0.40>>

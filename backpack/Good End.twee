@@ -1,0 +1,14 @@
+:: Good End [win] {"position":"1175,150","size":"200,200"}
+<<silently>>\
+<<set $image to "img/WINNER.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+!YOU BEAT THE GAME
+''$company'' gets its reputation back on track with a ''policy to stop investing in coal, oil and gas bonds''
+
+The world transitions to cleaner, cheaper, safer renewable energy.
+
+Too easy? [[Start again|Intro]] and make a different choice
+
+Or help get abrdn to play Asset Manager Quest
+<<include "CTA">>

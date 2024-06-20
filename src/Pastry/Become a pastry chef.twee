@@ -1,0 +1,16 @@
+:: Become a pastry chef [item] {"position":"1925,675","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Pastry-chef.png">>
+<<set $pastry to true>>
+<</silently>>\
+!!PASTRY TALENT UNLOCKED
+
+Three years pass...
+
+You now make croissants full time, which is lovely
+
+But besides rebranding the bakery Lannan as Lnnnn... 
+
+You haven't done much<<set $pastry to true>>
+# [[Go get your job back|Get job back]]
+# [[Put your passion into pastry|Passion into pastry]]

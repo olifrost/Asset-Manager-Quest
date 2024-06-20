@@ -1,0 +1,12 @@
+:: Discuss storm [nope] {"position":"3025,675","size":"100,100"}
+<<set $image to "img/Bird therapist.png">>\
+You blame your defeat on the gale-force winds, making no mention of the climate crisis that made them more likely
+
+The bird offers no answers or help
+
+<<if not hasVisited("Discuss pastry")>>\
+# [[Discuss choice of pastry|Discuss pastry]]
+# [[Discuss climate crisis]]
+<<else>>\
+# [[Discuss climate crisis]]
+<</if>>\

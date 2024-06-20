@@ -1,0 +1,9 @@
+:: Buy child pony {"position":"1700,400","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Pony.png">>
+<</silently>>\
+<<set _name to "", $pony to "Sparkle">>\
+What should we call the ''pony''?
+
+<<textbox "_name" $pony>>
+# <<link "Choose Name">><<set _name to _name.trim()>><<set $pony to _name>><<goto "Named Pony">><</link>>

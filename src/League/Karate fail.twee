@@ -1,0 +1,12 @@
+:: Karate fail [damange] {"position":"750,1025","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Karate.png">>
+<</silently>>\
+Pow, pow
+
+The black belt Asset Managers floor you with their martial prowess
+
+You wish you'd worn a more loose fitting suit
+# [[Escape to basement]]
+# [[Continue getting arse kicked]]
+# [[Surrender and join the League|Join League]]

@@ -1,0 +1,15 @@
+:: Quick End [win noreturn] {"position":"1175,150","size":"200,200"}
+<<silently>>\
+<<set $image to "img/YOU WIN.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+<<type 15ms none>>\
+Your fellow asset managers sing songs about you, praising <span class="nobr">your leadership</span>
+
+''$company'' gets its reputation back on track with a ''policy to stop investing in coal, oil and gas bonds''
+
+While the world transitions to cleaner, cheaper, safer <span class="nobr">renewable energy</span>
+
+Too easy? <<link "Start again" $return>><</link>> and make a different choice
+# <<link "Restart game" $return>><</link>>
+<</type>>\

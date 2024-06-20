@@ -1,0 +1,12 @@
+:: Discuss media bullying {"position":"750,2000","size":"100,100"}
+You complain about the media bullying you
+
+The bird points out you bully the planet every day
+
+Fair enough…
+<<if not hasVisited("Discuss staff bullying")>>\
+# [[Discuss staff bullying]]
+# [[Discuss climate crisis]]
+<<else>>\
+# [[Discuss climate crisis]]
+<</if>>\

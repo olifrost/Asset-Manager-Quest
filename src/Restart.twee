@@ -1,0 +1,30 @@
+:: Intro [no-type intro] {"position":"1025,550","size":"200,200"}
+<<silently>>\
+<<set $league to false>>
+<<set $alive to true>>
+<<set $nature to false>>
+<<set $god to false>>
+<<set $child to false>>
+<<set $phoenix to false>>
+<<set $pastry to false>>
+<<set $shorts to false>>
+<<set $notherapy to false>>
+<<set $undead to false>>
+<<set $company to "abrdn">>
+<<set $approval to 12>>
+<<set $maxapproval to 100>>
+<<set $invincible to false>>
+<<set $gameLoaded to false>>
+<</silently>>\
+<<type 20ms start 2s none>>\
+You are the new CEO of ''$company'' asset management
+
+Your company is stuck in the past, putting billions into fossil fuels
+
+One day, a ''thought'' arrives
+
+"Maybe we should... <br class="optional-br">not do that?"
+# [[Ignore thought, go get pastries|Get pastries]]
+# [[Ignore thought, play minesweeper|Stay in office]]
+# [[Listen to thought, stop funding fossil fuels|Good End]]
+<</type>>\

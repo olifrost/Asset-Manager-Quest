@@ -1,0 +1,16 @@
+:: Intro [no-type intro] {"position":"1025,550","size":"200,200"}
+<<silently>>\
+<<setvariables>>
+<</silently>>\
+<<type 20ms start 2s none>>\
+You are the new CEO of ''$company'' asset management
+
+Your company is stuck in the past, putting billions into fossil fuels
+
+One day, a ''thought'' arrives
+
+"Maybe we should... <br class="optional-br">not do that?"
+# [[Ignore thought, go get pastries|Get pastries]]
+# [[Ignore thought, play minesweeper|Stay in office]]
+# [[Listen to thought, stop funding fossil fuels|Quick End]]
+<</type>>\

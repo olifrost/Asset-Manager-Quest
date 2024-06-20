@@ -1,0 +1,11 @@
+:: Go shopping {"position":"1725,1275","size":"100,100"}
+<<type 20ms none>>\
+You arrive at one of Edinburgh's great shopping malls
+
+Madonna's "Material Girl" plays on the mall radio
+
+You feel empowered by possibilities of having lots of money
+# [[Try on plain white oxford shirts|Dressing Room][$clothes to "white oxford shirt"]]
+# [[Try on plain blue oxford shirts|Dressing Room][$clothes to "blue oxford shirt"]]
+# [[Try on funky tie|Dressing Room][$clothes to "funky tie"]]
+<</type>>\

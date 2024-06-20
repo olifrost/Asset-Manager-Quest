@@ -1,0 +1,11 @@
+:: Ask staff for help with horse problem [nope] {"position":"2025,575","size":"100,100"}
+<<silently>>\
+<<set $image to "img/pony-zombie.png">>
+<</silently>>\
+Staff morale is ''<<print $approval>>%''
+
+<<approval>>
+Due to ''low morale'', the ''staff'' don't want to help
+# [[Fire some staff|Fire workforce]]
+# [[Fight undead horse alone]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]

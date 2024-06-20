@@ -1,0 +1,11 @@
+:: Face reckoning by almighty power {"position":"2200,1200","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Wings-1.png">>
+<</silently>>\
+<<if $evadeGod == true>>God uses his God magic to return you to his office<<else>>You sit down in a chair in God's cloudy office<</if>>
+
+The almighty one is pacing back and forth, furiously stroking their wispy beard
+
+''Defend your place in heaven''
+# [[Mention company's tree planting|Unhappy God][$answer to "More trees?"]]
+# [[Mention company's double-sided photo-copying|Unhappy God][$answer to "Double-sided photocopying?"]]

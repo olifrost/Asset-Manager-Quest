@@ -1,0 +1,112 @@
+body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow:  hidden;
+}
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.passage ol .locked {
+  display: none !important;
+}
+
+a {
+  color:  white !important;
+
+}
+ol a {
+  color: #00094a !important;
+}
+
+#tip {
+  display: none;
+}
+
+.menu-options{
+ 
+}
+.game-content {
+  display:  flex;
+  flex-direction: column-reverse;
+  align-content: center;
+}
+#passages {
+  margin:  auto;
+  position:  relative;
+}
+/*
+div:has(div#passage-fossil-fuel-policy) {
+  margin-top:  0em;
+  margin-bottom:  0em;
+  bottom:  0em;
+}
+*/
+#instruction{
+  color:  #ffc3e4;
+}
+/*
+div:has(div#passage-fossil-fuel-policy) ol a {
+  font-size:  90% !important;
+  padding:  10px !important;
+}*/
+
+a[data-passage="Who"] {
+  display:  none;
+}
+    #splash-logo img {
+      width: 29rem;
+   }
+/*
+ .game-container {
+  display:  flex;
+  width:  1080px;
+   min-height: 810px;
+   max-height: 810px;
+   border-bottom: 3px solid #9b9eb1;
+   border-width: 1px;
+   border-radius:  none;
+}
+#splash-screen {
+ background-image: url("img/AMQ-Title-BG-Backpack.png");
+ background-position: top;
+ background-size: auto auto;
+    }
+#banner, #banner-left img, #banner-right img, #banner-logo img {
+   height: 200px;
+   max-height: 200px;
+}
+*/
+   #passages{
+    padding:  0rem;
+    padding-top: 0.5rem;
+
+   }
+   .game-container {
+       min-height: 1080px !important;
+          border-bottom: 3px solid #9b9eb1;
+   }
+.game-content, .game-container{
+  width: 1920px;
+   max-width: 1920px;
+}
+.game-content {
+      display:  flex;
+    flex-direction: column;
+    /*min-height:  776px;*/
+}
+#passages {
+    margin:  auto;
+}
+ .passage {
+  width:  1870px;
+  max-width:  1870px;
+
+}
+#banner, #banner-left img, #banner-right img, #banner-logo img {
+   height: 250px;
+   max-height: 250px;
+}
+html {
+  font-size: 150% !important;
+}

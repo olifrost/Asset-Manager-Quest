@@ -1,0 +1,12 @@
+:: Push fear down [nope] {"position":"1725,1725","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Sad Manager.png">>
+<<set $notherapy to true>>\
+<</silently>>\
+The fear leads to panic
+
+It gets more panicky
+
+Emotional capacity at ''75%''
+# [[Push panic down]]
+# [[Explore emotions|Explore the sadness]]

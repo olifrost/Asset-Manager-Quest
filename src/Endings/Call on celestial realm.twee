@@ -1,0 +1,8 @@
+:: Call on celestial realm [success] {"position":"900,350","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Wings-flight.png">>
+<</silently>>\
+Angels fill the board room...
+
+Using divine light, they show the board the impacts of the climate crisis
+# [[It works!|Good End]]

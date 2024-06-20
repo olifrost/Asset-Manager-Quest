@@ -1,0 +1,18 @@
+:: You Died [nope] {"position":"750,1725","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Approval-down-3.png">>
+<<set $alive to false>><<set $approval to 1>>
+<</silently>>\
+''Staff morale'' is too low
+
+Chairman Sir Douglas Flint pulls you into his office
+
+He wants to know your vision for abrdn
+<<if $nature>>\
+# [[Stop investing in fossil fuels|Fossil Fuel Policy][$invincible to true]]
+# [[Keep investing in fossil fuels|Sigh, with regret]]
+<<else>>\
+# [[Stop investing in fossil fuels|Fossil Fuel Policy][$invincible to true]]
+# [[Keep investing in fossil fuels|Sigh, with regret]]
+# [[Quit job, go live in forest|Life after office]]
+<</if>>

@@ -1,0 +1,8 @@
+:: Mention economic benefits [success] {"position":"450,150","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Coins.png">>
+<</silently>>\
+You demonstrate to Chairman Sir Douglas Flint how your assets will become stuck in fossil fuels
+
+...as the world moves on to renewables
+# [[It works!|Good End]]

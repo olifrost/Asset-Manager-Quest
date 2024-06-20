@@ -1,0 +1,8 @@
+:: Make everyone pastries {"position":"500,600","size":"100,100"}
+<<silently>>\
+<<set $image to "img/Lannan.png">>
+<</silently>>\
+The pastries are a hit
+
+While Douglas is distracted you implement the fossil fuel exclusion policy
+# [[It works!|Good End]]

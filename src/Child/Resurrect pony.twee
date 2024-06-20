@@ -1,0 +1,13 @@
+:: Resurrect pony [mystery] {"position":"2200,500","size":"100,100"}
+<<silently>>\
+<<set $image to "img/pony-zombie.png">>
+<</silently>>\
+<<type 20ms none>>\
+You agree to help a necromancer manage their financial assets on the side
+
+They resurrect $pony
+
+Undead $pony comes for your family
+# [[Fight undead horse alone]]
+# [[Ask staff for help with horse problem]]
+<</type>>\

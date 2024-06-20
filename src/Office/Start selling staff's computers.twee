@@ -1,0 +1,17 @@
+:: Start selling staff's computers [down] {"position":"1225,1900","size":"100,100"}
+You sell off the staff's Bloomberg terminals
+
+The new computers are slow, and staff morale drops to ''<<print $approval>>%''
+
+Whenever you approach the water cooler, staff abruptly leave with half full glasses.
+
+<<approval>>
+<<if not hasVisited("Fire workforce")>>\
+# [[Make loads of people redundant|Fire workforce]]
+# [[Buy yourself a big chair|Chair shopping]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+<<else>>\
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Buy yourself a big chair|Chair shopping]]
+# [[Deny debt to coal, oil and gas companies|Fossil Fuel Policy]]
+<</if>>\

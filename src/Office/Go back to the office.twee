@@ -1,0 +1,13 @@
+:: Go back to the office {"position":"1575,800","size":"100,200"}
+<<silently>>\
+<<set $image to "img/Office.png">>
+<<set $approval to 12>>
+<</silently>>\
+Back in your office you find a moment's peace surveying Edinburgh's skyline
+
+You ponder a brighter future at $company
+
+A way to change its reputation... a way to start a conversation...
+# [[Make loads of redundancies|Fire workforce]]
+# [[Give yourself a massive bonus|Give Bonus]]
+# [[Divest from fossil fuel industry|Fossil Fuel Policy][$invincible to true]]

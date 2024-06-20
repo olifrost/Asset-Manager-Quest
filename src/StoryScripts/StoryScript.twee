@@ -1,0 +1,105 @@
+:: StoryScript [script]
+
+// Do not type on previously visited passages
+Config.macros.typeVisitedPassages = false;
+
+// No Return
+$(document).on(':passagestart', function (ev) {
+	if (!ev.passage.tags.includes('noreturn')) {
+		State.variables.return = ev.passage.title;
+	}
+});
+
+function CopyToClipboard(id)
+{
+var r = document.createRange();
+r.selectNode(document.getElementById(id));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+}
+
+//Clipboard
+function myFunction() {
+  // Get the text field
+  var copyText = document.getElementById("myInput");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+}
+// Sound
+setup.Path = "";  // Running in a browser
+setup.ImagePath = setup.Path + "image/";
+setup.SoundPath = setup.Path + "sound/";
+
+// Check to see if trackID is currently loaded
+window.TrackExists = function (trackID) {
+	return SimpleAudio.tracks.has(trackID);
+};
+
+// Check to see if trackID is the currently playing track
+window.isPlaying = function (trackID) {
+	var track = SimpleAudio.tracks.get(trackID);
+	return track !== null && track.isPlaying();
+};
+
+// Splash
+
+(function () {
+	// Duration of the splash image's fade in.
+	var fadeIn  = 500; // in milliseconds
+
+	// Delay before the splash screen begins to fade out.
+	var linger  = 2000; // in milliseconds
+
+	// Duration of the splash screen's fade out.
+	var fadeOut = 1000; // in milliseconds
+
+	// Splash image.
+	var $image  = $('<span id="splash-logo"><img class="animate__animated animate__fadeInUp" src="img/AMQ-Rev.png"><p class="animate__animated animate__fadeInUp animate__delay-1s">Loading assets...</p></span>').hide();
+
+	// Display the splash screen.
+	$(document.body)
+		.find('#splash-screen')
+			.delay(linger)
+			.fadeOut(fadeOut);
+
+	// Set up the removal of the splash screen.
+	setTimeout(function () {
+		$('#splash-screen').remove();
+	}, fadeIn + linger + fadeOut + 1000);
+})();
+
+// Death
+Config.navigation.override = function (dest) {
+	var sv = State.variables;
+	// If $health is less-than-or-equal to 0, go to the "You Died" passage instead.
+	if (sv.approval <= 0 && sv.invincible === false) {
+		return "You Died";
+	}
+};
+
+// Health Bar
+window.Health = function (approval, maxapproval, BarID, Horizontal, Container) {
+	if (Container == undefined) {
+		Container = document;
+	}
+  
+	var HP = parseInt((approval / maxapproval) * 100).clamp(0, 100);
+	var BarElement = $(Container).find("#" + BarID);
+	if (Horizontal) {
+		BarElement.css({ width: approval + "%" });
+	} else {
+		BarElement.css({ height: approval + "%" });
+	}
+	BarElement.attr("title", approval + "/" + maxapproval + "");
+	$(Container).find("#" + BarID + "bkg").attr("title", approval + "/" + maxapproval + "%");
+};
