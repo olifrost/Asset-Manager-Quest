@@ -96,14 +96,14 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
-<link rel="shortcut icon" href="/icon/favicon.ico">
+<link rel="shortcut icon" href="icon/favicon.ico">
 <link rel="manifest" href="icon/site.webmanifest">
 <link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#08104f">
 <meta name="theme-color" content="#ff86cc">
 
 <meta name="title" content="Asset Manager Quest">
-<meta name="description" content="Invest in the planet, or let it burn!">
+<meta name="description" content="Invest in the planet, or let it burn! Let's play Asset Manager Quest">
 <meta name="keywords" content="asset manager, abrdn, game">
 <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -112,12 +112,16 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 
 <meta property="og:title" content="Asset Manager Quest">
 <meta property="og:type" content="game">
-<meta property="og:description" content="Invest in the planet, or let it burn!">
-<meta property="og:image" content="cover.png">
+<meta property="og:description" content="Invest in the planet, or let it burn! Let's play Asset Manager Quest">
+<meta property="og:image" content="https://www.assetmanager.quest/cover.png">
 <meta property="og:url" content="assetmanager.quest">
+
 <meta name="twitter:card" content="summary_large_image">
-<meta name="og:site_name" content="Asset Manager Quest">
-<meta name="twitter:image:alt" content="Abrdn">
+<meta name="twitter:title" content="Asset Manager Quest">
+<meta name="twitter:site" content="@olifro_st">
+<meta name="twitter:description" content="Invest in the planet, or let it burn! Let's play Asset Manager Quest">
+<meta name="twitter:image" content="https://www.assetmanager.quest/cover.png">
+<meta name="twitter:image:alt" content="abrdn">
 </head>
 <body>
 	<div id="init-screen">
@@ -928,7 +932,7 @@ function updateSelection(links) {
         links[currentIndex].classList.add('selected');
         links[currentIndex].focus();
     }
-}</script><tw-tag name="title" color="green"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
+}</script><tw-tag name="win" color="green"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
 # [[Remedy acidic soils]]
 # [[Become a pile again|Stay as pile]]</tw-passagedata><tw-passagedata pid="2" name="Definitely remain ash" tags="" position="2875,1525" size="100,100">Ok, you&#39;re a pile of ash
 # [[Blow in wind]]
@@ -1983,7 +1987,10 @@ You see yourself as part of it
 &lt;&lt;set $image to &quot;img/WINNER.png&quot;&gt;&gt;
 &lt;&lt;set $notherapy to true&gt;&gt;\
 &lt;&lt;/silently&gt;&gt;\
+&lt;&lt;type 20ms none&gt;&gt;\
 !YOU BEAT THE GAME
+Your fellow asset managers sing songs about you, praising &lt;span class=&quot;nobr&quot;&gt;your leadership&lt;/span&gt;
+
 &#39;&#39;$company&#39;&#39; gets its reputation back on track with a &#39;&#39;policy to stop investing in coal, oil and gas bonds&#39;&#39;
 
 The world transitions to cleaner, cheaper, safer renewable energy.
@@ -1991,7 +1998,8 @@ The world transitions to cleaner, cheaper, safer renewable energy.
 Too easy? [[Start again|Intro]] and make a different choice
 
 Or help get abrdn to play Asset Manager Quest
-&lt;&lt;include &quot;CTA&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="113" name="Buy child pony" tags="" position="1700,400" size="100,100">&lt;&lt;silently&gt;&gt;\
+&lt;&lt;include &quot;CTA&quot;&gt;&gt;
+&lt;&lt;/type&gt;&gt;\</tw-passagedata><tw-passagedata pid="113" name="Buy child pony" tags="" position="1700,400" size="100,100">&lt;&lt;silently&gt;&gt;\
 &lt;&lt;set $image to &quot;img/Pony.png&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;\
 What should we call the &#39;&#39;pony&#39;&#39;?

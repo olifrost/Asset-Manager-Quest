@@ -3,7 +3,10 @@
 <<set $image to "img/WINNER.png">>
 <<set $notherapy to true>>\
 <</silently>>\
+<<type 20ms none>>\
 !YOU BEAT THE GAME
+Your fellow asset managers sing songs about you, praising <span class="nobr">your leadership</span>
+
 ''$company'' gets its reputation back on track with a ''policy to stop investing in coal, oil and gas bonds''
 
 The world transitions to cleaner, cheaper, safer renewable energy.
@@ -12,3 +15,4 @@ Too easy? [[Start again|Intro]] and make a different choice
 
 Or help get abrdn to play Asset Manager Quest
 <<include "CTA">>
+<</type>>\
