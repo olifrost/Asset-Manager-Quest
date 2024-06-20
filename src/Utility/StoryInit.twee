@@ -1,6 +1,5 @@
 :: StoryInit [utility] {"position":"2450,75","size":"100,100"}
 <<cacheaudio "load" "sound/load.mp3">>
-<<waitforaudio>>
 <<setvariables>>
 <<set $image to "img/Asset Manager.png">>
 
