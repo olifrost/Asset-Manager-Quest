@@ -2,6 +2,7 @@
 You enter combat with the game's creators, who go by the name ''Serious People''
 # <a href="https://olifro.st">Punch Oli Frost<br>(Words, Web, Music)</a>
 # <a href="https://www.mandrews.studio">Kick Mike Andrews<br>(Design)</a>
-# <span class="locked">Tackle Ruth Newton<br>(Producer)</span>
-# <span class="locked">Throw Jamie Inman<br>(Strategy)</span>
+# <a href="https://www.linkedin.com/in/ruth-newton-86549873/">Tackle Ruth Newton<br>(Producer)</a>
+# <a href="https://www.linkedin.com/in/jamieinman/">Throw Jamie Inman<br>(Campaign Director)</a>
+# <a href="https://www.linkedin.com/in/thomjames/">Wrestle Thom James<br>(Digital Strategy)</a>
 <<if $alive>><<link "Return to game" $return>><</link>><<else>>[[Restart game|Intro][state.restart()]]<</if>>
