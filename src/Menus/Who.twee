@@ -5,5 +5,5 @@ You enter combat with the game's creators, who go by the name ''Serious People''
 # <a href="https://www.linkedin.com/in/ruth-newton-86549873/">Tackle Ruth Newton<br>(Producer)</a>
 # <a href="https://www.linkedin.com/in/jamieinman/">Throw Jamie Inman<br>(Campaign Director)</a>
 # <a href="https://www.linkedin.com/in/thomjames/">Wrestle Thom James<br>(Digital Strategy)</a>
-# <a href="https:/seriouspeople.co">Serious People</a>
+# <a href="https://seriouspeople.co">Serious People</a>
 <<if $alive>><<link "Return to game" $return>><</link>><<else>>[[Restart game|Intro][state.restart()]]<</if>>
