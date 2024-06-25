@@ -57,7 +57,8 @@
     <</if>>
 <</if>>
 <</silently>>\
-<<script>>gtag('event', 'loaded', {
-  'event_category': 'passage',
-  'event_label': State.variables.passage_name
-});<</script>>\
+<<script>>
+gtag('event', 'loaded', {
+  'event_category': 'State.current.title'
+});
+<</script>>\
