@@ -59,6 +59,6 @@
 <</silently>>\
 <<script>>
 gtag('event', 'loaded', {
-  'event_category': 'State.current.title'
+  'event_category': State.current.title
 });
 <</script>>\
