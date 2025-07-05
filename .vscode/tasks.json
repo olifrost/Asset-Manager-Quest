@@ -1,0 +1,217 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build All Versions",
+			"type": "shell",
+			"command": "./tweego.sh",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Main Game",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"index.html",
+				"-m",
+				"options/devmode.js",
+				"src",
+				"website"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Dev Version",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"dev.html",
+				"-m",
+				"options/devmode.js",
+				"src",
+				"website"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Backpack Version",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"backpack.html",
+				"src",
+				"backpack"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Proof Version",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"proof.html",
+				"-f",
+				"illume",
+				"src",
+				"website"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Graph Version",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"graph.html",
+				"-f",
+				"dotgraph",
+				"src",
+				"website"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Build Reddit Version",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"reddit.html",
+				"-m",
+				"options/devmode.js",
+				"src",
+				"website",
+				"reddit"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Watch Mode - Main Game",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--head=src/head.txt",
+				"-o",
+				"index.html",
+				"-m",
+				"options/devmode.js",
+				"src",
+				"website",
+				"-w"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "dedicated"
+			}
+		},
+		{
+			"label": "List Story Formats",
+			"type": "shell",
+			"command": "./tweego",
+			"args": [
+				"--list-formats"
+			],
+			"group": "test",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Open Main Game",
+			"type": "shell",
+			"command": "open",
+			"args": [
+				"index.html"
+			],
+			"group": "test",
+			"problemMatcher": [],
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		}
+	]
+}
